@@ -2,4 +2,6 @@
 #a super Bupt group with leader Zhou
 
 First stage:
-Page      +       Members' task        +        
+complete Wireframes + system functions + Members' task     
+
+second stage:
