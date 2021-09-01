@@ -1,7 +1,13 @@
 # GameLibSystem
-#a super Bupt group with leader Zhou
 
-First stage:
-complete Wireframes + system functions + Members' task     
+游戏库管理系统
 
-second stage:
+总共有三大页面：
+
+一、登陆页面，实现用户输入账号密码登陆。
+
+二、库页面，实现游戏库的总览、搜索、筛选。此页面由Servlet程序自动生成。
+
+三、详细信息页面，呈现游戏的详细信息，提供安装、卸载、开始游戏等功能。此页面由Servlet程序自动生成。
+
+进阶功能：设置多个用户，每个用户的游戏信息保存在数据库中。
