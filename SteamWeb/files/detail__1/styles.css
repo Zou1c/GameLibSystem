@@ -1331,7 +1331,7 @@
   left:0px;
   top:0px;
   width:787px;
-  height:621px;
+  height:380px;
   background:inherit;
   background-color:rgba(255, 255, 255, 0);
   border:none;
@@ -1342,7 +1342,7 @@
   font-family:'华文细黑', sans-serif;
   font-weight:400;
   font-style:normal;
-  font-size:20px;
+  font-size:15px;
   color:#F2F2F2;
 }
 #u89 {
@@ -1351,12 +1351,12 @@
   left:147px;
   top:575px;
   width:787px;
-  height:621px;
+  height:380px;
   display:flex;
   font-family:'华文细黑', sans-serif;
   font-weight:400;
   font-style:normal;
-  font-size:20px;
+  font-size:15px;
   color:#F2F2F2;
 }
 #u89 .text {
