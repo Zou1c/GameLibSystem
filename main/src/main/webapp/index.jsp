@@ -1,10 +1,8 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Index</title>
-    <script type="text/javascript">
-        window.location.href='login.html';
-    </script>
+    <jsp:forward page="library.jsp"/>
 </head>
 </html>

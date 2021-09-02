@@ -25,30 +25,23 @@ public class GameDataGet extends HttpServlet {
         Vector res=new Vector();
         HttpSession session=request.getSession(true);
         String name=request.getParameter("Name");
+        /*
         String temp;
         temp=request.getParameter("AppID");
         int AppID=0;
-        if(!temp.equals("")) AppID= Integer.parseInt(temp);
-        /*
-        String Developer=request.getParameter(("Developer"));
-        String Publisher=request.getParameter(("Publisher"));
-        String ReleaseDate=request.getParameter(("ReleaseDate"));
-        String LastUpdate=request.getParameter(("LastUpdate"));
-        temp=request.getParameter("Rate");
-        System.out.println(1);
-        double Rate=0.0;
-        if(temp!=null)Rate= Double.parseDouble(temp);
-        */
+
+         */
         String sql="select * from game";
-        boolean hasWhere=false;
         if(!name.equals("")){
-            sql+=(!hasWhere?" where ":" and ")+"Name='"+name+"'";
-            hasWhere=true;
+            sql+=" where "+"Name like '%"+name+"%'";
         }
+        /*
         if(AppID>0){
             sql+=(!hasWhere?" where ":" and ")+"AppID="+AppID;
             hasWhere=true;
         }
+
+         */
         DatabaseBean dbb=new DatabaseBean();
         System.out.println(sql);
         res=dbb.selectGameData(sql);
