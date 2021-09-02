@@ -2,6 +2,8 @@
 
 _HTML页面文件已移入main/src/main/webapp文件夹_
 
+重要：游戏库中每个游戏的模板已经更新在了library.html中，css文件也更新过了。
+
 **※目前急需实现的功能：**
 
 一、在JSP页面上嵌入Servlet程序，实现搜索排序等功能。
