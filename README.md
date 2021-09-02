@@ -1,12 +1,12 @@
 # GameLibSystem
 
-_HTML页面文件已移入webapp文件夹_
+_HTML页面文件已移入main/src/main/webapp文件夹_
 
 **※目前急需实现的功能：**
 
 一、在JSP页面上嵌入Servlet程序，实现搜索排序等功能。
 
-二、搜索排序的结果以及游戏详细信息页面要和UI完成对接，Servlet程序(可能)要对CSS进行改写，这块有点难度。
+二、搜索排序的结果以及游戏详细信息页面要和UI完成对接。
 
 三、数据库对接(数据库脚本GameLibDBv2.sql)。
 
