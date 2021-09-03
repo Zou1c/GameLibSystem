@@ -12,7 +12,7 @@ public class DatabaseBean{
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "root";
-        String password = "224353Y1560x";
+        String password = "Z1355060521z";//将密码改为自己的密码
         try {
             Class.forName(JDBC_DRIVER);
             con = DriverManager.getConnection(DB_URL, user, password);
@@ -31,9 +31,7 @@ public class DatabaseBean{
                 getDBCon();//与数据库建立连接
                 Statement sta = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
                 ResultSet rs = sta.executeQuery(sql);
-                System.out.println("rs");
                 if(!rs.next()){
-                    System.out.println("rs in con is null");
                     return null;}
                 rs.previous();
                 while (rs.next()) {
@@ -63,7 +61,6 @@ public class DatabaseBean{
             Statement sta = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = sta.executeQuery(sql);
             if(!rs.next()){
-                System.out.println("rs in con is null");
                 return null;}
             rs.previous();
             while (rs.next()) {

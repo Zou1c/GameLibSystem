@@ -21,25 +21,33 @@ public class UserLoginCheck extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("\nInto UserLoginCheck.java");
         String url="/index.jsp";
         request.setCharacterEncoding("UTF-8");
         Vector res;
         HttpSession session=request.getSession(true);
         String UserName=request.getParameter("UserName");
+        System.out.println(UserName);
         String Password=request.getParameter("Password");
+        System.out.println(Password);
         if(UserName==""&&Password==""){
             System.out.println("用户名和密码为空");
             session.setAttribute("loginCheck","用户名和密码为空");
             request.getRequestDispatcher("index.jsp").forward(request,response);
+            return;
         }
         else if(UserName==""){
             System.out.println("用户名为空");
             session.setAttribute("loginCheck","用户名为空");
             request.getRequestDispatcher("index.jsp").forward(request,response);
+            return;
         }
         else if(Password==""){
             session.setAttribute("loginCheck","密码为空");
+            session.setAttribute("name", UserName);
+            System.out.println("UserName in servelet is "+UserName);
             request.getRequestDispatcher("index.jsp").forward(request,response);
+            return;
         }
         String sql="select * from user";
         sql+=" where UserName='"+UserName+"'";
@@ -48,17 +56,19 @@ public class UserLoginCheck extends HttpServlet {
         res=dbb.selectUserData(sql);
         String login=null;
         if(res==null){
-            System.out.println("res is null");
             session.setAttribute("loginCheck","用户名错误");
             request.getRequestDispatcher("index.jsp").forward(request,response);
+            return;
         }
         else{
             System.out.println(res);
             UserData ud= (UserData) res.elementAt(0);
             login=ud.getPassword().equals(Password)?"登录成功":"密码错误";
-
             session.setAttribute("loginCheck",login);
-                request.getRequestDispatcher("index.jsp").forward(request,response);
+            session.setAttribute("name", UserName);
+            session.setAttribute("name", UserName);
+            System.out.println("UserName in servelet is "+UserName);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }
     }
     public void destroy() {
