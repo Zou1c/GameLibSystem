@@ -6,7 +6,7 @@
     </head>
     <body>
     <jsp:forward page="login.jsp"></jsp:forward>
-        <!--<form action="UserLoginCheck"method="post">-->
+        <!--<form action="checkUserLogin"method="post">-->
             <br/>
             <div align="center" bgcolor="ffffff" border="2" cellpadding="0" cellspacing="0">
                 <tr>
@@ -38,7 +38,7 @@
                     <%
                         String statu= (String) session.getAttribute("loginCheck");
                         System.out.println("status="+statu);
-                        System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
+                        //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
                         if(statu==null);
                         else if(statu.equals("登录成功"))request.getRequestDispatcher("2nd.jsp").forward(request,response);
                         else{

@@ -83,4 +83,33 @@ public class DatabaseBean{
         }
         return res;
     }
+    public Vector selectUserLibData(String sql){
+        Vector res = new Vector();
+        try {
+            getDBCon();//与数据库建立连接
+            Statement sta = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = sta.executeQuery(sql);
+            if(!rs.next()){
+                return null;}
+            rs.previous();
+            while (rs.next()) {
+                UserLibData uld = new UserLibData(rs.getInt("AppID"), rs.getDouble("Record"), rs.getString("lastPlayed"), rs.getInt("IsLocal"), rs.getInt("IsFavorite"));
+                res.add(uld);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            //关闭资源
+            if(con!=null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return res;
+    }
 }
