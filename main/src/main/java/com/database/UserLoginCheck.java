@@ -21,31 +21,45 @@ public class UserLoginCheck extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String url="/input.jsp";
+        String url="/index.jsp";
         request.setCharacterEncoding("UTF-8");
         Vector res;
         HttpSession session=request.getSession(true);
         String UserName=request.getParameter("UserName");
-        String Password=request.getParameter(("Password"));
+        String Password=request.getParameter("Password");
+        if(UserName==""&&Password==""){
+            System.out.println("用户名和密码为空");
+            session.setAttribute("loginCheck","用户名和密码为空");
+            request.getRequestDispatcher("index.jsp").forward(request,response);
+        }
+        else if(UserName==""){
+            System.out.println("用户名为空");
+            session.setAttribute("loginCheck","用户名为空");
+            request.getRequestDispatcher("index.jsp").forward(request,response);
+        }
+        else if(Password==""){
+            session.setAttribute("loginCheck","密码为空");
+            request.getRequestDispatcher("index.jsp").forward(request,response);
+        }
         String sql="select * from user";
         sql+=" where UserName='"+UserName+"'";
         DatabaseBean dbb=new DatabaseBean();
         System.out.println(sql);
         res=dbb.selectUserData(sql);
+        String login=null;
         if(res==null){
             System.out.println("res is null");
-            session.setAttribute("loginCheck",-1);//找不到此用户
-            request.getRequestDispatcher(url).forward(request,response);
+            session.setAttribute("loginCheck","用户名错误");
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }
         else{
             System.out.println(res);
             UserData ud= (UserData) res.elementAt(0);
-            int login=ud.getPassword().equals(Password)?1:0;
-            session.setAttribute("loginCheck",login);
-        }
-        session.setAttribute("res",res);
-        request.getRequestDispatcher(url).forward(request,response);
+            login=ud.getPassword().equals(Password)?"登录成功":"密码错误";
 
+            session.setAttribute("loginCheck",login);
+                request.getRequestDispatcher("index.jsp").forward(request,response);
+        }
     }
     public void destroy() {
     }
