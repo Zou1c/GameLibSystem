@@ -117,6 +117,7 @@
           else{
             if (statu.equals("用户名和密码为空")){
           %>
+        <!--Because of unexpected bug-->
         <script type="text/javascript">
           alert("用户名和密码为空");
         </script>
