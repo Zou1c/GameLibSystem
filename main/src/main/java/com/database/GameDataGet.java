@@ -28,20 +28,12 @@ public class GameDataGet extends HttpServlet {
         String temp;
         temp=request.getParameter("AppID");
         int AppID=0;
-        if(!temp.equals("")) AppID= Integer.parseInt(temp);
-        /*
-        String Developer=request.getParameter(("Developer"));
-        String Publisher=request.getParameter(("Publisher"));
-        String ReleaseDate=request.getParameter(("ReleaseDate"));
-        String LastUpdate=request.getParameter(("LastUpdate"));
-        temp=request.getParameter("Rate");
-        System.out.println(1);
-        double Rate=0.0;
-        if(temp!=null)Rate= Double.parseDouble(temp);
-        */
+        System.out.println("AppID ==null is "+(temp==null));
+        System.out.println("AppID ==\"\" is "+(temp==""));
+        if(!(temp==null||temp.equals(""))) AppID= Integer.parseInt(temp);
         String sql="select * from game";
         boolean hasWhere=false;
-        if(!name.equals("")){
+        if(!(name==null||name.equals(""))){
             sql+=(!hasWhere?" where ":" and ")+"Name='"+name+"'";
             hasWhere=true;
         }
@@ -52,7 +44,10 @@ public class GameDataGet extends HttpServlet {
         DatabaseBean dbb=new DatabaseBean();
         System.out.println(sql);
         res=dbb.selectGameData(sql);
-        System.out.println(res);
+        for(Object i :res){
+            GameData gd=(GameData) i;
+            System.out.println(gd.toString());
+        }
         session.setAttribute("res",res);
         request.getRequestDispatcher("/sqlResult.jsp").forward(request,response);
 
