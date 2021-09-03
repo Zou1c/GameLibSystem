@@ -142,12 +142,12 @@
   <div id="u37" class="ax_default label">
     <div id="u37_div" class=""></div>
     <div id="u37_text" class="text ">
-      <p><span>注销</span></p>
+      <p><span onclick="location='index.jsp'">注销</span></p>
     </div>
   </div>
   
   <!-- Unnamed (形状) -->
-  <div id="u38" class="ax_default icon"> <img id="u38_img" class="img " src="images/library/u38.svg"/>
+  <div id="u38" class="ax_default icon"> <img onclick="location='index.jsp'" id="u38_img" class="img " src="images/library/u38.svg"/>
     <div id="u38_text" class="text " style="display:none; visibility: hidden">
       <p></p>
     </div>
@@ -181,7 +181,7 @@
     
     <!-- 游戏名 (矩形) -->
     <div class="name">
-      <p><span>NBA 2K21</span></p>
+      <p><a onclick="location='detail__2.jsp'">NBA 2K21</a></p>
     </div>
     
     <!-- 简短信息 (矩形) -->
