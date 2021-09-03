@@ -113,10 +113,11 @@
           System.out.println("status="+statu);
           //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
           if(statu==null);
-          else if(statu.equals("登录成功"))request.getRequestDispatcher("2nd.jsp").forward(request,response);
+          else if(statu.equals("登录成功"))request.getRequestDispatcher("library.jsp").forward(request,response);
           else{
             if (statu.equals("用户名和密码为空")){
           %>
+        <!--Because of unexpected bug-->
         <script type="text/javascript">
           alert("用户名和密码为空");
         </script>
