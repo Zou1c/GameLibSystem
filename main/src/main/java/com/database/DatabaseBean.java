@@ -35,7 +35,7 @@ public class DatabaseBean{
                     return null;}
                 rs.previous();
                 while (rs.next()) {
-                    GameData tempGD = new GameData(rs.getString("name"), rs.getString("developer"), rs.getString("publisher"), rs.getString("releaseDate"), rs.getString("lastUpDate"), rs.getDouble("rate"), rs.getInt("AppID"), rs.getInt("positiveReviews"), rs.getInt("negativeReviews"), rs.getInt("in-Game"), rs.getString("size"), rs.getString("icon"), rs.getString("header"), rs.getString("description"), rs.getString("about"));
+                    GameData tempGD = new GameData(rs.getString("name"), rs.getString("developer"), rs.getString("publisher"), rs.getString("releaseDate"), rs.getString("lastUpDate"), rs.getDouble("rate"), rs.getInt("AppID"), rs.getInt("positiveReviews"), rs.getInt("negativeReviews"), rs.getInt("in-Game"), rs.getString("size"), rs.getString("icon"), rs.getString("header"), rs.getString("description"), rs.getString("about"),rs.getInt("Price"));
                     res.add(tempGD);
                 }
             }
@@ -64,8 +64,37 @@ public class DatabaseBean{
                 return null;}
             rs.previous();
             while (rs.next()) {
-                UserData tempUD = new UserData(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Password"));
+                UserData tempUD = new UserData(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Password"),rs.getInt("Balance"));
                 res.add(tempUD);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            //关闭资源
+            if(con!=null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return res;
+    }
+    public Vector selectUserLibData(String sql){
+        Vector res = new Vector();
+        try {
+            getDBCon();//与数据库建立连接
+            Statement sta = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = sta.executeQuery(sql);
+            if(!rs.next()){
+                return null;}
+            rs.previous();
+            while (rs.next()) {
+                UserLibData uld = new UserLibData(rs.getInt("AppID"), rs.getDouble("Record"), rs.getString("lastPlayed"), rs.getInt("IsLocal"), rs.getInt("IsFavorite"));
+                res.add(uld);
             }
         }
         catch(Exception e){

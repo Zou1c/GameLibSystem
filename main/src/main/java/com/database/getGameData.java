@@ -8,8 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "GameDataGet", value = "/GameDataGet")
-public class GameDataGet extends HttpServlet {
+@WebServlet(name = "getGameData", value = "/getGameData")
+public class getGameData extends HttpServlet {
     private String message;
 
     public void init() {

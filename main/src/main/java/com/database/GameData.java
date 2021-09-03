@@ -13,6 +13,7 @@ public class GameData {
     int In_Game;
     String Size;
     String Icon;
+    int Price;
 
     public GameData(String name, int appID, String size) {
         Name = name;
@@ -20,7 +21,7 @@ public class GameData {
         Size = size;
     }
 
-    public GameData(String name, String developer, String publisher, String releaseDate, String lastUpDate, double rate, int appID, int positiveReviews, int negativeReviews, int in_Game, String size, String icon, String header, String description, String about) {
+    public GameData(String name, String developer, String publisher, String releaseDate, String lastUpDate, double rate, int appID, int positiveReviews, int negativeReviews, int in_Game, String size, String icon, String header, String description, String about,int price) {
         Name = name;
         Developer = developer;
         Publisher = publisher;
@@ -36,6 +37,7 @@ public class GameData {
         Header = header;
         Description = description;
         About = about;
+        Price=price;
     }
 
     String Header;
@@ -57,6 +59,7 @@ public class GameData {
                 ", In_Game=" + In_Game +
                 ", Size='" + Size + '\'' +
                 ", Icon='" + Icon + '\'' +
+                ", Price=" + Price +
                 ", Header='" + Header + '\'' +
                 ", Description='" + Description + '\'' +
                 ", About='" + About + '\'' +
