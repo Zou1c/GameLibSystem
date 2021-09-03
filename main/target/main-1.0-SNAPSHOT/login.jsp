@@ -46,12 +46,13 @@
     </script>
   </head>
   <body>
+  <form action="UserLoginCheck"method="post">
     <div id="base" class="">
 
       <!-- Unnamed (文本框) -->
       <div id="u0" class="ax_default text_field">
         <div id="u0_div" class=""></div>
-        <input id="u0_input" type="text" value="" class="u0_input"/>
+        <input id="u0_input" type="text" value="" name="UserName" class="u0_input"/><!--账户-->
       </div>
 
       <!-- Unnamed (矩形) -->
@@ -65,7 +66,7 @@
       <!-- Unnamed (文本框) -->
       <div id="u2" class="ax_default text_field">
         <div id="u2_div" class=""></div>
-        <input id="u2_input" type="password" value="" class="u2_input"/>
+        <input id="u2_input" type="password" value="" name="Password" class="u2_input"/><!--密码-->
       </div>
 
       <!-- Unnamed (矩形) -->
@@ -96,11 +97,25 @@
       </div>
 
       <!-- Unnamed (矩形) -->
-      <div id="u6" class="ax_default primary_button">
-        <img id="u6_img" class="img " src="images/login/u6.svg"/>
+      <div id="u6" class="ax_default primary_button" align="center">
+        <!--<img id="u6_img" class="img " src="images/login/u6.svg"/>-->
+        <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0" type="submit" name="login" value="登/录" />
         <div id="u6_text" class="text ">
-          <p><span>登录</span></p>
         </div>
+      </div>
+      <div align="center">
+        <h1>
+          <%
+            String statu= (String) session.getAttribute("loginCheck");
+            System.out.println("status="+statu);
+            System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
+            if(statu==null);
+            else if(statu.equals("登录成功"))request.getRequestDispatcher("2nd.jsp").forward(request,response);
+            else{
+          %>
+          <!--<font color="red" size=1 face="Arial"><%=statu%></font>-->
+          <%;}%>
+        </h1>
       </div>
 
       <!-- Unnamed (SVG) -->
@@ -112,5 +127,6 @@
       </div>
     </div>
     <script src="resources/scripts/axure/ios.js"></script>
+  </form>>
   </body>
 </html>

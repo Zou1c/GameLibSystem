@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>register</title>
+    <title>md绝了</title>
 </head>
 <body>
 <form action="registSerlet"method="post">
@@ -12,10 +12,10 @@
             <option value=" 中国 ">中国</option>
             <option value=" 中國 ">中國</option>
         </select>
-        <h1>
-
+        <h1 align="center" size="25">
+            世界的参差
         </h1>
-        <input type="submit" name="button1" value="提交" />
+        <input type="submit" name="button1" value="提交" onclick="location='https://www.bupt.edu.cn/' " />
     </div>
 </form>
 </body>
