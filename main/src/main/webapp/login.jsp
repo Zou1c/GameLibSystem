@@ -52,7 +52,8 @@
       <!-- Unnamed (文本框) -->
       <div id="u0" class="ax_default text_field">
         <div id="u0_div" class=""></div>
-        <input id="u0_input" type="text" value="" name="UserName" class="u0_input"/><!--账户-->
+        <input id="u0_input" type="text" name="UserName" class="u0_input" value=<%=(String)session.getAttribute("name")==null?"":(String)session.getAttribute("name")%>>
+      </input>
       </div>
 
       <!-- Unnamed (矩形) -->
