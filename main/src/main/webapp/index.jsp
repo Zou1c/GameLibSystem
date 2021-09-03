@@ -3,6 +3,8 @@
 <html>
 <head>
     <title>Index</title>
-    <jsp:forward page="library.jsp"/>
+    <script type="text/javascript">
+        window.location.href='login.jsp';
+    </script>
 </head>
 </html>
