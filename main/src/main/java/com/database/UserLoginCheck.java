@@ -39,6 +39,8 @@ public class UserLoginCheck extends HttpServlet {
         }
         else if(Password==""){
             session.setAttribute("loginCheck","密码为空");
+            session.setAttribute("name", UserName);
+            UserName="";
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
         String sql="select * from user";
@@ -50,15 +52,17 @@ public class UserLoginCheck extends HttpServlet {
         if(res==null){
             System.out.println("res is null");
             session.setAttribute("loginCheck","用户名错误");
+            UserName="";
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
         else{
             System.out.println(res);
             UserData ud= (UserData) res.elementAt(0);
             login=ud.getPassword().equals(Password)?"登录成功":"密码错误";
-
             session.setAttribute("loginCheck",login);
-                request.getRequestDispatcher("index.jsp").forward(request,response);
+            session.setAttribute("name", UserName);
+            UserName="";
+            request.getRequestDispatcher("index.jsp").forward(request,response);
         }
     }
     public void destroy() {
