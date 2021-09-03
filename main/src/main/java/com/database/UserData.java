@@ -6,12 +6,25 @@ public class UserData {
     int UserID;
     String UserName;
     String Password;
+    int Balance;
     Vector UserLib=null;
 
-    public UserData(int userID, String userName, String password) {
+    public UserData(int userID, String userName, String password,int balance) {
         UserID = userID;
         UserName = userName;
         Password = password;
+        Balance=balance;
+    }
+
+    @Override
+    public String toString() {
+        return "UserData{" +
+                "UserID=" + UserID +
+                ", UserName='" + UserName + '\'' +
+                ", Password='" + Password + '\'' +
+                ", Balance=" + Balance +
+                ", UserLib=" + UserLib +
+                '}';
     }
 
     public int getUserID() {
