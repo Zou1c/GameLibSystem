@@ -1437,3 +1437,30 @@
   white-space:nowrap;
   text-transform:none;
 }
+#u73 {
+  border-width:0px;
+  position:absolute;
+  left:648px;
+  top:222px;
+  width:315px;
+  height:27px;
+  display:flex;
+  font-family:'华文细黑', sans-serif;
+  font-weight:400;
+  font-style:normal;
+  font-size:20px;
+  color:#AAAAAA;
+  text-align:right;
+}
+#u73 .text {
+  position:absolute;
+  align-self:flex-start;
+  padding:0px 0px 0px 0px;
+  box-sizing:border-box;
+  width:100%;
+}
+#u73_text {
+  border-width:0px;
+  word-wrap:break-word;
+  text-transform:none;
+}
