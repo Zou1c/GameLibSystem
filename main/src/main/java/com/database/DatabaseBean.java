@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 public class DatabaseBean{
     private Connection con;
     private void getDBCon() {
-        String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+        String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "root";
         String password = "224353Y1560x";
