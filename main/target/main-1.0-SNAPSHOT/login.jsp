@@ -115,7 +115,36 @@
           if(statu==null);
           else if(statu.equals("登录成功"))request.getRequestDispatcher("2nd.jsp").forward(request,response);
           else{
+            if (statu.equals("用户名和密码为空")){
+          %>
+        <script type="text/javascript">
+          alert("用户名和密码为空");
+        </script>
+        <%}%>
+        <%
+        if (statu.equals("用户名为空")){
         %>
+        <script type="text/javascript">
+          alert("用户名为空");</script>
+        <%}%>
+        <%
+          if (statu.equals("密码为空")){
+        %>
+        <script type="text/javascript">
+          alert("密码为空");</script>
+        <%}%>
+        <%
+          if (statu.equals("用户名错误")){
+        %>
+        <script type="text/javascript">
+          alert("用户名错误");</script>
+        <%}%>
+        <%
+          if (statu.equals("密码错误")){
+        %>
+        <script type="text/javascript">
+          alert("密码错误");</script>
+        <%}%>
         <!--<font color="red" size=1 face="Arial"><%=statu%></font>-->
         <%;}%>
       </h1>
