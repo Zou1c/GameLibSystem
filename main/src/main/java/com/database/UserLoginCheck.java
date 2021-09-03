@@ -21,6 +21,7 @@ public class UserLoginCheck extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("\nInto UserLoginCheck.java");
         String url="/index.jsp";
         request.setCharacterEncoding("UTF-8");
         Vector res;
@@ -31,17 +32,20 @@ public class UserLoginCheck extends HttpServlet {
             System.out.println("用户名和密码为空");
             session.setAttribute("loginCheck","用户名和密码为空");
             request.getRequestDispatcher("index.jsp").forward(request,response);
+            return;
         }
         else if(UserName==""){
             System.out.println("用户名为空");
             session.setAttribute("loginCheck","用户名为空");
             request.getRequestDispatcher("index.jsp").forward(request,response);
+            return;
         }
         else if(Password==""){
             session.setAttribute("loginCheck","密码为空");
             session.setAttribute("name", UserName);
-            UserName="";
+            System.out.println("UserName in servelet is "+UserName);
             request.getRequestDispatcher("index.jsp").forward(request,response);
+            return;
         }
         String sql="select * from user";
         sql+=" where UserName='"+UserName+"'";
@@ -50,10 +54,9 @@ public class UserLoginCheck extends HttpServlet {
         res=dbb.selectUserData(sql);
         String login=null;
         if(res==null){
-            System.out.println("res is null");
             session.setAttribute("loginCheck","用户名错误");
-            UserName="";
             request.getRequestDispatcher("index.jsp").forward(request,response);
+            return;
         }
         else{
             System.out.println(res);
@@ -61,7 +64,8 @@ public class UserLoginCheck extends HttpServlet {
             login=ud.getPassword().equals(Password)?"登录成功":"密码错误";
             session.setAttribute("loginCheck",login);
             session.setAttribute("name", UserName);
-            UserName="";
+            session.setAttribute("name", UserName);
+            System.out.println("UserName in servelet is "+UserName);
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
     }

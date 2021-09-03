@@ -5,12 +5,14 @@
         <title>JSP - Hello World</title>
     </head>
     <body>
+    <%System.out.println("\nInto index.jsp");%>
         <form action="UserLoginCheck"method="post">
             <br/>
             <div align="center" bgcolor="ffffff" border="2" cellpadding="0" cellspacing="0">
                 <tr>
                     <td>帐号 ：</td>
-                    <td><input id="inputPW" type="text" name="UserName" size="25" value=<%=(String)session.getAttribute("name")==null?"":(String)session.getAttribute("name")%>></td>
+                    <td><input id="inputPW" type="text" name="UserName" size="25"
+                value=<%=(String)session.getAttribute("name")==null?"":(String)session.getAttribute("name")%>></td>
                 </tr>
             </div>
                 <h1>
@@ -36,11 +38,10 @@
                     <%
                         String statu= (String) session.getAttribute("loginCheck");
                         System.out.println("status="+statu);
-                        //String name=(String)session.getAttribute("name");
+                        System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
                         if(statu==null);
                         else if(statu.equals("登录成功"))request.getRequestDispatcher("2nd.jsp").forward(request,response);
                         else{
-                              //if(statu.equals("密码错误"))
                     %>
                     <font color="red" size=5 face="Arial"><%=statu%></font>
                     <%;}%>
