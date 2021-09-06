@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<%@ page import="com.database.UserLibData" %>
+<%@ page import="java.util.Vector" %>
+<%--@ page import="javax.xml.registry.infomodel.User" --%>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Detail #2</title>
@@ -46,6 +49,27 @@
     </script>
   </head>
   <body>
+  <%!
+    UserLibData uld=null;
+
+  %>
+
+  <%
+    if(request.getParameter("id")!=null&&request.getParameter("id")!="") {
+      int id = Integer.parseInt(request.getParameter("id"));
+      Vector<UserLibData> res=(Vector<UserLibData>)session.getAttribute("library");
+      for(UserLibData i :res){
+        if(i.getAppID()==id){
+          uld=i;
+          break;
+        }
+      }
+    }
+    else{
+      uld=null;//默认
+    }
+
+  %>
     <div id="base" class="">
 
       <!-- Unnamed (动态面板) -->
@@ -61,23 +85,23 @@
               </div>
             </div>
 
-            <!-- Unnamed (矩形) -->
+            <!-- 好评率 -->
             <div id="u97" class="ax_default label">
               <div id="u97_div" class=""></div>
               <div id="u97_text" class="text ">
-                <p><span>40.90%</span></p>
+                <p><span><%=uld.getGameData().getRate2()%></span></p>
               </div>
             </div>
 
-            <!-- Unnamed (矩形) -->
+            <!-- 好评/差评数 -->
             <div id="u98" class="ax_default label">
               <div id="u98_div" class=""></div>
               <div id="u98_text" class="text ">
-                <p><span style="color:#A0FF05;">↑14,801</span><span style="color:#FFFFFF;"> </span><span style="color:#DC1F41;">↓21,743</span></p>
+                <p><span style="color:#A0FF05;">↑<%=uld.getGameData().getPositiveReviews()%></span><span style="color:#FFFFFF;"> </span><span style="color:#DC1F41;">↓<%=uld.getGameData().getNegativeReviews()%></span></p>
               </div>
             </div>
 
-            <!-- Unnamed (形状) -->
+            <!-- emoji -->
             <div id="u99" class="ax_default icon">
               <img id="u99_img" class="img " src="images/detail__2/u99.svg"/>
               <div id="u99_text" class="text " style="display:none; visibility: hidden">
@@ -88,7 +112,7 @@
         </div>
       </div>
 
-      <!-- Unnamed (SVG) -->
+      <!-- steam图标 -->
       <div id="u100" class="ax_default _图片_">
         <img id="u100_img" class="img " src="images/login/u7.svg"/>
         <div id="u100_text" class="text " style="display:none; visibility: hidden">
@@ -96,11 +120,11 @@
         </div>
       </div>
 
-      <!-- Unnamed (矩形) -->
+      <!-- 游戏名 -->
       <div id="u101" class="ax_default label">
         <div id="u101_div" class=""></div>
         <div id="u101_text" class="text ">
-          <p><span>NBA 2K21</span></p>
+          <p><span><%=uld.getGameData().getName()%></span></p>
         </div>
       </div>
 
@@ -131,11 +155,11 @@
           </div>
         </div>
 
-        <!-- Unnamed (单元格) -->
+        <!-- 开发商 -->
         <div id="u106" class="ax_default table_cell">
           <img id="u106_img" class="img " src="images/detail__1/u62.png"/>
           <div id="u106_text" class="text ">
-            <p><span>Visual Concepts</span></p>
+            <p><span><%=uld.getGameData().getDeveloper()%></span></p>
           </div>
         </div>
 
@@ -147,11 +171,11 @@
           </div>
         </div>
 
-        <!-- Unnamed (单元格) -->
+        <!-- 发行商 -->
         <div id="u108" class="ax_default table_cell">
           <img id="u108_img" class="img " src="images/detail__1/u62.png"/>
           <div id="u108_text" class="text ">
-            <p><span>&nbsp;&nbsp; &nbsp; 2K</span></p>
+            <p><span>&nbsp;&nbsp; &nbsp; <%=uld.getGameData().getPublisher()%></span></p>
           </div>
         </div>
 
@@ -163,11 +187,11 @@
           </div>
         </div>
 
-        <!-- Unnamed (单元格) -->
+        <!-- 发行日期 -->
         <div id="u110" class="ax_default table_cell">
           <img id="u110_img" class="img " src="images/detail__1/u62.png"/>
           <div id="u110_text" class="text ">
-            <p><span>4 September 2020</span></p>
+            <p><span><%=uld.getGameData().getReleaseDate()%></span></p>
           </div>
         </div>
 
@@ -179,11 +203,11 @@
           </div>
         </div>
 
-        <!-- Unnamed (单元格) -->
+        <!-- 最后更新 -->
         <div id="u112" class="ax_default table_cell">
           <img id="u112_img" class="img " src="images/detail__1/u70.png"/>
           <div id="u112_text" class="text ">
-            <p><span>31 August 2021</span></p>
+            <p><span><%=uld.getGameData().getLastUpDate()%></span></p>
           </div>
         </div>
       </div>
@@ -192,7 +216,7 @@
       <div id="u113" class="ax_default _文本段落">
         <div id="u113_div" class=""></div>
         <div id="u113_text" class="text ">
-          <p><span>《NBA 2K21》是享誉全球的畅销大作NBA 2K系列的最新作品，在呈现了业界领先的体育游戏体验。</span></p>
+          <p><span><%=uld.getGameData().getAbout()%></span></p>
         </div>
       </div>
 
@@ -251,7 +275,7 @@
         <div id="u121" class="ax_default table_cell">
           <img id="u121_img" class="img " src="images/detail__1/u62.png"/>
           <div id="u121_text" class="text ">
-            <p><span>62.5 小时</span></p>
+            <p><span><%=uld.getRecord()%> 小时</span></p>
           </div>
         </div>
 
@@ -267,7 +291,7 @@
         <div id="u123" class="ax_default table_cell">
           <img id="u123_img" class="img " src="images/detail__1/u70.png"/>
           <div id="u123_text" class="text ">
-            <p><span>56GB</span></p>
+            <p><span><%=uld.getGameData().getSize()%></span></p>
           </div>
         </div>
       </div>
@@ -289,7 +313,7 @@
             <div id="u126" class="ax_default label">
               <div id="u126_div" class=""></div>
               <div id="u126_text" class="text ">
-                <p><span>4,392</span></p>
+                <p><span><%=uld.getGameData().getIn_Game()%></span></p>
               </div>
             </div>
 
@@ -344,9 +368,9 @@
         </div>
       </div>
 
-      <!-- Unnamed (图片 ) -->
+      <!-- 游戏图片 -->
       <div id="u133" class="ax_default _图片_">
-        <img id="u133_img" class="img " src="images/library/u47.png"/>
+        <img id="u133_img" class="img " src="<%=uld.getGameData().getHeader()%>"/>
         <div id="u133_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
@@ -354,7 +378,7 @@
 
       <!-- Unnamed (图片 ) -->
       <div id="u134" class="ax_default _图片_">
-        <img id="u134_img" class="img " src="images/detail__2/u134.png"/>
+        <img id="u134_img" class="img " src="<%=uld.getGameData().getIcon()%>"/>
         <div id="u134_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
