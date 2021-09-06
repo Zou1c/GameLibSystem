@@ -27,9 +27,7 @@ public class checkUserLogin extends HttpServlet {
         Vector res;
         HttpSession session=request.getSession(true);
         String UserName=request.getParameter("UserName");
-        System.out.println(UserName);
         String Password=request.getParameter("Password");
-        System.out.println(Password);
         if(UserName==""&&Password==""){
             System.out.println("用户名和密码为空");
             session.setAttribute("loginCheck","用户名和密码为空");
@@ -45,7 +43,6 @@ public class checkUserLogin extends HttpServlet {
         else if(Password==""){
             session.setAttribute("loginCheck","密码为空");
             session.setAttribute("name", UserName);
-            System.out.println("UserName in servelet is "+UserName);
             request.getRequestDispatcher("index.jsp").forward(request,response);
             return;
         }
@@ -62,6 +59,7 @@ public class checkUserLogin extends HttpServlet {
         }
         else{
             System.out.println(res);
+            System.out.println("Vector is "+res.getClass().getName());
             UserData ud= (UserData) res.elementAt(0);
             login=ud.getPassword().equals(Password)?"登录成功":"密码错误";
             session.setAttribute("loginCheck",login);

@@ -48,7 +48,7 @@
 <body>
 <form action="checkUserLogin"method="post">
   <div id="base" class="">
-
+<%!String statu="";%>
     <!-- Unnamed (文本框) -->
     <div id="u0" class="ax_default text_field">
       <div id="u0_div" class=""></div>
@@ -88,6 +88,13 @@
       </div>
     </div>
 
+    <script>
+      function loginWarm(){
+        <%System.out.println("loginWarm:"+(String) session.getAttribute("loginCheck"));%>
+        alert("<%=(String) session.getAttribute("loginCheck")%>");
+      }
+    </script>
+
     <!-- Unnamed (复选框) -->
     <div id="u5" class="ax_default checkbox">
       <label id="u5_input_label" for="u5_input" style="position: absolute; left: 0px;">
@@ -99,54 +106,25 @@
       <input id="u5_input" type="checkbox" value="checkbox"/>
     </div>
 
+
     <!-- Unnamed (矩形) -->
     <div id="u6" class="ax_default primary_button" align="center">
       <!--<img id="u6_img" class="img " src="images/login/u6.svg"/>-->
-      <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0" type="submit" name="login" value="登录" />
+      <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0" type="submit" name="login" onclick="loginWarm()" value="登/录" />
       <div id="u6_text" class="text ">
       </div>
     </div>
     <div align="center">
       <h1>
         <%
-          String statu= (String) session.getAttribute("loginCheck");
+          System.out.println("\ninto loginCheck");
+          statu= (String) session.getAttribute("loginCheck");
           System.out.println("status="+statu);
           //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
           if(statu==null);
-          else if(statu.equals("登录成功"))request.getRequestDispatcher("library.jsp").forward(request,response);
+          else if(statu.equals("登录成功"))request.getRequestDispatcher("2nd.jsp").forward(request,response);
           else{
-            if (statu.equals("用户名和密码为空")){
-          %>
-        <!--Because of unexpected bug-->
-        <script type="text/javascript">
-          alert("用户名和密码为空");
-        </script>
-        <%}%>
-        <%
-        if (statu.equals("用户名为空")){
         %>
-        <script type="text/javascript">
-          alert("用户名为空");</script>
-        <%}%>
-        <%
-          if (statu.equals("密码为空")){
-        %>
-        <script type="text/javascript">
-          alert("密码为空");</script>
-        <%}%>
-        <%
-          if (statu.equals("用户名错误")){
-        %>
-        <script type="text/javascript">
-          alert("用户名错误");</script>
-        <%}%>
-        <%
-          if (statu.equals("密码错误")){
-        %>
-        <script type="text/javascript">
-          alert("密码错误");</script>
-        <%}%>
-        <!--<font color="red" size=1 face="Arial"><%=statu%></font>-->
         <%;}%>
       </h1>
     </div>
