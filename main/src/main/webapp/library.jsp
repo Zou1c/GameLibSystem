@@ -184,7 +184,7 @@
   <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
     <!-- 游戏名 (矩形) -->
     <div class="name">
-      <p><a onclick="location='detail__2.jsp'">NBA 2K<%=15+i%></a></p>
+      <p><a onclick="location='detail.jsp'">NBA 2K<%=15+i%></a></p>
     </div>
 
     <!-- 简短信息 (矩形) -->
