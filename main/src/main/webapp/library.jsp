@@ -130,7 +130,7 @@
   <!-- Unnamed (下拉列表) -->
   <div id="u29" class="ax_default droplist">
     <div id="u29_div" class=""></div>
-    <select id="u29_input" class="u29_input">
+    <select id="u29_input" name="list" class="u29_input"><%--下拉菜单--%>
       <option class="u29_input_option" value="全部">全部</option>
       <option class="u29_input_option" value="已下载">已下载</option>
       <option class="u29_input_option" value="未下载">未下载</option>
@@ -198,45 +198,37 @@
     int ti=i*105+328;//到顶部的距离
   %>
   <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
-    <!-- 游戏名 (矩形) -->
+    <!-- 游戏名 -->
     <div class="name">
       <p><a onclick="location='detail.jsp'" style="width:200px; height:20px;" ><%=res.elementAt(i).getGameData().getName()%></a></p>
     </div>
 
-    <!-- 简短信息 (矩形) -->
+    <!-- 简短信息 -->
     <div class="des">
       <p><span><%=res.elementAt(i).getRecord()%> 小时 / <%=res.elementAt(i).getGameData().getSize()%> / <%=(res.elementAt(i).getGameData().getRate2())%></span></p>
     </div>
 
-    <!-- 收藏 (形状) -->
-    <img class="fav" src="images/library/u21.svg">
+    <img class="fav" src="images/library/u21.svg"><%--喜欢与否的星号 u20未选中 u21选中 --%>
 
-    <!-- 详细信息 (动态面板) -->
-    <div class="detail">
-
-      <!-- 详细信息按钮 (矩形) -->
-      <div class="ax_default primary_button detButton"> <img class="detButton_img" src="images/library/u22.svg"/>
-        <div class="text detButton_text">
-          <p><span>&nbsp;&nbsp; &nbsp; 详细信息</span></p>
+    <div class="detail"><%--改了格式会乱倒起飞--%>
+      <div > <img style="left:0px;top:0px;width: 131px;height: 37px;" name="particulars" value="true" src="images/library/particulars.png"/><%--真正显示详情信息的地方--%>
+        <div class="text detButton_text"><%--改了格式会乱倒起飞--%>
+          <p><span>&nbsp;&nbsp; &nbsp;</span></p><%--改了格式会乱倒起飞--%>
         </div>
       </div>
 
       <!-- 详细信息图标 (形状) -->
-      <div class="ax_default icon detIcon"> <img class="detIcon_img" src="images/library/u23.svg"/> </div>
+      <div class="ax_default icon detIcon"> <img class="detIcon_img" src="images/library/lu.png"/> </div><%--麻了搞个透明图层--%>
     </div>
 
     <!-- 下载 (动态面板) -->
     <div class="download">
-
-      <!-- 下载按钮 (矩形) -->
-      <div class="ax_default primary_button dlButton"> <img class="img .dlButton_img" src="images/library/u22.svg"/>
-        <div class="text .dlButton_text">
-          <p><span>&nbsp;&nbsp; 下载</span></p>
+      <div> <img style="left:0px;top:0px;width: 131px;height: 37px;" name="download" value="true" src="images/library/downLoad.png"/><%--真正显示下载的地方--%>
+        <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
+          <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
         </div>
       </div>
-
-      <!-- 下载图标 (形状) -->
-      <div class="ax_default icon dlIcon"> <img class="img dlIcon_img" src="images/library/u50.svg"/> </div>
+      <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div><%--改了格式会乱倒起飞--%>
     </div>
 
     <!-- Header (图片 ) -->
