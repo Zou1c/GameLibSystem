@@ -1,6 +1,9 @@
 package com.database;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 //储存game表的信息
 public class GameData implements Serializable {
@@ -173,6 +176,13 @@ public class GameData implements Serializable {
         return Rate;
     }
 
+
+    public String getRate2(){
+        BigDecimal bd = new BigDecimal(Rate*100);
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        double res = bd.doubleValue();
+        return ""+res+"%";
+    }
     public int getAppID() {
         return AppID;
     }

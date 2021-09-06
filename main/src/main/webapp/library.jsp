@@ -1,5 +1,9 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+﻿<%@ page import="java.util.Vector" %>
+<%@ page import="com.database.GameData" %>
+<%@ page import="com.database.UserData" %>
+<%@ page import="com.database.UserLibData" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,18 +182,30 @@
     </div>
   </div>
 <%--<c:forEach var="i" begin="0" end="5" >--%>
-  <%for (int i=0;i<5;i++){
-    int ti=i*105+328;
+    <%!
+    int count=0;
+    Vector<UserLibData> res=new Vector();
+
+    %>
+    <%
+    res=(Vector<UserLibData>)session.getAttribute("library");
+
+    count=res.size();
+    System.out.println("有"+count+"个游戏");
+
+    %>
+  <%for (int i=0;i<count;i++){
+    int ti=i*105+328;//到顶部的距离
   %>
   <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
     <!-- 游戏名 (矩形) -->
     <div class="name">
-      <p><a onclick="location='detail.jsp'">NBA 2K<%=15+i%></a></p>
+      <p><a onclick="location='detail.jsp'"><%=res.elementAt(i).getGameData().getName()%></a></p>
     </div>
 
     <!-- 简短信息 (矩形) -->
     <div class="des">
-      <p><span>4.6 小时 / 110 GB / 41%</span></p>
+      <p><span><%=res.elementAt(i).getRecord()%> 小时 / <%=res.elementAt(i).getGameData().getSize()%> / <%=(res.elementAt(i).getGameData().getRate2())%></span></p>
     </div>
 
     <!-- 收藏 (形状) -->
@@ -224,8 +240,9 @@
     </div>
 
     <!-- Header (图片 ) -->
-    <div class="ax_default _图片_ header"> <img class="img header_img" src="images/library/u47.png"/> </div>
+    <div class="ax_default _图片_ header"> <img class="img header_img" src=<%=res.elementAt(i).getGameData().getHeader()%>/> </div>
   </div>
+
   <%}%>
 <%--</c:forEach>--%>
 	      <!-- Unnamed (矩形) -->
