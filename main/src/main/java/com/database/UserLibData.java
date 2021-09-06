@@ -1,18 +1,22 @@
 package com.database;
 
-public class UserLibData {
+import java.io.Serializable;
+
+public class UserLibData implements Serializable {
     int AppID;
     double Record;
     String LastPlayed;
     Boolean isLocal;
     Boolean isFavorite;
+    GameData gameData;
 
-    public UserLibData(int appID, double record, String lastPlayed, int isLocal, int isFavorite) {
+    public UserLibData(int appID, double record, String lastPlayed, int isLocal, int isFavorite,GameData gd) {
         AppID = appID;
         Record = record;
         LastPlayed = lastPlayed;
         this.isLocal = isLocal==0;
         this.isFavorite = isFavorite==0;
+        gameData=gd;
     }
 
     public int getAppID() {
@@ -55,10 +59,14 @@ public class UserLibData {
         isFavorite = isfavorite;
     }
 
+    public GameData getGameData() {
+        return gameData;
+    }
+
     @Override
     public String toString() {
-        return "{" +
-                "AppID=" + AppID +
+        return "\n{" +
+                gameData.toString2()+
                 ", Record=" + Record +
                 ", LastPlayed='" + LastPlayed + '\'' +
                 ", isLocal=" + isLocal +

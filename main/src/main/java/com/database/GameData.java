@@ -1,6 +1,9 @@
 package com.database;
+
+import java.io.Serializable;
+
 //储存game表的信息
-public class GameData {
+public class GameData implements Serializable {
     String Name;
     String Developer;
     String Publisher;
@@ -64,6 +67,26 @@ public class GameData {
                 ", Description='" + Description + '\'' +
                 ", About='" + About + '\'' +
                 '}';
+    }
+
+    public String toString2() {
+        return
+                "Name='" + Name + '\'' +
+                ", Developer='" + Developer + '\'' +
+                ", Publisher='" + Publisher + '\'' +
+                ", ReleaseDate='" + ReleaseDate + '\'' +
+                ", LastUpDate='" + LastUpDate + '\'' +
+                ", Rate=" + Rate +
+                ", AppID=" + AppID +
+                ", PositiveReviews=" + PositiveReviews +
+                ", NegativeReviews=" + NegativeReviews +
+                ", In_Game=" + In_Game +
+                ", Size='" + Size + '\'' +
+                ", Icon='" + Icon + '\'' +
+                ", Price=" + Price +
+                ", Header='" + Header + '\'' +
+                ", Description='" + Description + '\'' +
+                ", About='" + About + '\'';
     }
 
     public void setName(String name) {

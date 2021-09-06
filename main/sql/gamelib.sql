@@ -61,12 +61,12 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `UserID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(45) NOT NULL,
   `Password` varchar(45) NOT NULL,
   `Balance` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (0,'nene','nene',2000),(1,'zhangsan','123456',15515515),(2,'lisi','123456',0),(3,'kareninasss','654321',1000),(4,'markdoge','Z1355060521z',2000),(5,'xyx','2243',2000);
+INSERT INTO `user` VALUES (1,'nene','nene',2000),(2,'zhangsan','123456',15515515),(3,'lisi','123456',0),(4,'kareninasss','654321',1000),(5,'markdoge','Z1355060521z',2000),(6,'xyx','2243',2000),(7,'g','g',100);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-06  8:22:47
+-- Dump completed on 2021-09-06 11:20:30

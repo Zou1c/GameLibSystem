@@ -5,8 +5,7 @@
         <title>JSP - Hello World</title>
     </head>
     <body>
-    <jsp:forward page="library.jsp"></jsp:forward>
-    <!-- Unnamed (矩形) -->
+    <jsp:forward page="login.jsp"></jsp:forward>
     <div id="u6" class="ax_default primary_button" align="center">
         <!--<img id="u6_img" class="img " src="images/login/u6.svg"/>-->
         <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0" type="submit" name="login" value="登录" />
