@@ -21,7 +21,7 @@ public class checkUserLogin extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("\nInto checkUserLogin.java");
+        //System.out.println("\nInto checkUserLogin.java");
         String url="/index.jsp";
         request.setCharacterEncoding("UTF-8");
         Vector res;
@@ -59,13 +59,11 @@ public class checkUserLogin extends HttpServlet {
         }
         else{
             System.out.println(res);
-            System.out.println("Vector is "+res.getClass().getName());
             UserData ud= (UserData) res.elementAt(0);
             login=ud.getPassword().equals(Password)?"登录成功":"密码错误";
             session.setAttribute("loginCheck",login);
             session.setAttribute("name", UserName);
             session.setAttribute("name", UserName);
-            //System.out.println("UserName in servelet is "+UserName);
             System.out.println(ud.UserLibInformation());
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }

@@ -12,7 +12,7 @@ public class DatabaseBean{
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "root";
-        String password = "239080";//将密码改为自己的密码
+        String password = "224353Y1560x";//将密码改为自己的密码
         try {
             Class.forName(JDBC_DRIVER);
             con = DriverManager.getConnection(DB_URL, user, password);
@@ -113,24 +113,70 @@ public class DatabaseBean{
         }
         return res;
     }
-        public int addUserData(String userName,String password){
+        public String addUserData(String userName,String password){
             try{
+                System.out.println("into addUserData try");
+                System.out.println("userName==\"\":"+(userName==""));
+                System.out.println("password==\"\":"+(password==""));
+                if(userName==""&&password==""){
+                    System.out.println("用户名和密码为空");
+                    return "用户名和密码为空";
+                }
+                else if(userName==""){
+                    System.out.println("用户名为空");
+                    return "用户名为空";
+                }
+                else if(password==""){
+                    System.out.println("密码为空");
+                    return "密码为空";
+                }
                 getDBCon();//与数据库建立连接
-                String sql="insert into user (UserName,Password) values ('"+userName+"','"+password+"')";
                 Statement sta = con.createStatement();
-                sta.executeQuery(sql);
-                return 1;
+                String sql0="select Username from user where Username='"+userName+"'";
+                System.out.println(sql0);
+                ResultSet rs=sta.executeQuery(sql0);
+                if(rs.next()){
+                    System.out.println("用户已存在");
+                    return "用户名已存在";}
+
+                String sql="insert into user (Username,Password) values ('"+userName+"','"+password+"')";
+                sta.execute(sql);
+                System.out.println("成功注册");
+                return "成功注册";
             } catch (Exception e) {
                 e.printStackTrace();
-                return -1;
+                System.out.println("异常");
+                return "异常";
+            }
+            finally {
+                //关闭资源
+                if(con!=null) {
+                    try {
+                        con.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
+
         public int changeBalance(String userName,int money){
             try{
+                getDBCon();
                 Statement sta = con.createStatement();
-                String sql="update user set Balance=Balance+"+money+" where Username= '"+userName+"'";
-                sta.executeQuery(sql);
-                return 1;
+                String sql0="select balance from user where Username='"+userName+"'";
+                ResultSet rs=sta.executeQuery(sql0);
+                rs.next();
+                int balance=rs.getInt("Balance");
+                System.out.println("balance:"+balance);
+                if(money+balance>=0) {
+                    String sql = "update user set Balance=Balance+" + money + " where Username= '" + userName + "'";
+                    sta.execute(sql);
+                    return 1;
+                }
+                else {
+                    return -1;
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 return -1;

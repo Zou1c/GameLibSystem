@@ -20,7 +20,7 @@ public class UserData implements Serializable {
     }
 
     public void getUserLibData(int orderOption,Boolean isAsc,int downloadOption){
-        UserLib=new Vector();
+        UserLib=null;
         DatabaseBean dbb=new DatabaseBean();
         String sql="select game.*,userlib.UserID,userlib.Record,userlib.LastPlayed,userlib.IsLocal,userlib.IsFavorite from game natural join userlib natural join user where user.UserID=userlib.UserID and game.AppID=userlib.AppID and userlib.UserID ="+UserID;
         switch (downloadOption){
@@ -37,9 +37,10 @@ public class UserData implements Serializable {
             default:order_append=" order by game.Name";
         }
         sql+=order_append+(isAsc?" asc":" desc");
-        System.out.println("sql in UserData"+sql);
+        System.out.println("sql in UserData is: "+sql);
 
         Vector res=dbb.selectUserLibData(sql);
+        if(res==null)return;
         for(Object i:res){
             UserLibData uld=(UserLibData) i;
             UserLib.addElement(uld);
@@ -47,6 +48,7 @@ public class UserData implements Serializable {
     }
     public String UserLibInformation(){
         String s=UserName;
+        if(UserLib==null)return "未拥有游戏";
         for(Object i: UserLib){
             UserLibData ul=(UserLibData) i;
             s+=" "+ul.toString();
