@@ -200,18 +200,24 @@
   <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
     <!-- 游戏名 -->
     <div class="name">
-      <p><a onclick="location='detail.jsp'" style="width:200px; height:20px;" ><%=res.elementAt(i).getGameData().getName()%></a></p>
+      <p><a onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'" style="width:200px; height:20px;" ><%=res.elementAt(i).getGameData().getName()%></a></p>
     </div>
 
     <!-- 简短信息 -->
     <div class="des">
       <p><span><%=res.elementAt(i).getRecord()%> 小时 / <%=res.elementAt(i).getGameData().getSize()%> / <%=(res.elementAt(i).getGameData().getRate2())%></span></p>
     </div>
-
+<% if(res.elementAt(i).getFavorite()){
+System.out.println(res.elementAt(i).getFavorite());
+%>
     <img class="fav" src="images/library/u21.svg"><%--喜欢与否的星号 u20未选中 u21选中 --%>
-
+    <%}
+    else{%>
+    <img class="fav" src="images/library/u20.svg">
+      <%}
+      %>
     <div class="detail"><%--改了格式会乱倒起飞--%>
-      <div > <img style="left:0px;top:0px;width: 131px;height: 37px;" name="particulars" value="true" src="images/library/particulars.png"/><%--真正显示详情信息的地方--%>
+      <div > <img style="left:0px;top:0px;width: 131px;height: 37px;" name="particulars" onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"  value="true" src="images/library/particulars.png"/><%--真正显示详情信息的地方--%>
         <div class="text detButton_text"><%--改了格式会乱倒起飞--%>
           <p><span>&nbsp;&nbsp; &nbsp;</span></p><%--改了格式会乱倒起飞--%>
         </div>
@@ -222,6 +228,18 @@
     </div>
 
     <!-- 下载 (动态面板) -->
+    <%if(res.elementAt(i).getLocal()){%>
+    <div class="download">
+      <div> <img style="left:0px;top:0px;width: 131px;height: 37px;" name="startGame" value="true" src="images/library/startGame.png"/><%--真正显示下载的地方--%>
+        <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
+          <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
+        </div>
+      </div>
+      <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div><%--改了格式会乱倒起飞--%>
+    </div>
+    <%}
+    else{
+    %>
     <div class="download">
       <div> <img style="left:0px;top:0px;width: 131px;height: 37px;" name="download" value="true" src="images/library/downLoad.png"/><%--真正显示下载的地方--%>
         <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
@@ -230,7 +248,9 @@
       </div>
       <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div><%--改了格式会乱倒起飞--%>
     </div>
-
+    <%
+      }
+    %>
     <!-- Header (图片 ) -->
     <div class="ax_default _图片_ header"> <img class="img header_img" src="<%=res.elementAt(i).getGameData().getHeader()%>"/> </div>
   </div>

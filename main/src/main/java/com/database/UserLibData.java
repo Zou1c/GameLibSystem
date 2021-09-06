@@ -14,8 +14,8 @@ public class UserLibData implements Serializable {
         AppID = appID;
         Record = record;
         LastPlayed = lastPlayed;
-        this.isLocal = isLocal==0;
-        this.isFavorite = isFavorite==0;
+        this.isLocal = (isLocal!=0);
+        this.isFavorite = (isFavorite!=0);
         gameData=gd;
     }
 
