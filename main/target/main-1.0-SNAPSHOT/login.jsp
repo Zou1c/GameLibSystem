@@ -110,7 +110,8 @@
     <!-- Unnamed (矩形) -->
     <div id="u6" class="ax_default primary_button" align="center">
       <!--<img id="u6_img" class="img " src="images/login/u6.svg"/>-->
-      <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0" type="submit" name="login"  value="登/录" />
+      <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0;font-family:'华文细黑';color:#FFFFFF"
+             type="submit" name="login"  value="登录" />
       <div id="u6_text" class="text ">
       </div>
     </div>

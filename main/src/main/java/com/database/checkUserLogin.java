@@ -64,6 +64,11 @@ public class checkUserLogin extends HttpServlet {
             session.setAttribute("loginCheck",login);
             session.setAttribute("name", UserName);
             session.setAttribute("name", UserName);
+            if(login.equals("登录成功")){
+                //如果登录成功，则额外返回用户的游戏库信息
+                Vector res2=ud.getUserLibData(2,0,true);
+                session.setAttribute("library",res2);
+            }
             System.out.println(ud.UserLibInformation());
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
