@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Library</title>
@@ -175,104 +177,57 @@
       </div>
     </div>
   </div>
-  
-  <!-- NBA 2K21 (动态面板) -->
-  <div class="gamePanel" style="top: 328px"> 
-    
+<%--<c:forEach var="i" begin="0" end="5" >--%>
+  <%for (int i=0;i<5;i++){
+    int ti=i*105+328;
+  %>
+  <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
     <!-- 游戏名 (矩形) -->
     <div class="name">
-      <p><a onclick="location='detail__2.jsp'">NBA 2K21</a></p>
+      <p><a onclick="location='detail__2.jsp'">NBA 2K<%=15+i%></a></p>
     </div>
-    
+
     <!-- 简短信息 (矩形) -->
     <div class="des">
       <p><span>4.6 小时 / 110 GB / 41%</span></p>
     </div>
-    
-    <!-- 收藏 (形状) --> 
-    <img class="fav" src="images/library/u21.svg"> 
-    
+
+    <!-- 收藏 (形状) -->
+    <img class="fav" src="images/library/u21.svg">
+
     <!-- 详细信息 (动态面板) -->
-    <div class="detail"> 
-      
+    <div class="detail">
+
       <!-- 详细信息按钮 (矩形) -->
       <div class="ax_default primary_button detButton"> <img class="detButton_img" src="images/library/u22.svg"/>
         <div class="text detButton_text">
           <p><span>&nbsp;&nbsp; &nbsp; 详细信息</span></p>
         </div>
       </div>
-      
+
       <!-- 详细信息图标 (形状) -->
       <div class="ax_default icon detIcon"> <img class="detIcon_img" src="images/library/u23.svg"/> </div>
     </div>
-    
+
     <!-- 下载 (动态面板) -->
-    <div class="download"> 
-      
+    <div class="download">
+
       <!-- 下载按钮 (矩形) -->
       <div class="ax_default primary_button dlButton"> <img class="img .dlButton_img" src="images/library/u22.svg"/>
         <div class="text .dlButton_text">
           <p><span>&nbsp;&nbsp; 下载</span></p>
         </div>
       </div>
-      
+
       <!-- 下载图标 (形状) -->
       <div class="ax_default icon dlIcon"> <img class="img dlIcon_img" src="images/library/u50.svg"/> </div>
     </div>
-    
+
     <!-- Header (图片 ) -->
     <div class="ax_default _图片_ header"> <img class="img header_img" src="images/library/u47.png"/> </div>
   </div>
-  
-  <!-- Apex Legends (动态面板) -->
-  <div class="gamePanel" style="top: 442px"> 
-    
-    <!-- 游戏名 (矩形) -->
-    <div class="name">
-      <p><span>Apex Legends</span></p>
-    </div>
-    
-    <!-- 简短信息 (矩形) -->
-    <div class="des">
-      <p><span>62.5 小时 / 56GB / 88%</span></p>
-    </div>
-    
-    <!-- 收藏 (形状) --> 
-    <img class="fav" src="images/library/u20.svg"> 
-    
-    <!-- 详细信息 (动态面板) -->
-    <div class="detail"> 
-      
-      <!-- 详细信息按钮 (矩形) -->
-      <div class="ax_default primary_button detButton"> <img class="detButton_img" src="images/library/u22.svg"/>
-        <div class="text detButton_text">
-          <p><span>&nbsp;&nbsp; &nbsp; 详细信息</span></p>
-        </div>
-      </div>
-      
-      <!-- 详细信息图标 (形状) -->
-      <div class="detIcon"> <img class="detIcon_img" src="images/library/u23.svg"/> </div>
-    </div>
-    
-    <!-- 开始游戏 (动态面板) -->
-    <div class="start"> 
-      
-      <!-- 开始游戏按钮 (矩形) -->
-      <div class="ax_default primary_button staButton">
-        <div class="staButton_div"></div>
-        <div class="text staButton_text">
-          <p><span>&nbsp;&nbsp; &nbsp; 开始游戏</span></p>
-        </div>
-      </div>
-      
-      <!-- 开始游戏图标 (形状) -->
-      <div class="ax_default icon staIcon"> <img class="img staIcon_img" src="images/library/u26.svg"/> </div>
-    </div>
-    
-    <!-- Header (图片 ) -->
-    <div class="ax_default _图片_ header"> <img class="img header_img" src="images/library/u27.png"/> </div>
-  </div>
-	      
+  <%}%>
+<%--</c:forEach>--%>
 	      <!-- Unnamed (矩形) -->
       <div id="u43" class="ax_default label">
         <div id="u43_div" class=""></div>

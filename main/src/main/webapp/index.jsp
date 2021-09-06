@@ -5,7 +5,7 @@
         <title>JSP - Hello World</title>
     </head>
     <body>
-    <jsp:forward page="login.jsp"></jsp:forward>
+    <jsp:forward page="library.jsp"></jsp:forward>
     <!-- Unnamed (矩形) -->
     <div id="u6" class="ax_default primary_button" align="center">
         <!--<img id="u6_img" class="img " src="images/login/u6.svg"/>-->
