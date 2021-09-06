@@ -12,6 +12,7 @@
         <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0" type="submit" name="login" value="登录" />
         <div id="u6_text" class="text ">
         </div>
+
     </div>
     <div align="center">
         <h1>

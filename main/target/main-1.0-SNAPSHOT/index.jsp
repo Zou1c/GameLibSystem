@@ -6,47 +6,55 @@
     </head>
     <body>
     <jsp:forward page="login.jsp"></jsp:forward>
-        <!--<form action="checkUserLogin"method="post">-->
-            <br/>
-            <div align="center" bgcolor="ffffff" border="2" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td>帐号 ：</td>
-                    <td><input id="inputPW" type="text" name="UserName" size="25"
-                value=<%=(String)session.getAttribute("name")==null?"":(String)session.getAttribute("name")%>></td>
-                </tr>
-            </div>
-                <h1>
-
-                </h1>
-                <div align="center">
-                <tr>
-                    <td>密码 ：</td>
-                    <td><input  type="password" name="Password" size="25"></td>
-                </tr>
-            </div>
-            <h1>
-
-
-            </h1>
-            <div align="center">
-                <input type="submit" name="login" value="登录" />
-                <input type="submit" name="reg" value="注册" />
-
-            </div>
-            <div align="center">
-                <h1>
-                    <%
-                        String statu= (String) session.getAttribute("loginCheck");
-                        System.out.println("status="+statu);
-                        //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
-                        if(statu==null);
-                        else if(statu.equals("登录成功"))request.getRequestDispatcher("2nd.jsp").forward(request,response);
-                        else{
-                    %>
-                    <font color="red" size=5 face="Arial"><%=statu%></font>
-                    <%;}%>
-            </h1>
+    <!-- Unnamed (矩形) -->
+    <div id="u6" class="ax_default primary_button" align="center">
+        <!--<img id="u6_img" class="img " src="images/login/u6.svg"/>-->
+        <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0" type="submit" name="login" value="登录" />
+        <div id="u6_text" class="text ">
         </div>
-    </form>
-</body>
-    <html>
+
+    </div>
+    <div align="center">
+        <h1>
+            <%
+                String statu= (String) session.getAttribute("loginCheck");
+                System.out.println("status="+statu);
+                //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
+                if(statu==null);
+                else if(statu.equals("登录成功"))request.getRequestDispatcher("library.jsp").forward(request,response);
+                else{
+                    if (statu.equals("用户名和密码为空")){
+            %>
+            <!--Because of unexpected bug-->
+            <script type="text/javascript">
+                alert("用户名和密码为空");
+            </script>
+            <%}%>
+            <%
+                if (statu.equals("用户名为空")){
+            %>
+            <script type="text/javascript">
+                alert("用户名为空");</script>
+            <%}%>
+            <%
+                if (statu.equals("密码为空")){
+            %>
+            <script type="text/javascript">
+                alert("密码为空");</script>
+            <%}%>
+            <%
+                if (statu.equals("用户名错误")){
+            %>
+            <script type="text/javascript">
+                alert("用户名错误");</script>
+            <%}%>
+            <%
+                if (statu.equals("密码错误")){
+            %>
+            <script type="text/javascript">
+                alert("密码错误");</script>
+            <%}%>
+            <!--<font color="red" size=1 face="Arial"><%=statu%></font>-->
+            <%;}%>
+        </h1>
+    </div>
