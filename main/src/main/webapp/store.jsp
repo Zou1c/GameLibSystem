@@ -97,7 +97,7 @@
     
     <!-- Unnamed (矩形) -->
     <div class="name">
-      <p><span>Apex Legends</span></p>
+      <p><span><%="Visual Studio 2019"%></span></p>
     </div>
     
     <!-- 详细信息 (动态面板) -->
@@ -152,7 +152,7 @@
       <div class="ax_default label prize">
         <div class="prize_div"></div>
         <div class="text prize_text">
-          <p><span>￥ 0</span></p>
+          <p><span>￥ <%=session.getAttribute("supply")%></span></p>
         </div>
       </div>
     </div>
