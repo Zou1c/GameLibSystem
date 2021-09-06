@@ -189,7 +189,7 @@
     %>
     <%
     res=(Vector<UserLibData>)session.getAttribute("library");
-
+    if(res!=null)
     count=res.size();
     System.out.println("有"+count+"个游戏");
 
@@ -200,7 +200,7 @@
   <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
     <!-- 游戏名 (矩形) -->
     <div class="name">
-      <p><a onclick="location='detail.jsp'"><%=res.elementAt(i).getGameData().getName()%></a></p>
+      <p><a onclick="location='detail.jsp'" style="width:200px; height:20px;" ><%=res.elementAt(i).getGameData().getName()%></a></p>
     </div>
 
     <!-- 简短信息 (矩形) -->
@@ -240,7 +240,7 @@
     </div>
 
     <!-- Header (图片 ) -->
-    <div class="ax_default _图片_ header"> <img class="img header_img" src=<%=res.elementAt(i).getGameData().getHeader()%>/> </div>
+    <div class="ax_default _图片_ header"> <img class="img header_img" src="<%=res.elementAt(i).getGameData().getHeader()%>"/> </div>
   </div>
 
   <%}%>
