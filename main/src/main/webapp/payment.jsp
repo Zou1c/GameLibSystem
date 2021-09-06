@@ -66,7 +66,7 @@
 
       <!-- Unnamed (SVG) -->
       <div id="u77" class="ax_default _图片_">
-        <img id="u77_img" class="img " src="images/login/u7.svg"/>
+        <img id="u77_img" class="img " onclick="location='https://store.steampowered.com/'" src="images/login/u7.svg"/>
         <div id="u77_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
