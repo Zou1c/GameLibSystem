@@ -998,7 +998,7 @@
   border-width: 0px;  position: absolute;  left: 118px;  top: 0px;  width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);
 }
 .name {
-  border-width: 0px;position: absolute;left: 178px;top: 15px;width: 125px;height: 25px;display: flex;font-family: '华文细黑', sans-serif;font-weight: 400;font-style: normal;font-size: 18px;color: #FFFFFF;
+  border-width: 0px;position: absolute;left: 178px;top: 15px;width: 500px;height: 25px;display: flex;font-family: '华文细黑', sans-serif;font-weight: 400;font-style: normal;font-size: 18px;color: #FFFFFF;
 }
 .des {
   border-width: 0px;position: absolute;left: 178px;top: 50px;
