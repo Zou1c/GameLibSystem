@@ -20,7 +20,7 @@ public class UserData implements Serializable {
     }
 
     public Vector getUserLibData(int downloadOption,int orderOption,Boolean isAsc){
-        UserLib=null;
+        UserLib=new Vector();
         DatabaseBean dbb=new DatabaseBean();
         String sql="select game.*,userlib.UserID,userlib.Record,userlib.LastPlayed,userlib.IsLocal,userlib.IsFavorite from game natural join userlib natural join user where user.UserID=userlib.UserID and game.AppID=userlib.AppID and userlib.UserID ="+UserID;
         switch (downloadOption){
