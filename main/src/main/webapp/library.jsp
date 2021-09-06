@@ -231,14 +231,14 @@
 	      <!-- Unnamed (矩形) -->
       <div id="u43" class="ax_default label">
         <div id="u43_div" class=""></div>
-        <div id="u43_text" class="text ">
+        <div onclick="location='store.jsp'" id="u43_text" class="text ">
           <p><span>商店</span></p>
         </div>
       </div>
 	
 	<!-- Unnamed (形状) -->
       <div id="u46" class="ax_default icon">
-        <img id="u46_img" class="img " src="images/library/u46.svg"/>
+        <img onclick="location='store.jsp'" id="u46_img" class="img " src="images/library/u46.svg"/>
         <div id="u46_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>

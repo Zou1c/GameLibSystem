@@ -167,7 +167,7 @@
   </div>
   
   <!-- Unnamed (形状) -->
-  <div id="u68" class="ax_default icon"> <img id="u68_img" class="img " src="images/store/u68.svg"/>
+  <div id="u68" class="ax_default icon"> <img onclick="location='library.jsp'" id="u68_img" class="img " src="images/store/u68.svg"/>
     <div id="u68_text" class="text " style="display:none; visibility: hidden">
       <p></p>
     </div>
@@ -176,7 +176,7 @@
   <!-- Unnamed (矩形) -->
   <div id="u69" class="ax_default label">
     <div id="u69_div" class=""></div>
-    <div id="u69_text" class="text ">
+    <div onclick="location='library.jsp'" id="u69_text" class="text ">
       <p><span>库</span></p>
     </div>
   </div>
@@ -214,7 +214,7 @@
 	<!-- Unnamed (矩形) -->
       <div id="u74" class="ax_default label">
         <div id="u74_div" class=""></div>
-        <div id="u74_text" class="text ">
+        <div onclick="location='payment.jsp'" id="u74_text" class="text ">
           <p><span style="text-decoration:underline ;">充值</span></p>
         </div>
       </div>

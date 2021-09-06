@@ -346,7 +346,7 @@
 
       <!-- Unnamed (形状) -->
       <div id="u112" class="ax_default icon">
-        <img id="u112_img" class="img " src="images/payment/u112.svg"/>
+        <img onclick="location='store.jsp'" id="u112_img" class="img " src="images/payment/u112.svg"/>
         <div id="u112_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
@@ -355,7 +355,7 @@
       <!-- Unnamed (矩形) -->
       <div id="u113" class="ax_default label">
         <div id="u113_div" class=""></div>
-        <div id="u113_text" class="text ">
+        <div onclick="location='store.jsp'" id="u113_text" class="text ">
           <p><span>返回</span></p>
         </div>
       </div>
