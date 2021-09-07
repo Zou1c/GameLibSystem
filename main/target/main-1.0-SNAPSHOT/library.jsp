@@ -52,7 +52,7 @@
     switch (click){
       case "s1":s1=Choose;s2=s3=unChoose;break;
       case "s2":s2=Choose;s1=s3=unChoose;break;
-
+      case "s3":s3=Choose;s1=s2=unChoose;break;
     }
   %>
   <div id="u11" class="ax_default button">
