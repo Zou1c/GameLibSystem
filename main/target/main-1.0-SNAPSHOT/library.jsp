@@ -23,6 +23,7 @@
     </script>
 </head>
 <body>
+<form action="changeList"method="post">
 <div id="base" class=""> 
   
   <!-- Unnamed (文本框) -->
@@ -46,15 +47,23 @@
       <p><span>排序依据</span></p>
     </div>
   </div>
-  <%String Choose="u12_div";String unChoose="u11_text";
-  System.out.println("xxxxxxxxxxxxxxxxd");
-    String s1;String s2;String s3;String click="s2";
-    s1=s3=unChoose;s2=Choose;
+  <%String Choose="background-color: rgba(65, 123, 156, 1);";String unChoose ="background-color: rgba(15, 15, 25, 1);";
+    String s1;String s2;String s3;String click;
+    s1=unChoose ;s3= unChoose;s2=Choose;
     click=(String)session.getAttribute("id");
-    System.out.println("click is "+click);
-    //if (click.equals("u11")){s1=Choose;s2=s3=unChoose;}
-    //if (click.equals("u12")){s2=Choose;s1=s3=unChoose;}
-    //if (click.equals("u13")){s3=Choose;s1=s2=unChoose;}
+    session.removeAttribute("id");
+    System.out.println("click="+click);
+    if (click!=null){
+    if (click.equals("u11")){s1=Choose;s2=unChoose;s3= unChoose;}
+    if (click.equals("u12")){s2=Choose;s1=unChoose;s3= unChoose;}
+    if (click.equals("u13")){s3=Choose;s1=unChoose;s2= unChoose;}
+      System.out.println("s1="+s1);
+      System.out.println("s2="+s2);
+      System.out.println("s3="+s3);
+    }
+    else {
+      s1=unChoose;s2=Choose;s3=unChoose;
+    }
   %>
   <script type="javascript">
     function getId(obj) {
@@ -62,23 +71,23 @@
     }
   </script>
   <div id="u11" class="ax_default button">
-    <div onclick="getId();<%System.out.println("zhongle");%>" id="u11_div" class=""></div>
-    <div id="<%=s1%>" class="text ">
-      <p><span>最近</span></p>
+    <div id="u11_div" class="" style="<%=s1%>"></div>
+    <div id="u11_text" class="text ">
+      <input type="submit" name="u1" value="最近"style="border:transparent;background: transparent;color:#ffffff;font-family: '华文细黑', sans-serif;"><span></span></input>
     </div>
   </div>
 
   <div id="u12" class="ax_default button">
-    <div id="u12_div" class=""></div>
-    <div id="<%=s2%>" class="text ">
-      <p><span>所有游戏</span></p>
+    <div id="u12_div" class="" style="<%=s2%>"></div>
+    <div id="u12_text" class="text ">
+      <input type="submit" name="u2" value="所有游戏"style="border:transparent;background: transparent;color:#ffffff;font-family: '华文细黑', sans-serif;"></input>
     </div>
   </div>
 
   <div id="u13" class="ax_default button">
-    <div id="u13_div" class=""></div>
-    <div id="<%=s3%>" class="text ">
-      <p><span>收藏</span></p>
+    <div id="u13_div" class="" style="<%=s3%>"></div>
+    <div id="u13_text" class="text ">
+      <input type="submit" name="u3" value="收藏"style="border:transparent;background: transparent;color:#ffffff;font-family: '华文细黑', sans-serif;"><span></span></input>
     </div>
   </div>
   <!-- Unnamed (矩形) -->
@@ -262,5 +271,6 @@ System.out.println(res.elementAt(i).getFavorite());
 	
 </div>
 <script src="resources/scripts/axure/ios.js"></script>
+</form>
 </body>
 </html>
