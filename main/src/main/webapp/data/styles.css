@@ -5,7 +5,7 @@
   font-size:13px;
   letter-spacing:normal;
   color:#333333;
-  vertical-align:baseline;
+  vertical-align:none;
   text-align:center;
   line-height:normal;
   text-transform:none;
@@ -82,6 +82,8 @@
 .checkbox {
   text-align:left;
 }
+._流程形状 {
+}
 .table_cell {
 }
 .menu_item {
@@ -106,6 +108,8 @@
   text-align:left;
 }
 .box_3 {
+}
+.ellipse {
 }
 .shape {
 }

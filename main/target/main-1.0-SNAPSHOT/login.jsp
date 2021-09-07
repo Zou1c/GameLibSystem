@@ -46,7 +46,7 @@
   </script>
 </head>
 <body>
-<form action="checkUserLogin"method="post">
+<form action="checkUserLogin2"method="post">
   <img id="base" class="">
     <img onclick="location='register.jsp'" style="position: absolute;"src="images/login/reg.png">
 <%!String statu="";%>
