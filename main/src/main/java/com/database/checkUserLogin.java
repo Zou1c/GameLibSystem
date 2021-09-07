@@ -46,6 +46,7 @@ public class checkUserLogin extends HttpServlet {
             request.getRequestDispatcher("index.jsp").forward(request,response);
             return;
         }
+
         String sql="select * from user";
         sql+=" where UserName='"+UserName+"'";
         DatabaseBean dbb=new DatabaseBean();

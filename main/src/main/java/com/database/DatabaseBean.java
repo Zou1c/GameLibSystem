@@ -12,7 +12,7 @@ public class DatabaseBean{
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "root";
-        String password = "20010309zyr..";//将密码改为自己的密码
+        String password = "224353Y1560x";//将密码改为自己的密码
         try {
             Class.forName(JDBC_DRIVER);
             con = DriverManager.getConnection(DB_URL, user, password);
@@ -113,6 +113,21 @@ public class DatabaseBean{
         }
         return res;
     }
+        public String login(String UserName,String Password){
+            String sql="select * from user";
+            sql+=" where UserName='"+UserName+"'";
+            Vector<UserData> res=selectUserData(sql);
+            if(res==null){
+                return "用户名错误";
+            }
+            else {
+                String pass=res.elementAt(0).getPassword();
+                if(pass.equals(Password))
+                    return"登录成功";
+                else return"密码错误";
+            }
+        }
+
         public String addUserData(String userName,String password){
             try{
                 System.out.println("into addUserData try");
