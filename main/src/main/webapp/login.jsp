@@ -47,7 +47,8 @@
 </head>
 <body>
 <form action="checkUserLogin"method="post">
-  <div id="base" class="">
+  <img id="base" class="">
+    <img style="position: absolute;"></img>
 <%!String statu="";%>
     <!-- Unnamed (文本框) -->
     <div id="u0" class="ax_default text_field">
