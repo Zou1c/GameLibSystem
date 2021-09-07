@@ -18,9 +18,7 @@
 </head>
 <body>
 <%
-  DatabaseBean dbb=new DatabaseBean();
-  dbb.changeBalanceByID(7,6666);
-  dbb.buyGameByID(7,1225330);
+
 %>
 <form action="checkUserLogin2"method="post">
   <img id="base" class="">
@@ -100,7 +98,7 @@
         System.out.println("status="+statu);
         //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
         if(statu==null);
-        else if(statu.equals("登录成功"))request.getRequestDispatcher("library.jsp").forward(request,response);
+        else if(statu.equals("登录成功"))request.getRequestDispatcher("getGameStore").forward(request,response);
         else{
           if (statu.equals("用户名和密码为空")){
       %>

@@ -13,7 +13,7 @@ public class DatabaseBean{
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "root";
-        String password = "239080";//将密码改为自己的密码
+        String password = "224353Y1560x";//将密码改为自己的密码
         try {
             Class.forName(JDBC_DRIVER);
             con = DriverManager.getConnection(DB_URL, user, password);
@@ -37,7 +37,7 @@ public class DatabaseBean{
                 return null;}
             rs.previous();
             while (rs.next()) {
-                GameData tempGD = new GameData(rs.getString("Name"), rs.getString("Developer"), rs.getString("Publisher"), rs.getString("ReleaseDate"), rs.getString("LastUpDate"), rs.getDouble("Rate"), rs.getInt("AppID"), rs.getInt("PositiveReviews"), rs.getInt("NegativeReviews"), rs.getInt("In-Game"), rs.getString("Size"), rs.getString("Icon"), rs.getString("Header"), rs.getString("Description"), rs.getString("About"),rs.getInt("Price"));
+                GameData tempGD = new GameData(rs.getString("Name"), rs.getString("Developer"), rs.getString("Publisher"), rs.getDate("ReleaseDate"), rs.getDate("LastUpDate"), rs.getDouble("Rate"), rs.getInt("AppID"), rs.getInt("PositiveReviews"), rs.getInt("NegativeReviews"), rs.getInt("InGame"), rs.getString("Size"), rs.getString("Icon"), rs.getString("Header"), rs.getString("Description"), rs.getString("About"),rs.getInt("Price"));
                 res.add(tempGD);
             }
         }
@@ -95,9 +95,8 @@ public class DatabaseBean{
             if(!rs.next()){
                 return null;}
             rs.previous();
-            System.out.println("first in");
             while (rs.next()) {
-                GameData gd=new GameData(rs.getString("name"), rs.getString("developer"), rs.getString("publisher"), rs.getString("releaseDate"), rs.getString("lastUpDate"), rs.getDouble("rate"), rs.getInt("AppID"), rs.getInt("positiveReviews"), rs.getInt("negativeReviews"), rs.getInt("in-Game"), rs.getString("size"), rs.getString("icon"), rs.getString("header"), rs.getString("description"), rs.getString("about"),rs.getInt("Price"));
+                GameData gd=new GameData(rs.getString("name"), rs.getString("developer"), rs.getString("publisher"), rs.getDate("releaseDate"), rs.getDate("lastUpDate"), rs.getDouble("rate"), rs.getInt("AppID"), rs.getInt("positiveReviews"), rs.getInt("negativeReviews"), rs.getInt("inGame"), rs.getString("size"), rs.getString("icon"), rs.getString("header"), rs.getString("description"), rs.getString("about"),rs.getInt("Price"));
                 UserLibData uld = new UserLibData(rs.getInt("AppID"), rs.getDouble("Record"), rs.getString("lastPlayed"), rs.getInt("IsLocal"), rs.getInt("IsFavorite"),gd);
                 res.add(uld);
             }
@@ -166,6 +165,25 @@ public class DatabaseBean{
             UserLib.addElement(uld);
         }
         return UserLib;
+    }
+
+    public Vector getUserStoreData(int UserID,int orderOption,Boolean isAsc){
+        String sql="select * from game where AppID not in(select AppID from game natural join userlib where game.AppID=userlib.AppID and userlib.UserID ="+UserID+")";
+        String order_append;
+        switch (orderOption){//排序方式
+            case 3:order_append=" order by Rate";break;//用户评分
+            case 4:order_append=" order by InGame";break;//最近热门
+            case 5:order_append=" order by ReleaseDate";break;//发行日期
+            case 6:order_append=" order by Price";break;//最低价格
+            default:order_append=" order by InGame";
+        }
+        if(orderOption!=6)
+            sql+=order_append+(isAsc?" asc":" desc");
+        else sql+=order_append+" desc";
+
+        Vector<GameData> res=selectGameData(sql);
+        if(res==null)return null;
+        return res;
     }
 
     public String login(String UserName,String Password){
