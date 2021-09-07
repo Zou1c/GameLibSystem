@@ -35,8 +35,8 @@
   <div id="u9" class="ax_default label">
     <div id="u9_div" class=""></div>
     <div id="u9_text" class="text ">
-      <input name="Lsearch" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 31px;height: 20px ;background-color: #008dcb;color:#ffffff "></input>
-    </div>3
+      <input name="Lsearch" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+    </div>
   </div>
   
   <!-- Unnamed (矩形) -->
