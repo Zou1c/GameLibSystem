@@ -238,7 +238,7 @@
 
       <!-- Unnamed (形状) -->
       <div id="u116" class="ax_default icon">
-        <img id="u116_img" class="img " src="images/detail__1/u77.svg"/>
+        <img onclick="location='library.jsp'" id="u116_img" class="img " src="images/detail__1/u77.svg"/>
         <div id="u116_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
@@ -248,7 +248,7 @@
       <div id="u117" class="ax_default label">
         <div id="u117_div" class=""></div>
         <div id="u117_text" class="text ">
-          <p><span>返回</span></p>
+          <p onclick="location='library.jsp'"><span>返回</span></p>
         </div>
       </div>
 
