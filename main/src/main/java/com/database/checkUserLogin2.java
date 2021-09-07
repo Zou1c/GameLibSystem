@@ -57,7 +57,7 @@ public class checkUserLogin2 extends HttpServlet {
             session.setAttribute("loginCheck","登录成功");
             //session.setAttribute("name", UserName);
             session.setAttribute("name", UserName);
-            Vector<UserLibData> res2=res.elementAt(0).getUserLibData(2,0,true);
+            Vector<UserLibData> res2=res.elementAt(0).getUserLibData();
             session.setAttribute("library",res2);
             System.out.println(res.elementAt(0).UserLibInformation());
             request.getRequestDispatcher("login.jsp").forward(request,response);
