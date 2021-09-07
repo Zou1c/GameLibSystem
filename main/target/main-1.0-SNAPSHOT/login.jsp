@@ -48,7 +48,7 @@
 <body>
 <form action="checkUserLogin"method="post">
   <img id="base" class="">
-    <img style="position: absolute;"></img>
+    <img onclick="location='reg.jsp'" style="position: absolute;"src="images/login/reg.png"></img>
 <%!String statu="";%>
     <!-- Unnamed (文本框) -->
     <div id="u0" class="ax_default text_field">
