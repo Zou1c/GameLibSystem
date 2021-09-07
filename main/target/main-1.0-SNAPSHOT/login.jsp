@@ -46,8 +46,9 @@
   </script>
 </head>
 <body>
-<form action="checkUserLogin"method="post">
-  <div id="base" class="">
+<form action="checkUserLogin2"method="post">
+  <img id="base" class="">
+    <img onclick="location='register.jsp'" style="position: absolute;"src="images/login/reg.png">
 <%!String statu="";%>
     <!-- Unnamed (文本框) -->
     <div id="u0" class="ax_default text_field">
@@ -110,7 +111,8 @@
     <!-- Unnamed (矩形) -->
     <div id="u6" class="ax_default primary_button" align="center">
       <!--<img id="u6_img" class="img " src="images/login/u6.svg"/>-->
-      <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0" type="submit" name="login"  value="登/录" />
+      <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0;font-family:'华文细黑';color:#FFFFFF"
+             type="submit" name="login"  value="登录" />
       <div id="u6_text" class="text ">
       </div>
     </div>

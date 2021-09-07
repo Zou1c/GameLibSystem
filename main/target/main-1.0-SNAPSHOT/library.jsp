@@ -1,5 +1,9 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+﻿<%@ page import="java.util.Vector" %>
+<%@ page import="com.database.GameData" %>
+<%@ page import="com.database.UserData" %>
+<%@ page import="com.database.UserLibData" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,7 +130,7 @@
   <!-- Unnamed (下拉列表) -->
   <div id="u29" class="ax_default droplist">
     <div id="u29_div" class=""></div>
-    <select id="u29_input" class="u29_input">
+    <select id="u29_input" name="list" class="u29_input"><%--下拉菜单--%>
       <option class="u29_input_option" value="全部">全部</option>
       <option class="u29_input_option" value="已下载">已下载</option>
       <option class="u29_input_option" value="未下载">未下载</option>
@@ -144,12 +148,12 @@
   <div id="u37" class="ax_default label">
     <div id="u37_div" class=""></div>
     <div id="u37_text" class="text ">
-      <p><span onclick="location='index.jsp'">注销</span></p>
+      <p><span onclick="location='session.jsp'">注销</span></p>
     </div>
   </div>
   
   <!-- Unnamed (形状) -->
-  <div id="u38" class="ax_default icon"> <img onclick="location='index.jsp'" id="u38_img" class="img " src="images/library/u38.svg"/>
+  <div id="u38" class="ax_default icon"> <img onclick="location='session.jsp'" id="u38_img" class="img " src="images/library/u38.svg"/>
     <div id="u38_text" class="text " style="display:none; visibility: hidden">
       <p></p>
     </div>
@@ -178,54 +182,77 @@
     </div>
   </div>
 <%--<c:forEach var="i" begin="0" end="5" >--%>
-  <%for (int i=0;i<5;i++){
-    int ti=i*105+328;
+    <%!
+    int count=0;
+    Vector<UserLibData> res=new Vector();
+
+    %>
+    <%
+    res=(Vector<UserLibData>)session.getAttribute("library");
+    if(res!=null)
+    count=res.size();
+    System.out.println("有"+count+"个游戏");
+    for (int i=0;i<count;i++){
+    int ti=i*105+328;//到顶部的距离
   %>
   <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
-    <!-- 游戏名 (矩形) -->
+    <!-- 游戏名 -->
     <div class="name">
-      <p><a onclick="location='detail.jsp'">NBA 2K<%=15+i%></a></p>
+      <p><a onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'" style="width:200px; height:20px;" ><%=res.elementAt(i).getGameData().getName()%></a></p>
     </div>
 
-    <!-- 简短信息 (矩形) -->
+    <!-- 简短信息 -->
     <div class="des">
-      <p><span>4.6 小时 / 110 GB / 41%</span></p>
+      <p><span><%=res.elementAt(i).getRecord()%> 小时 / <%=res.elementAt(i).getGameData().getSize()%> / <%=(res.elementAt(i).getGameData().getRate2())%></span></p>
     </div>
-
-    <!-- 收藏 (形状) -->
-    <img class="fav" src="images/library/u21.svg">
-
-    <!-- 详细信息 (动态面板) -->
-    <div class="detail">
-
-      <!-- 详细信息按钮 (矩形) -->
-      <div class="ax_default primary_button detButton"> <img class="detButton_img" src="images/library/u22.svg"/>
-        <div class="text detButton_text">
-          <p><span>&nbsp;&nbsp; &nbsp; 详细信息</span></p>
+<% if(res.elementAt(i).getFavorite()){
+System.out.println(res.elementAt(i).getFavorite());
+%>
+    <img class="fav" src="images/library/u21.svg"><%--喜欢与否的星号 u20未选中 u21选中 --%>
+    <%}
+    else{%>
+    <img class="fav" src="images/library/u20.svg">
+      <%}
+      %>
+    <div class="detail"><%--改了格式会乱倒起飞--%>
+      <div > <img style="left:0px;top:0px;width: 131px;height: 37px;" name="particulars" onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"  value="true" src="images/library/particulars.png"/><%--真正显示详情信息的地方--%>
+        <div class="text detButton_text"><%--改了格式会乱倒起飞--%>
+          <p><span>&nbsp;&nbsp; &nbsp;</span></p><%--改了格式会乱倒起飞--%>
         </div>
       </div>
 
       <!-- 详细信息图标 (形状) -->
-      <div class="ax_default icon detIcon"> <img class="detIcon_img" src="images/library/u23.svg"/> </div>
+      <div class="ax_default icon detIcon"> <img class="detIcon_img" src="images/library/lu.png"/> </div><%--麻了搞个透明图层--%>
     </div>
 
     <!-- 下载 (动态面板) -->
+    <%if(res.elementAt(i).getLocal()){%>
     <div class="download">
-
-      <!-- 下载按钮 (矩形) -->
-      <div class="ax_default primary_button dlButton"> <img class="img .dlButton_img" src="images/library/u22.svg"/>
-        <div class="text .dlButton_text">
-          <p><span>&nbsp;&nbsp; 下载</span></p>
+      <div> <img style="left:0px;top:0px;width: 131px;height: 37px;" name="startGame" value="true" src="images/library/startGame.png"/><%--真正显示下载的地方--%>
+        <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
+          <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
         </div>
       </div>
-
-      <!-- 下载图标 (形状) -->
-      <div class="ax_default icon dlIcon"> <img class="img dlIcon_img" src="images/library/u50.svg"/> </div>
+      <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div><%--改了格式会乱倒起飞--%>
     </div>
-
+    <%}
+    else{
+    %>
+    <div class="download">
+      <div> <img style="left:0px;top:0px;width: 131px;height: 37px;" name="download" value="true" src="images/library/downLoad.png"/><%--真正显示下载的地方--%>
+        <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
+          <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
+        </div>
+      </div>
+      <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div><%--改了格式会乱倒起飞--%>
+    </div>
+    <%
+      }
+    %>
     <!-- Header (图片 ) -->
-    <div class="ax_default _图片_ header"> <img class="img header_img" src="images/library/u47.png"/> </div>
+    <div class="ax_default _图片_ header"> <img class="img header_img" src="<%=res.elementAt(i).getGameData().getHeader()%>"/> </div>
   </div>
+
   <%}%>
 <%--</c:forEach>--%>
 	      <!-- Unnamed (矩形) -->

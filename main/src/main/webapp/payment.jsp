@@ -66,7 +66,7 @@
 
       <!-- Unnamed (SVG) -->
       <div id="u77" class="ax_default _图片_">
-        <img id="u77_img" class="img " src="images/login/u7.svg"/>
+        <img id="u77_img" class="img " onclick="location='https://store.steampowered.com/'" src="images/login/u7.svg"/>
         <div id="u77_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
@@ -76,13 +76,13 @@
       <div id="u78" class="ax_default label">
         <div id="u78_div" class=""></div>
         <div id="u78_text" class="text ">
-          <p><span>注销</span></p>
+          <p onclick="location='session.jsp'"><span>注销</span></p>
         </div>
       </div>
 
       <!-- Unnamed (形状) -->
       <div id="u79" class="ax_default icon">
-        <img id="u79_img" class="img " src="images/library/u38.svg"/>
+        <img id="u79_img" onclick="location='session.jsp'" class="img " src="images/library/u38.svg"/>
         <div id="u79_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
@@ -92,13 +92,13 @@
       <div id="u80" class="ax_default label">
         <div id="u80_div" class=""></div>
         <div id="u80_text" class="text ">
-          <p><span>钱包余额：￥10</span></p>
+          <p><span><%="钱包余额：￥10"%></span></p><%--输出余额--%>
         </div>
       </div>
 
       <!-- Unnamed (图片 ) -->
       <div id="u81" class="ax_default _图片_">
-        <img id="u81_img" class="img " src="images/payment/u81.png"/>
+        <img id="u81_img" onclick="location='https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E5%8F%8D%E8%AF%88%E4%B8%AD%E5%BF%83/55975989'" class="img " src="images/payment/u81.png"/>
         <div id="u81_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
@@ -136,7 +136,7 @@
             <!-- Unnamed (矩形) -->
             <div id="u86" class="ax_default button">
               <div id="u86_div" class=""></div>
-              <div id="u86_text" class="text ">
+              <div name="pay32" value="true" id="u86_text" onclick="<%System.out.println("-32￥");%>" class="text "><%-- 32$按钮--%>
                 <p><span>充值</span></p>
               </div>
             </div>
@@ -184,7 +184,7 @@
             <!-- Unnamed (矩形) -->
             <div id="u92" class="ax_default button">
               <div id="u92_div" class=""></div>
-              <div id="u92_text" class="text ">
+              <div name="pay64" value="true" id="u92_text" class="text "><%-- 64$按钮--%>
                 <p><span>充值</span></p>
               </div>
             </div>
@@ -232,7 +232,7 @@
             <!-- Unnamed (矩形) -->
             <div id="u98" class="ax_default button">
               <div id="u98_div" class=""></div>
-              <div id="u98_text" class="text ">
+              <div name="pay128" value="true" id="u98_text" class="text "><%-- 128$按钮--%>
                 <p><span>充值</span></p>
               </div>
             </div>
@@ -280,8 +280,8 @@
             <!-- Unnamed (矩形) -->
             <div id="u104" class="ax_default button">
               <div id="u104_div" class=""></div>
-              <div id="u104_text" class="text ">
-                <p><span>充值</span></p>
+              <div name="pay324" value="true" id="u104_text" class="text "><%-- 324$按钮--%>
+                <p><span>充324值</span></p>
               </div>
             </div>
 
@@ -328,7 +328,7 @@
             <!-- Unnamed (矩形) -->
             <div id="u110" class="ax_default button">
               <div id="u110_div" class=""></div>
-              <div id="u110_text" class="text ">
+              <div name="pay648" value="true" id="u110_text" class="text "><%-- 648$按钮--%>
                 <p><span>充值</span></p>
               </div>
             </div>

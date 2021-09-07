@@ -21,7 +21,7 @@ public class checkUserLogin extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("\nInto checkUserLogin.java");
+        //System.out.println("\nInto checkUserLogin.java");
         String url="/index.jsp";
         request.setCharacterEncoding("UTF-8");
         Vector res;
@@ -46,6 +46,7 @@ public class checkUserLogin extends HttpServlet {
             request.getRequestDispatcher("index.jsp").forward(request,response);
             return;
         }
+
         String sql="select * from user";
         sql+=" where UserName='"+UserName+"'";
         DatabaseBean dbb=new DatabaseBean();
@@ -59,13 +60,16 @@ public class checkUserLogin extends HttpServlet {
         }
         else{
             System.out.println(res);
-            System.out.println("Vector is "+res.getClass().getName());
             UserData ud= (UserData) res.elementAt(0);
             login=ud.getPassword().equals(Password)?"登录成功":"密码错误";
             session.setAttribute("loginCheck",login);
             session.setAttribute("name", UserName);
             session.setAttribute("name", UserName);
-            //System.out.println("UserName in servelet is "+UserName);
+            if(login.equals("登录成功")){
+                //如果登录成功，则额外返回用户的游戏库信息
+                //Vector res2=ud.getUserLibData(2,0,true);
+                //session.setAttribute("library",res2);
+            }
             System.out.println(ud.UserLibInformation());
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }

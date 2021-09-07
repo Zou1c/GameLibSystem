@@ -1,4 +1,6 @@
 ﻿<!DOCTYPE html>
+<%@ page import="com.database.UserLibData" %>
+<%@ page import="java.util.Vector" %>
 <html>
 <head>
 <title>Store</title>
@@ -88,30 +90,42 @@
       <option class="u52_input_option" value="用户评分">用户评分</option>
     </select>
   </div>
-  
+
+  <%!
+    int count=0;
+    Vector<UserLibData> res=new Vector();
+
+  %>
+  <%
+    res=(Vector<UserLibData>)session.getAttribute("library");
+    if(res!=null)
+      count=res.size();
+    System.out.println("有"+count+"个游戏");
+    for (int i=0;i<count;i++){
+      int ti=i*105+328;//到顶部的距离
+  %>
   <!-- Apex Legends (动态面板) -->
-  <div class="gamePanel"> 
-    
+  <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
     <!-- 背景 (矩形) -->
     <div class="background"></div>
     
     <!-- Unnamed (矩形) -->
     <div class="name">
-      <p><span>Apex Legends</span></p>
+      <p><span><%=res.elementAt(i).getGameData().getName()%></span></p>
     </div>
     
     <!-- 详细信息 (动态面板) -->
     <div class="detail"> 
       
       <!-- 详细信息按钮 (矩形) -->
-      <div class="ax_default primary_button detButton"> <img class="detButton_img" src="images/library/u22.svg"/>
+      <div class="ax_default primary_button detButton"> <img class="detButton_img" src="images/library/particulars.png"/>
         <div class="text detButton_text">
-          <p><span>&nbsp;&nbsp; &nbsp; 详细信息</span></p>
+          <p><span>&nbsp;&nbsp; &nbsp;</span></p>
         </div>
       </div>
       
       <!-- 详细信息图标 (形状) -->
-      <div class="detIcon"> <img class="detIcon_img" src="images/library/u23.svg"/> </div>
+      <div class="detIcon"> <img class="detIcon_img" onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'" src="images/library/lu.png"/> </div>
     </div>
     
     <!-- Header (图片 ) -->
@@ -152,12 +166,12 @@
       <div class="ax_default label prize">
         <div class="prize_div"></div>
         <div class="text prize_text">
-          <p><span>￥ 0</span></p>
+          <p><span>￥ <%=session.getAttribute("supply")%></span></p>
         </div>
       </div>
     </div>
   </div>
-  
+  <%}%>
   <!-- Unnamed (矩形) -->
   <div id="u67" class="ax_default _一级标题">
     <div id="u67_div" class=""></div>
@@ -192,12 +206,12 @@
   <div id="u71" class="ax_default label">
     <div id="u71_div" class=""></div>
     <div id="u71_text" class="text ">
-      <p><span>注销</span></p>
+      <p onclick="location='session.jsp'"><span>注销</span></p>
     </div>
   </div>
   
   <!-- Unnamed (形状) -->
-  <div id="u72" class="ax_default icon"> <img id="u72_img" class="img " src="images/library/u38.svg"/>
+  <div id="u72" class="ax_default icon"> <img onclick="location='session.jsp'" id="u72_img" class="img " src="images/library/u38.svg"/>
     <div id="u72_text" class="text " style="display:none; visibility: hidden">
       <p></p>
     </div>

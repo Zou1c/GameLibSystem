@@ -16,10 +16,22 @@ public class UserData implements Serializable {
         UserName = userName;
         Password = password;
         Balance=balance;
-        getUserLibData(1,true,2);
+        //getUserLibData(2,0,true);
     }
 
-    public void getUserLibData(int orderOption,Boolean isAsc,int downloadOption){
+    public void setBalance(int balance) {
+        Balance = balance;
+    }
+
+    public void setUserLib(Vector userLib) {
+        UserLib = userLib;
+    }
+
+    public Vector getUserLibData(){
+        return UserLib;
+    }
+
+    public Vector getUserLibData2(int downloadOption, int orderOption, Boolean isAsc){
         UserLib=new Vector();
         DatabaseBean dbb=new DatabaseBean();
         String sql="select game.*,userlib.UserID,userlib.Record,userlib.LastPlayed,userlib.IsLocal,userlib.IsFavorite from game natural join userlib natural join user where user.UserID=userlib.UserID and game.AppID=userlib.AppID and userlib.UserID ="+UserID;
@@ -37,16 +49,19 @@ public class UserData implements Serializable {
             default:order_append=" order by game.Name";
         }
         sql+=order_append+(isAsc?" asc":" desc");
-        System.out.println("sql in UserData"+sql);
+        System.out.println("sql in UserData is: "+sql);
 
         Vector res=dbb.selectUserLibData(sql);
+        if(res==null)return null;
         for(Object i:res){
             UserLibData uld=(UserLibData) i;
             UserLib.addElement(uld);
         }
+        return UserLib;
     }
     public String UserLibInformation(){
         String s=UserName;
+        if(UserLib==null)return "未拥有游戏";
         for(Object i: UserLib){
             UserLibData ul=(UserLibData) i;
             s+=" "+ul.toString();

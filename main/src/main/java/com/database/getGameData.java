@@ -28,8 +28,6 @@ public class getGameData extends HttpServlet {
         String temp;
         temp=request.getParameter("AppID");
         int AppID=0;
-        System.out.println("AppID ==null is "+(temp==null));
-        System.out.println("AppID ==\"\" is "+(temp==""));
         if(!(temp==null||temp.equals(""))) AppID= Integer.parseInt(temp);
         String sql="select * from game";
         boolean hasWhere=false;
