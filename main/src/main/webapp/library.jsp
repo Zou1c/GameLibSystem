@@ -14,35 +14,6 @@
 <link href="data/styles.css" type="text/css" rel="stylesheet"/>
 <link href="files/library/styles.css" type="text/css" rel="stylesheet"/>
 <script src="resources/scripts/jquery-3.2.1.min.js"></script>
-<script src="resources/scripts/axure/axQuery.js"></script>
-<script src="resources/scripts/axure/globals.js"></script>
-<script src="resources/scripts/axutils.js"></script>
-<script src="resources/scripts/axure/annotation.js"></script>
-<script src="resources/scripts/axure/axQuery.std.js"></script>
-<script src="resources/scripts/axure/doc.js"></script>
-<script src="resources/scripts/messagecenter.js"></script>
-<script src="resources/scripts/axure/events.js"></script>
-<script src="resources/scripts/axure/recording.js"></script>
-<script src="resources/scripts/axure/action.js"></script>
-<script src="resources/scripts/axure/expr.js"></script>
-<script src="resources/scripts/axure/geometry.js"></script>
-<script src="resources/scripts/axure/flyout.js"></script>
-<script src="resources/scripts/axure/model.js"></script>
-<script src="resources/scripts/axure/repeater.js"></script>
-<script src="resources/scripts/axure/sto.js"></script>
-<script src="resources/scripts/axure/utils.temp.js"></script>
-<script src="resources/scripts/axure/variables.js"></script>
-<script src="resources/scripts/axure/drag.js"></script>
-<script src="resources/scripts/axure/move.js"></script>
-<script src="resources/scripts/axure/visibility.js"></script>
-<script src="resources/scripts/axure/style.js"></script>
-<script src="resources/scripts/axure/adaptive.js"></script>
-<script src="resources/scripts/axure/tree.js"></script>
-<script src="resources/scripts/axure/init.temp.js"></script>
-<script src="resources/scripts/axure/legacy.js"></script>
-<script src="resources/scripts/axure/viewer.js"></script>
-<script src="resources/scripts/axure/math.js"></script>
-<script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
 <script src="data/document.js"></script>
 <script src="files/library/data.js"></script>
 <script type="text/javascript">
@@ -57,15 +28,15 @@
   <!-- Unnamed (文本框) -->
   <div id="u8" class="ax_default text_field">
     <div id="u8_div" class=""></div>
-    <input id="u8_input" type="text" value="" class="u8_input"/>
+    <input style="color: #6d6d6d" id="u8_input" type="text" value="搜索" class="u8_input"/>
   </div>
   
   <!-- Unnamed (矩形) -->
   <div id="u9" class="ax_default label">
     <div id="u9_div" class=""></div>
     <div id="u9_text" class="text ">
-      <p><span>搜索</span></p>
-    </div>
+      <input name="Lsearch" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 31px;height: 20px ;background-color: #008dcb;color:#ffffff "></input>
+    </div>3
   </div>
   
   <!-- Unnamed (矩形) -->
@@ -75,31 +46,35 @@
       <p><span>排序依据</span></p>
     </div>
   </div>
-  
-  <!-- Unnamed (矩形) -->
+  <%String Choose="u12_div";String unChoose="u11_text";
+    String s1;String s2;String s3;String click="s2";
+    s1=s3=unChoose;s2=Choose;
+    switch (click){
+      case "s1":s1=Choose;s2=s3=unChoose;break;
+      case "s2":s2=Choose;s1=s3=unChoose;break;
+
+    }
+  %>
   <div id="u11" class="ax_default button">
     <div id="u11_div" class=""></div>
-    <div id="u11_text" class="text ">
+    <div id="<%=unChoose%>" class="text ">
       <p><span>最近</span></p>
     </div>
   </div>
-  
-  <!-- Unnamed (矩形) -->
+
   <div id="u12" class="ax_default button">
     <div id="u12_div" class=""></div>
-    <div id="u12_text" class="text ">
+    <div id="<%=Choose%>" class="text ">
       <p><span>所有游戏</span></p>
     </div>
   </div>
-  
-  <!-- Unnamed (矩形) -->
+
   <div id="u13" class="ax_default button">
     <div id="u13_div" class=""></div>
-    <div id="u13_text" class="text ">
+    <div id="<%=Choose%>" class="text ">
       <p><span>收藏</span></p>
     </div>
   </div>
-  
   <!-- Unnamed (矩形) -->
   <div id="u14" class="ax_default box_1">
     <div id="u14_div" class=""></div>
@@ -228,7 +203,7 @@ System.out.println(res.elementAt(i).getFavorite());
     <!-- 下载 (动态面板) -->
     <%if(res.elementAt(i).getLocal()){%>
     <div class="download">
-      <div> <img style="left:0px;top:0px;width: 131px;height: 37px;" name="startGame" value="true" src="images/library/startGame.png"/><%--真正显示下载的地方--%>
+      <div> <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/startGame.png);border:0px;border-radius: 5px;" name="startGame"/><%--真正显示下载的地方--%>
         <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
           <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
         </div>
@@ -239,7 +214,7 @@ System.out.println(res.elementAt(i).getFavorite());
     else{
     %>
     <div class="download">
-      <div> <img style="left:0px;top:0px;width: 131px;height: 37px;" name="download" value="true" src="images/library/downLoad.png"/><%--真正显示下载的地方--%>
+      <div> <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);border-radius: 5px;border: 0px;" name="download"/><%--真正显示下载的地方--%>
         <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
           <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
         </div>

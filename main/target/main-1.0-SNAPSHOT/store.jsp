@@ -10,36 +10,8 @@
 <link href="data/styles.css" type="text/css" rel="stylesheet"/>
 <link href="files/store/styles.css" type="text/css" rel="stylesheet"/>
 <script src="resources/scripts/jquery-3.2.1.min.js"></script> 
-<script src="resources/scripts/axure/axQuery.js"></script> 
-<script src="resources/scripts/axure/globals.js"></script> 
-<script src="resources/scripts/axutils.js"></script> 
-<script src="resources/scripts/axure/annotation.js"></script> 
-<script src="resources/scripts/axure/axQuery.std.js"></script> 
-<script src="resources/scripts/axure/doc.js"></script> 
-<script src="resources/scripts/messagecenter.js"></script> 
-<script src="resources/scripts/axure/events.js"></script> 
-<script src="resources/scripts/axure/recording.js"></script> 
-<script src="resources/scripts/axure/action.js"></script> 
-<script src="resources/scripts/axure/expr.js"></script> 
-<script src="resources/scripts/axure/geometry.js"></script> 
-<script src="resources/scripts/axure/flyout.js"></script> 
-<script src="resources/scripts/axure/model.js"></script> 
-<script src="resources/scripts/axure/repeater.js"></script> 
-<script src="resources/scripts/axure/sto.js"></script> 
-<script src="resources/scripts/axure/utils.temp.js"></script> 
-<script src="resources/scripts/axure/variables.js"></script> 
-<script src="resources/scripts/axure/drag.js"></script> 
-<script src="resources/scripts/axure/move.js"></script> 
-<script src="resources/scripts/axure/visibility.js"></script> 
-<script src="resources/scripts/axure/style.js"></script> 
-<script src="resources/scripts/axure/adaptive.js"></script> 
-<script src="resources/scripts/axure/tree.js"></script> 
-<script src="resources/scripts/axure/init.temp.js"></script> 
-<script src="resources/scripts/axure/legacy.js"></script> 
-<script src="resources/scripts/axure/viewer.js"></script> 
-<script src="resources/scripts/axure/math.js"></script> 
-<script src="resources/scripts/axure/jquery.nicescroll.min.js"></script> 
-<script src="data/document.js"></script> 
+<script src="resources/scripts/messagecenter.js"></script>
+<script src="data/document.js"></script>
 <script src="files/store/data.js"></script> 
 <script type="text/javascript">
       $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
@@ -53,14 +25,14 @@
   <!-- Unnamed (文本框) -->
   <div id="u48" class="ax_default text_field">
     <div id="u48_div" class=""></div>
-    <input id="u48_input" type="text" value="" class="u48_input"/>
+    <input id="u48_input" style="color: #6d6d6d"  type="text" value="搜索" class="u48_input"/>
   </div>
   
   <!-- Unnamed (矩形) -->
   <div id="u49" class="ax_default label">
     <div id="u49_div" class=""></div>
     <div id="u49_text" class="text ">
-      <p><span>搜索</span></p>
+      <input style="border: 0px;border-radius: 3px;width: 31px;height: 20px ;background-color: #008dcb;color:#ffffff " type="button" name="Ssearch" value="搜索"></input>
     </div>
   </div>
   
@@ -111,7 +83,7 @@
     
     <!-- Unnamed (矩形) -->
     <div class="name">
-      <p><span><%=res.elementAt(i).getGameData().getName()%></span></p>
+      <a onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"><span><%=res.elementAt(i).getGameData().getName()%></span></a>
     </div>
     
     <!-- 详细信息 (动态面板) -->

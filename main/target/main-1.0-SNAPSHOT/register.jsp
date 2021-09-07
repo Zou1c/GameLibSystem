@@ -7,36 +7,6 @@
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="data/styles.css" type="text/css" rel="stylesheet"/>
     <link href="files/register/styles.css" type="text/css" rel="stylesheet"/>
-    <script src="resources/scripts/jquery-3.2.1.min.js"></script>
-    <script src="resources/scripts/axure/axQuery.js"></script>
-    <script src="resources/scripts/axure/globals.js"></script>
-    <script src="resources/scripts/axutils.js"></script>
-    <script src="resources/scripts/axure/annotation.js"></script>
-    <script src="resources/scripts/axure/axQuery.std.js"></script>
-    <script src="resources/scripts/axure/doc.js"></script>
-    <script src="resources/scripts/messagecenter.js"></script>
-    <script src="resources/scripts/axure/events.js"></script>
-    <script src="resources/scripts/axure/recording.js"></script>
-    <script src="resources/scripts/axure/action.js"></script>
-    <script src="resources/scripts/axure/expr.js"></script>
-    <script src="resources/scripts/axure/geometry.js"></script>
-    <script src="resources/scripts/axure/flyout.js"></script>
-    <script src="resources/scripts/axure/model.js"></script>
-    <script src="resources/scripts/axure/repeater.js"></script>
-    <script src="resources/scripts/axure/sto.js"></script>
-    <script src="resources/scripts/axure/utils.temp.js"></script>
-    <script src="resources/scripts/axure/variables.js"></script>
-    <script src="resources/scripts/axure/drag.js"></script>
-    <script src="resources/scripts/axure/move.js"></script>
-    <script src="resources/scripts/axure/visibility.js"></script>
-    <script src="resources/scripts/axure/style.js"></script>
-    <script src="resources/scripts/axure/adaptive.js"></script>
-    <script src="resources/scripts/axure/tree.js"></script>
-    <script src="resources/scripts/axure/init.temp.js"></script>
-    <script src="resources/scripts/axure/legacy.js"></script>
-    <script src="resources/scripts/axure/viewer.js"></script>
-    <script src="resources/scripts/axure/math.js"></script>
-    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
     <script src="data/document.js"></script>
     <script src="files/register/data.js"></script>
     <script type="text/javascript">
@@ -49,55 +19,47 @@
     <div id="base" class="">
 
       <!-- Unnamed (文本框) -->
-      <div id="u8" class="ax_default text_field">
-        <div id="u8_div" class=""></div>
-        <input id="u8_input" type="text" value="" class="u8_input"/>
+      <div id="u9" class="ax_default text_field">
+        <div id="u9_div" class=""></div>
+        <input id="u9_input" type="text" value="" class="u9_input"/>
       </div>
 
       <!-- Unnamed (文本框) -->
-      <div id="u9" class="ax_default text_field">
-        <div id="u9_div" class=""></div>
-        <input id="u9_input" type="password" value="" class="u9_input"/>
-      </div>
-
-      <!-- Unnamed (矩形) -->
-      <div id="u10" class="ax_default label">
+      <div id="u10" class="ax_default text_field">
         <div id="u10_div" class=""></div>
-        <div id="u10_text" class="text ">
-          <p><span>账户名称</span></p>
-        </div>
+        <input id="u10_input" type="password" value="" class="u10_input"/>
       </div>
 
       <!-- Unnamed (矩形) -->
       <div id="u11" class="ax_default label">
         <div id="u11_div" class=""></div>
         <div id="u11_text" class="text ">
+          <p><span>账户名称</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u12" class="ax_default label">
+        <div id="u12_div" class=""></div>
+        <div id="u12_text" class="text ">
           <p><span>密码</span></p>
         </div>
       </div>
 
       <!-- Unnamed (复选框) -->
-      <div id="u12" class="ax_default checkbox">
-        <label id="u12_input_label" for="u12_input" style="position: absolute; left: 0px;">
-          <img id="u12_img" class="img " src="images/register/u12.svg"/>
-          <div id="u12_text" class="text ">
+      <div id="u13" class="ax_default checkbox">
+        <label id="u13_input_label" for="u13_input" style="position: absolute; left: 0px;">
+          <img id="u13_img" class="img " src="images/register/u13.svg"/>
+          <div id="u13_text" class="text ">
             <p><span>在这台电脑上记住</span></p>
           </div>
         </label>
-        <input id="u12_input" type="checkbox" value="checkbox"/>
-      </div>
-
-      <!-- Unnamed (矩形) -->
-      <div id="u13" class="ax_default primary_button">
-        <img id="u13_img" class="img " src="images/login/u5.svg"/>
-        <div id="u13_text" class="text ">
-          <p><span>注册</span></p>
-        </div>
+        <input id="u13_input" type="checkbox" value="checkbox"/>
       </div>
 
       <!-- Unnamed (SVG) -->
       <div id="u14" class="ax_default _图片_">
-        <img id="u14_img" class="img " src="images/login/u6.svg"/>
+        <img id="u14_img" class="img " src="images/register/regen/u5.svg"/><%--"images/login/regen/u5.svg"--%>
         <div id="u14_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
@@ -124,7 +86,25 @@
           <p><span>确认密码</span></p>
         </div>
       </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u18" class="ax_default primary_button">
+        <img id="u18_img" class="img " src="images/register/regen/u9.svg"/><%--"images/login/regen/u9.svg"--%>
+        <div id="u18_text" class="text ">
+          <p><span>注册</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div onclick="location='login.jsp'" id="u19" class="ax_default primary_button">
+        <div id="u19_div" class=""></div>
+        <div id="u19_text" class="text ">
+          <p><span >返回登录</span></p>
+        </div>
+      </div>
     </div>
+  </br>
+    </br>
     <script src="resources/scripts/axure/ios.js"></script>
   </body>
 </html>

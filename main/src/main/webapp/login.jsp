@@ -1,5 +1,4 @@
-﻿<%@ page import="com.database.DatabaseBean" %>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <title>Login</title>
@@ -8,36 +7,6 @@
   <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
   <link href="data/styles.css" type="text/css" rel="stylesheet"/>
   <link href="files/login/styles.css" type="text/css" rel="stylesheet"/>
-  <script src="resources/scripts/jquery-3.2.1.min.js"></script>
-  <script src="resources/scripts/axure/axQuery.js"></script>
-  <script src="resources/scripts/axure/globals.js"></script>
-  <script src="resources/scripts/axutils.js"></script>
-  <script src="resources/scripts/axure/annotation.js"></script>
-  <script src="resources/scripts/axure/axQuery.std.js"></script>
-  <script src="resources/scripts/axure/doc.js"></script>
-  <script src="resources/scripts/messagecenter.js"></script>
-  <script src="resources/scripts/axure/events.js"></script>
-  <script src="resources/scripts/axure/recording.js"></script>
-  <script src="resources/scripts/axure/action.js"></script>
-  <script src="resources/scripts/axure/expr.js"></script>
-  <script src="resources/scripts/axure/geometry.js"></script>
-  <script src="resources/scripts/axure/flyout.js"></script>
-  <script src="resources/scripts/axure/model.js"></script>
-  <script src="resources/scripts/axure/repeater.js"></script>
-  <script src="resources/scripts/axure/sto.js"></script>
-  <script src="resources/scripts/axure/utils.temp.js"></script>
-  <script src="resources/scripts/axure/variables.js"></script>
-  <script src="resources/scripts/axure/drag.js"></script>
-  <script src="resources/scripts/axure/move.js"></script>
-  <script src="resources/scripts/axure/visibility.js"></script>
-  <script src="resources/scripts/axure/style.js"></script>
-  <script src="resources/scripts/axure/adaptive.js"></script>
-  <script src="resources/scripts/axure/tree.js"></script>
-  <script src="resources/scripts/axure/init.temp.js"></script>
-  <script src="resources/scripts/axure/legacy.js"></script>
-  <script src="resources/scripts/axure/viewer.js"></script>
-  <script src="resources/scripts/axure/math.js"></script>
-  <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
   <script src="data/document.js"></script>
   <script src="files/login/data.js"></script>
   <script type="text/javascript">
@@ -49,11 +18,7 @@
 <body>
 <form action="checkUserLogin2"method="post">
   <img id="base" class="">
-    <img onclick="location='register.jsp'" style="position: absolute;"src="images/login/reg.png">
-  <%
-    DatabaseBean dbb=new DatabaseBean();
-    dbb.buyGame(7,252490);
-  %>
+    <img onclick="location='register.jsp'" style="position: absolute;width: 105px;height: 20px;top:-20px;right: -100px;"src="images/login/regi.png">
 <%!String statu="";%>
     <!-- Unnamed (文本框) -->
     <div id="u0" class="ax_default text_field">
@@ -93,6 +58,14 @@
         <p><span>密码</span></p>
       </div>
     </div>
+
+    <script>
+      function loginWarm(){
+        <%System.out.println("loginWarm:"+(String) session.getAttribute("loginCheck"));%>
+        alert("<%=(String) session.getAttribute("loginCheck")%>");
+      }
+    </script>
+
     <!-- Unnamed (复选框) -->
     <div id="u5" class="ax_default checkbox">
       <label id="u5_input_label" for="u5_input" style="position: absolute; left: 0px;">
@@ -118,7 +91,7 @@
     <h1>
       <%
         String statu= (String) session.getAttribute("loginCheck");
-        //System.out.println("status="+statu);
+        System.out.println("status="+statu);
         //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
         if(statu==null);
         else if(statu.equals("登录成功"))request.getRequestDispatcher("library.jsp").forward(request,response);
