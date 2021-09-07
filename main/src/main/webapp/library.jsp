@@ -192,9 +192,7 @@
     if(res!=null)
     count=res.size();
     System.out.println("有"+count+"个游戏");
-
-    %>
-  <%for (int i=0;i<count;i++){
+    for (int i=0;i<count;i++){
     int ti=i*105+328;//到顶部的距离
   %>
   <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
