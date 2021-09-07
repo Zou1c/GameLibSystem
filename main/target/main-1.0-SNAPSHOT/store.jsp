@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <%@ page import="com.database.UserLibData" %>
 <%@ page import="java.util.Vector" %>
+<%@ page import="com.database.GameData" %>
 <html>
 <head>
 <title>Store</title>
@@ -65,11 +66,11 @@
 
   <%!
     int count=0;
-    Vector<UserLibData> res=new Vector();
+    Vector<GameData> res=new Vector<GameData>();
 
   %>
   <%
-    res=(Vector<UserLibData>)session.getAttribute("library");
+    res=(Vector<GameData>)session.getAttribute("store");
     if(res!=null)
       count=res.size();
     System.out.println("有"+count+"个游戏");
@@ -83,7 +84,7 @@
     
     <!-- Unnamed (矩形) -->
     <div class="name">
-      <a onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"><span><%=res.elementAt(i).getGameData().getName()%></span></a>
+      <a onclick="location='detail.jsp?id=<%=res.elementAt(i).getAppID()%>'"><span><%=res.elementAt(i).getName()%></span></a>
     </div>
     
     <!-- 详细信息 (动态面板) -->
@@ -97,11 +98,11 @@
       </div>
       
       <!-- 详细信息图标 (形状) -->
-      <div class="detIcon"> <img class="detIcon_img" onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'" src="images/library/lu.png"/> </div>
+      <div class="detIcon"> <img class="detIcon_img" onclick="location='detail.jsp?id=<%=res.elementAt(i).getAppID()%>'" src="images/library/lu.png"/> </div>
     </div>
     
     <!-- Header (图片 ) -->
-    <div class="header"> <img class ="header_img" src="images/library/u27.png"/> </div>
+    <div class="header"> <img class ="header_img" src="<%=res.elementAt(i).getHeader()%>"/> </div>
     
     <!-- 购买按钮 (动态面板) -->
     <div class="purchase"> 
@@ -138,7 +139,7 @@
       <div class="ax_default label prize">
         <div class="prize_div"></div>
         <div class="text prize_text">
-          <p><span>￥ <%=session.getAttribute("supply")%></span></p>
+          <p><span>￥ <%=res.elementAt(i).getPrice()%></span></p>
         </div>
       </div>
     </div>

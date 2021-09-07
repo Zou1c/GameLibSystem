@@ -68,7 +68,7 @@
 
       <!-- Unnamed (图片 ) -->
       <div id="u81" class="ax_default _图片_">
-        <img id="u81_img" onclick="location='https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E5%8F%8D%E8%AF%88%E4%B8%AD%E5%BF%83/55975989'" class="img " src="images/payment/u81.png"/>
+        <img id="u81_img" onclick="location='https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E5%8F%8D%E8%AF%88%E4%B8%AD%E5%BF%83/55975989'" class="img " src="images/payment/u8.png"/>
         <div id="u81_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>

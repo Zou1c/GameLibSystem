@@ -313,7 +313,7 @@
             <div id="u126" class="ax_default label">
               <div id="u126_div" class=""></div>
               <div id="u126_text" class="text ">
-                <p><span><%=uld.getGameData().getIn_Game()%></span></p>
+                <p><span><%=uld.getGameData().getInGame()%></span></p>
               </div>
             </div>
 

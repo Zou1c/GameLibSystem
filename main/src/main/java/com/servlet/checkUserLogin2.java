@@ -1,6 +1,10 @@
 //解析jsp传来的请求，将请求过滤后传给客户端，通过客户端访问服务端的数据库
 
-package com.database;
+package com.servlet;
+
+import com.database.DatabaseBean;
+import com.database.UserData;
+import com.database.UserLibData;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -60,6 +64,7 @@ public class checkUserLogin2 extends HttpServlet {
             Vector<UserLibData> res2=res.elementAt(0).getUserLibData();
             session.setAttribute("library",res2);
             System.out.println(res.elementAt(0).UserLibInformation());
+            session.setAttribute("UserID",res.elementAt(0).getUserID());
             request.getRequestDispatcher("login.jsp").forward(request,response);
         }
         else if(login.equals("密码错误")){

@@ -1,6 +1,9 @@
 //解析jsp传来的请求，并通过DatabaseBean执行sql语句,将结果封装在GameData中，并通过Session返回给前端
 
-package com.database;
+package com.servlet;
+
+import com.database.DatabaseBean;
+import com.database.GameData;
 
 import java.io.*;
 import java.util.Vector;

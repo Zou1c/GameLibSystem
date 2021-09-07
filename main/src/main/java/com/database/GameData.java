@@ -3,20 +3,19 @@ package com.database;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 //储存game表的信息
 public class GameData implements Serializable {
     String Name;
     String Developer;
     String Publisher;
-    String ReleaseDate;
-    String LastUpDate;
+    java.sql.Date ReleaseDate;
+    java.sql.Date LastUpDate;
     double Rate;
     int AppID;
     int PositiveReviews;
     int NegativeReviews;
-    int In_Game;
+    int InGame;
     String Size;
     String Icon;
     int Price;
@@ -35,7 +34,7 @@ public class GameData implements Serializable {
         Price = price;
     }
 
-    public GameData(String name, String developer, String publisher, String releaseDate, String lastUpDate, double rate, int appID, int positiveReviews, int negativeReviews, int in_Game, String size, String icon, String header, String description, String about, int price) {
+    public GameData(String name, String developer, String publisher, java.sql.Date releaseDate, java.sql.Date lastUpDate, double rate, int appID, int positiveReviews, int negativeReviews, int inGame, String size, String icon, String header, String description, String about, int price) {
         Name = name;
         Developer = developer;
         Publisher = publisher;
@@ -45,7 +44,7 @@ public class GameData implements Serializable {
         AppID = appID;
         PositiveReviews = positiveReviews;
         NegativeReviews = negativeReviews;
-        In_Game = in_Game;
+        InGame = inGame;
         Size = size;
         Icon = icon;
         Header = header;
@@ -70,7 +69,7 @@ public class GameData implements Serializable {
                 ", AppID=" + AppID +
                 ", PositiveReviews=" + PositiveReviews +
                 ", NegativeReviews=" + NegativeReviews +
-                ", In_Game=" + In_Game +
+                ", In_Game=" + InGame +
                 ", Size='" + Size + '\'' +
                 ", Icon='" + Icon + '\'' +
                 ", Price=" + Price +
@@ -91,7 +90,7 @@ public class GameData implements Serializable {
                 ", AppID=" + AppID +
                 ", PositiveReviews=" + PositiveReviews +
                 ", NegativeReviews=" + NegativeReviews +
-                ", In_Game=" + In_Game +
+                ", In_Game=" + InGame +
                 ", Size='" + Size + '\'' +
                 ", Icon='" + Icon + '\'' +
                 ", Price=" + Price +
@@ -112,13 +111,6 @@ public class GameData implements Serializable {
         Publisher = publisher;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        ReleaseDate = releaseDate;
-    }
-
-    public void setLastUpDate(String lastUpDate) {
-        LastUpDate = lastUpDate;
-    }
 
     public void setRate(double rate) {
         Rate = rate;
@@ -136,8 +128,8 @@ public class GameData implements Serializable {
         NegativeReviews = negativeReviews;
     }
 
-    public void setIn_Game(int in_Game) {
-        In_Game = in_Game;
+    public void setInGame(int inGame) {
+        InGame = inGame;
     }
 
     public void setSize(String size) {
@@ -172,12 +164,20 @@ public class GameData implements Serializable {
         return Publisher;
     }
 
-    public String getReleaseDate() {
+    public java.sql.Date getReleaseDate() {
         return ReleaseDate;
     }
 
-    public String getLastUpDate() {
+    public void setReleaseDate(java.sql.Date releaseDate) {
+        ReleaseDate = releaseDate;
+    }
+
+    public java.sql.Date getLastUpDate() {
         return LastUpDate;
+    }
+
+    public void setLastUpDate(java.sql.Date lastUpDate) {
+        LastUpDate = lastUpDate;
     }
 
     public double getRate() {
@@ -203,8 +203,8 @@ public class GameData implements Serializable {
         return NegativeReviews;
     }
 
-    public int getIn_Game() {
-        return In_Game;
+    public int getInGame() {
+        return InGame;
     }
 
     public String getSize() {
