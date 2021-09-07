@@ -1,4 +1,4 @@
-//解析jsp传来的请求，并通过DatabaseBean执行sql语句,将结果封装在GameData中，并通过Session返回给前端
+//解析jsp传来的请求，将请求过滤后传给客户端，通过客户端访问服务端的数据库
 
 package com.database;
 

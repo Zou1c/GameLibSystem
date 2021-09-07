@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<%@ page import="com.database.DatabaseBean" %>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Login</title>
@@ -49,6 +50,10 @@
 <form action="checkUserLogin2"method="post">
   <img id="base" class="">
     <img onclick="location='register.jsp'" style="position: absolute;"src="images/login/reg.png">
+  <%
+    DatabaseBean dbb=new DatabaseBean();
+    dbb.buyGame(7,252490);
+  %>
 <%!String statu="";%>
     <!-- Unnamed (文本框) -->
     <div id="u0" class="ax_default text_field">
@@ -88,14 +93,6 @@
         <p><span>密码</span></p>
       </div>
     </div>
-
-    <script>
-      function loginWarm(){
-        <%System.out.println("loginWarm:"+(String) session.getAttribute("loginCheck"));%>
-        alert("<%=(String) session.getAttribute("loginCheck")%>");
-      }
-    </script>
-
     <!-- Unnamed (复选框) -->
     <div id="u5" class="ax_default checkbox">
       <label id="u5_input_label" for="u5_input" style="position: absolute; left: 0px;">
@@ -121,7 +118,7 @@
     <h1>
       <%
         String statu= (String) session.getAttribute("loginCheck");
-        System.out.println("status="+statu);
+        //System.out.println("status="+statu);
         //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
         if(statu==null);
         else if(statu.equals("登录成功"))request.getRequestDispatcher("library.jsp").forward(request,response);

@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.Vector;
 
 import javax.servlet.annotation.WebServlet;
+import javax.xml.registry.infomodel.User;
 
 @WebServlet("/DatabaseBean")
 public class DatabaseBean{
@@ -24,7 +25,8 @@ public class DatabaseBean{
             e.printStackTrace();
         }
     }
-        public DatabaseBean(){};
+        public DatabaseBean(){}
+
         public Vector selectGameData(String sql){
             Vector res = new Vector();
             try {
@@ -35,7 +37,7 @@ public class DatabaseBean{
                     return null;}
                 rs.previous();
                 while (rs.next()) {
-                    GameData tempGD = new GameData(rs.getString("name"), rs.getString("developer"), rs.getString("publisher"), rs.getString("releaseDate"), rs.getString("lastUpDate"), rs.getDouble("rate"), rs.getInt("AppID"), rs.getInt("positiveReviews"), rs.getInt("negativeReviews"), rs.getInt("in-Game"), rs.getString("size"), rs.getString("icon"), rs.getString("header"), rs.getString("description"), rs.getString("about"),rs.getInt("Price"));
+                    GameData tempGD = new GameData(rs.getString("Name"), rs.getString("Developer"), rs.getString("Publisher"), rs.getString("ReleaseDate"), rs.getString("LastUpDate"), rs.getDouble("Rate"), rs.getInt("AppID"), rs.getInt("PositiveReviews"), rs.getInt("NegativeReviews"), rs.getInt("In-Game"), rs.getString("Size"), rs.getString("Icon"), rs.getString("Header"), rs.getString("Description"), rs.getString("About"),rs.getInt("Price"));
                     res.add(tempGD);
                 }
             }
@@ -93,6 +95,7 @@ public class DatabaseBean{
             if(!rs.next()){
                 return null;}
             rs.previous();
+            System.out.println("first in");
             while (rs.next()) {
                 GameData gd=new GameData(rs.getString("name"), rs.getString("developer"), rs.getString("publisher"), rs.getString("releaseDate"), rs.getString("lastUpDate"), rs.getDouble("rate"), rs.getInt("AppID"), rs.getInt("positiveReviews"), rs.getInt("negativeReviews"), rs.getInt("in-Game"), rs.getString("size"), rs.getString("icon"), rs.getString("header"), rs.getString("description"), rs.getString("about"),rs.getInt("Price"));
                 UserLibData uld = new UserLibData(rs.getInt("AppID"), rs.getDouble("Record"), rs.getString("lastPlayed"), rs.getInt("IsLocal"), rs.getInt("IsFavorite"),gd);
@@ -114,8 +117,30 @@ public class DatabaseBean{
         }
         return res;
     }
+        public Boolean changeData(String sql){
+            try {
+                getDBCon();//与数据库建立连接
+                Statement sta = con.createStatement();
+                return sta.execute(sql);
 
-    public Vector getUserLibData(int UserID,int downloadOption,int orderOption,Boolean isAsc){
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                return false;
+            }
+            finally {
+                //关闭资源
+                if(con!=null) {
+                    try {
+                        con.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        public Vector getUserLibData(int UserID,int downloadOption,int orderOption,Boolean isAsc){
         Vector UserLib=new Vector();
         String sql="select game.*,userlib.UserID,userlib.Record,userlib.LastPlayed,userlib.IsLocal,userlib.IsFavorite from game natural join userlib natural join user where user.UserID=userlib.UserID and game.AppID=userlib.AppID and userlib.UserID ="+UserID;
         switch (downloadOption){
@@ -158,6 +183,35 @@ public class DatabaseBean{
             }
         }
 
+        public String loginByID(int UserID,String Password){
+        String sql="select * from user";
+        sql+=" where UserID='"+UserID+"'";
+        Vector<UserData> res=selectUserData(sql);
+        if(res==null){
+            return "ID不存在";
+        }
+        else {
+            String pass=res.elementAt(0).getPassword();
+            if(pass.equals(Password))
+                return"登录成功";
+            else return"密码错误";
+        }
+    }
+
+        public String register(String UserName,String Password){
+             String regInfo=login(UserName,Password);//调用login，测试用户名是否存在
+             if(regInfo.equals("用户名错误")){
+                 String sql="insert into user (Username,Password) values ('"+UserName+"','"+Password+"')";
+                 if(changeData(sql))
+                     return "注册成功";
+                 else return "注册失败";
+             }
+             else{
+                 return "用户名已存在";
+             }
+        }
+
+        /*
         public String addUserData(String userName,String password){
             try{
                 System.out.println("into addUserData try");
@@ -205,26 +259,47 @@ public class DatabaseBean{
             }
         }
 
-        public int changeBalance(String userName,int money){
-            try{
-                getDBCon();
-                Statement sta = con.createStatement();
-                String sql0="select balance from user where Username='"+userName+"'";
-                ResultSet rs=sta.executeQuery(sql0);
-                rs.next();
-                int balance=rs.getInt("Balance");
-                System.out.println("balance:"+balance);
-                if(money+balance>=0) {
-                    String sql = "update user set Balance=Balance+" + money + " where Username= '" + userName + "'";
-                    sta.execute(sql);
-                    return 1;
-                }
-                else {
-                    return -1;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return -1;
+         */
+
+        public String buyGame(int UserID,int AppID){
+            String sql="select * from userlib where UserID="+ UserID+" and AppID="+AppID;
+            System.out.println("sql:\n"+sql);
+            Vector<UserLibData> res0=selectUserLibData(sql);
+            if(res0!=null) {
+                System.out.println("已拥有此游戏");
+                return "已拥有此游戏";
             }
+            sql="select * from game where AppID="+AppID;
+            System.out.println(sql);
+            Vector<GameData> res=selectGameData(sql);
+            if(res==null)
+                return "游戏不存在";
+            System.out.println("报错前一行");
+            int price=res.elementAt(0).getPrice();//获取游戏价格
+            String changeInfo=changeBalance(UserID,-price);
+            if(changeInfo.equals("余额不足"))
+                return "余额不足，请充值";
+            Date time= new java.sql.Date(new java.util.Date().getTime());
+            sql="insert into userlib (UserID,AppID,LastPlayed) values ( "+UserID+" , "+AppID+" , '"+time+"' )";
+            System.out.println("buyGame sql: "+sql);
+            if(changeData(sql))return "购买成功";
+            else
+                return "购买失败";
         }
+
+        public String changeBalance(int UserID,int Money){
+            if(Money<0) {//Money<0说明行为是购买，需要判断用户余额是否足够
+                String sql = "select * from user";
+                sql += " where UserID='" + UserID + "'";
+                Vector<UserData> res = selectUserData(sql);
+                if(res==null)return "账号不存在";
+                int balance=res.elementAt(0).getBalance();
+                if(balance+Money<0)
+                    return "余额不足";
+            }
+            String sql = "update user set Balance=Balance+" + Money + " where UserID= '" + UserID + "'";
+            if(changeData(sql))return "余额修改成功";
+            else
+                return "余额修改失败";
+            }
 }

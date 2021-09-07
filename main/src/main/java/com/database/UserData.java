@@ -27,6 +27,10 @@ public class UserData implements Serializable {
         UserLib = userLib;
     }
 
+    public int getBalance() {
+        return Balance;
+    }
+
     public Vector getUserLibData(){
         return UserLib;
     }

@@ -27,7 +27,15 @@ public class GameData implements Serializable {
         Size = size;
     }
 
-    public GameData(String name, String developer, String publisher, String releaseDate, String lastUpDate, double rate, int appID, int positiveReviews, int negativeReviews, int in_Game, String size, String icon, String header, String description, String about,int price) {
+    public int getPrice() {
+        return Price;
+    }
+
+    public void setPrice(int price) {
+        Price = price;
+    }
+
+    public GameData(String name, String developer, String publisher, String releaseDate, String lastUpDate, double rate, int appID, int positiveReviews, int negativeReviews, int in_Game, String size, String icon, String header, String description, String about, int price) {
         Name = name;
         Developer = developer;
         Publisher = publisher;
