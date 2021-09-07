@@ -47,31 +47,37 @@
     </div>
   </div>
   <%String Choose="u12_div";String unChoose="u11_text";
+  System.out.println("xxxxxxxxxxxxxxxxd");
     String s1;String s2;String s3;String click="s2";
     s1=s3=unChoose;s2=Choose;
-    switch (click){
-      case "s1":s1=Choose;s2=s3=unChoose;break;
-      case "s2":s2=Choose;s1=s3=unChoose;break;
-      case "s3":s3=Choose;s1=s2=unChoose;break;
-    }
+    click=(String)session.getAttribute("id");
+    System.out.println("click is "+click);
+    //if (click.equals("u11")){s1=Choose;s2=s3=unChoose;}
+    //if (click.equals("u12")){s2=Choose;s1=s3=unChoose;}
+    //if (click.equals("u13")){s3=Choose;s1=s2=unChoose;}
   %>
+  <script type="javascript">
+    function getId(obj) {
+      sessionStorage.setItem("id",this.id);
+    }
+  </script>
   <div id="u11" class="ax_default button">
-    <div id="u11_div" class=""></div>
-    <div id="<%=unChoose%>" class="text ">
+    <div onclick="getId();<%System.out.println("zhongle");%>" id="u11_div" class=""></div>
+    <div id="<%=s1%>" class="text ">
       <p><span>最近</span></p>
     </div>
   </div>
 
   <div id="u12" class="ax_default button">
     <div id="u12_div" class=""></div>
-    <div id="<%=Choose%>" class="text ">
+    <div id="<%=s2%>" class="text ">
       <p><span>所有游戏</span></p>
     </div>
   </div>
 
   <div id="u13" class="ax_default button">
     <div id="u13_div" class=""></div>
-    <div id="<%=Choose%>" class="text ">
+    <div id="<%=s3%>" class="text ">
       <p><span>收藏</span></p>
     </div>
   </div>
@@ -87,10 +93,10 @@
   <div id="u15" class="ax_default droplist">
     <div id="u15_div" class=""></div>
     <select id="u15_input" class="u15_input">
-      <option class="u15_input_option" value="游戏名称">游戏名称</option>
-      <option class="u15_input_option" value="游戏时间">游戏时间</option>
-      <option class="u15_input_option" value="磁盘空间">磁盘空间</option>
-      <option class="u15_input_option" value="用户评分">用户评分</option>
+      <option class="u15_input_option" value="gameName">游戏名称</option>
+      <option class="u15_input_option" value="gameTime">游戏时间</option>
+      <option class="u15_input_option" value="gameSize">磁盘空间</option>
+      <option class="u15_input_option" value="gameEval">用户评分</option>
     </select>
   </div>
   

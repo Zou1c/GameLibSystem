@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<%@ page import="com.database.DatabaseBean" %>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Login</title>
@@ -16,6 +17,11 @@
   </script>
 </head>
 <body>
+<%
+  DatabaseBean dbb=new DatabaseBean();
+  dbb.changeBalanceByID(7,6666);
+  dbb.buyGameByID(7,1225330);
+%>
 <form action="checkUserLogin2"method="post">
   <img id="base" class="">
     <img onclick="location='register.jsp'" style="position: absolute;width: 105px;height: 20px;top:-20px;right: -100px;"src="images/login/regi.png">
