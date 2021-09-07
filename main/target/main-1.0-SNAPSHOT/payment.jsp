@@ -76,13 +76,13 @@
       <div id="u78" class="ax_default label">
         <div id="u78_div" class=""></div>
         <div id="u78_text" class="text ">
-          <p><span>注销</span></p>
+          <p onclick="location='session.jsp'"><span>注销</span></p>
         </div>
       </div>
 
       <!-- Unnamed (形状) -->
       <div id="u79" class="ax_default icon">
-        <img id="u79_img" class="img " src="images/library/u38.svg"/>
+        <img id="u79_img" onclick="location='session.jsp'" class="img " src="images/library/u38.svg"/>
         <div id="u79_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>

@@ -206,12 +206,12 @@
   <div id="u71" class="ax_default label">
     <div id="u71_div" class=""></div>
     <div id="u71_text" class="text ">
-      <p><span>注销</span></p>
+      <p onclick="location='session.jsp'"><span>注销</span></p>
     </div>
   </div>
   
   <!-- Unnamed (形状) -->
-  <div id="u72" class="ax_default icon"> <img id="u72_img" class="img " src="images/library/u38.svg"/>
+  <div id="u72" class="ax_default icon"> <img onclick="location='session.jsp'" id="u72_img" class="img " src="images/library/u38.svg"/>
     <div id="u72_text" class="text " style="display:none; visibility: hidden">
       <p></p>
     </div>
