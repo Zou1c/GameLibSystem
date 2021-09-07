@@ -232,7 +232,7 @@
       <div id="u115" class="ax_default label">
         <div id="u115_div" class=""></div>
         <div id="u115_text" class="text ">
-          <p><span>注销</span></p>
+          <p onclick="location='session.jsp'"><span>注销</span></p>
         </div>
       </div>
 
@@ -254,7 +254,7 @@
 
       <!-- Unnamed (形状) -->
       <div id="u118" class="ax_default icon">
-        <img id="u118_img" class="img " src="images/library/u38.svg"/>
+        <img onclick="location='session.jsp'" id="u118_img" class="img " src="images/library/u38.svg"/>
         <div id="u118_text" class="text " style="display:none; visibility: hidden">
           <p></p>
         </div>
