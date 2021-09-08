@@ -13,7 +13,7 @@ public class DatabaseBean{
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "root";
-        String password = "20010309zyr..";//将密码改为自己的密码
+        String password = "224353Y1560x";//将密码改为自己的密码
         try {
             Class.forName(JDBC_DRIVER);
             con = DriverManager.getConnection(DB_URL, user, password);
@@ -67,7 +67,7 @@ public class DatabaseBean{
             rs.previous();
             while (rs.next()) {
                 UserData tempUD = new UserData(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Password"),rs.getInt("Balance"));
-                tempUD.setUserLib(getUserLibData("",rs.getInt("UserID"),2,0,true));
+                tempUD.setUserLib(getUserLibData("",rs.getInt("UserID"),2,2,0,true));
                 res.add(tempUD);
             }
         }
@@ -91,6 +91,7 @@ public class DatabaseBean{
         try {
             getDBCon();//与数据库建立连接
             Statement sta = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            System.out.println(sql);
             ResultSet rs = sta.executeQuery(sql);
             if(!rs.next()){
                 return null;}
@@ -120,7 +121,7 @@ public class DatabaseBean{
         try {
             getDBCon();//与数据库建立连接
             Statement sta = con.createStatement();
-            return sta.execute(sql);
+            return sta.executeUpdate(sql)>0;
 
         }
         catch(Exception e){
@@ -139,23 +140,34 @@ public class DatabaseBean{
         }
     }
 
-    public Vector getUserLibData(String keyWord,int UserID,int downloadOption,int orderOption,Boolean isAsc){
+    public Vector getUserLibData(String keyWord,int UserID,int stateOption,int downloadOption,int orderOption,Boolean isAsc){
         Vector UserLib=new Vector();
         String sql="select game.*,userlib.UserID,userlib.Record,userlib.LastPlayed,userlib.IsLocal,userlib.IsFavorite from game natural join userlib natural join user where user.UserID=userlib.UserID and game.AppID=userlib.AppID and userlib.UserID ="+UserID+" and Name like '%"+keyWord+"%'";
         switch (downloadOption){
-            case 0:sql+=" where userlib.IsLocal=0";break;
-            case 1:sql+=" where userlib.IsLocal=1";break;
+            case 0:sql+=" and userlib.IsLocal=0";break;
+            case 1:sql+=" and userlib.IsLocal=1";break;
             default:;
         }
+        if(stateOption==3)sql+=" and userlib.IsFavorite=1";
         String order_append;
+        String state_append;
+        switch (stateOption){
+            case 1:state_append=" order by userlib.LastPlayed";break;//最近
+            case 2:state_append="";break;//所有游戏
+            default:state_append="";
+        }
+
         switch (orderOption){//排序方式
             case 0:order_append=" order by game.Name";break;//游戏名称
             case 1:order_append=" order by userlib.Record";break;//游戏时间
             case 2:order_append=" order by game.Size";break;//磁盘空间判断需要重写，待定
-            case 3:order_append=" order by (game.PositiveReviews)/(game.PositiveReviews+game.NegativeReviews)";break;//用户评分
+            case 3:order_append=" order by game.Rate";break;//用户评分
             default:order_append=" order by game.Name";
         }
-        sql+=order_append+(isAsc?" asc":" desc");
+        if(stateOption!=1)
+        sql+=order_append+state_append+(isAsc?" asc":" desc");
+        else sql+=state_append+" desc , "+order_append.substring(10)+(isAsc?" asc":" desc");
+
         System.out.println("sql in UserData is: "+sql);
 
         Vector res=selectUserLibData(sql);
