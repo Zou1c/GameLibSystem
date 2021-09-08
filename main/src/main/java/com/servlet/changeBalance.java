@@ -36,11 +36,16 @@ public class changeBalance extends HttpServlet {
             int pay= Integer.parseInt(payInfo);
             dbb.changeBalanceByID(UserID,pay);
             response.sendRedirect("payment.jsp");
+            return;
         }
         if(buyInfo!=null){
             int buy=Integer.parseInt(buyInfo);
             dbb.buyGameByID(UserID,buy);
+            Vector<UserLibData> uld;
+            uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
+            session.setAttribute("store",uld);
             response.sendRedirect("store.jsp");
+            return;
         }
         if(search!=null){
             keyWord=request.getParameter("keyWord");
