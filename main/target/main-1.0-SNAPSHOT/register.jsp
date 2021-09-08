@@ -89,9 +89,10 @@
 
       <!-- Unnamed (矩形) -->
       <div id="u18" class="ax_default primary_button">
-        <input  name="check" type="submit" value="true" id="u18_img" class="img "style="color: transparent;border: transparent 0px;background-color: transparent;background-image: url(images/register/regen/u9.svg)"/><%--"images/login/regen/u9.svg"--%>
-        <div id="u18_text" class="text ">
-          <p><span>注册</span></p>
+        <div id="u18_img" class="img "><%--"images/login/regen/u9.svg"--%>
+        <input name="check" type="submit" value="true" id="u18_text" class="text "style="color: transparent;border: transparent 0px;background-color: transparent;background-image: url(images/register/regen/u9.svg)">
+          <p style="z-index: 10"><span>注册</span></p>
+        </input>
         </div>
       </div>
       <%String statu= (String) session.getAttribute("alret");
