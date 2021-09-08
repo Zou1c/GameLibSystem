@@ -18,18 +18,10 @@
   </script>
 </head>
 <body>
-<%!
-Vector<UserData> ud;
-%>
-<%
-  DatabaseBean dbb=new DatabaseBean();
-  int UserID=(int)session.getAttribute("UserID");
-  ud=dbb.selectUserData("select * from user where UserID="+UserID);
-%>
 <%for (int i=0;i<5;i++){%>
 <h1 style="z-index:10;font-size: 15px;color: #fffff1;top:<%=326+i*120%>px;right: 158px;position: absolute;">购买<h1><%}%>
 <div id="base" class="">
-  <form action="changeBalance"method="post">
+  <form action="changeBalance" method="post">
     <!-- Unnamed (矩形) -->
     <div id="u75" class="ax_default box_1">
       <div id="u75_div" class=""></div>
@@ -37,7 +29,15 @@ Vector<UserData> ud;
         <p></p>
       </div>
     </div>
+<%!
+Vector<UserData> ud;
+%>
+    <%
+      int UserID=(int)session.getAttribute("UserID");
+      DatabaseBean dbb=new DatabaseBean();
+      ud=dbb.selectUserData("select * from user where UserID="+UserID);
 
+    %>
     <!-- Unnamed (矩形) -->
     <div id="u76" class="ax_default _一级标题">
       <div id="u76_div" class=""></div>

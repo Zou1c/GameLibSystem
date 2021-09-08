@@ -165,8 +165,10 @@ public class DatabaseBean{
             default:order_append=" order by game.Name";
         }
         if(stateOption!=1)
-        sql+=order_append+state_append+(isAsc?" asc":" desc");
-        else sql+=state_append+" desc , "+order_append.substring(10)+(isAsc?" asc":" desc");
+        sql+=order_append+state_append;
+        else sql+=state_append+" desc , "+order_append.substring(10);
+        if(stateOption==1||orderOption==1||orderOption==2||orderOption==3)sql+=" desc";
+        else sql+=" asc";
 
         System.out.println("sql in UserData is: "+sql);
 

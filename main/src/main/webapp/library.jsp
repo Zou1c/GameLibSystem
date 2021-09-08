@@ -206,10 +206,10 @@
             <% if(res.elementAt(i).getFavorite()){
                 System.out.println(res.elementAt(i).getFavorite());
             %>
-            <input type="submit" name="fav" class="fav" value="true<%=i%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u21.svg)"><%--喜欢与否的星号 u20未选中 u21选中 --%>
+            <input type="submit" name="favorite" class="fav" value="<%=res.elementAt(i).getGameData().getAppID()%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u21.svg)"><%--喜欢与否的星号 u20未选中 u21选中 --%>
             <%}
             else{%>
-            <input type="submit" name="fav" class="fav" value="fals<%=i%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u20.svg)">
+            <input type="submit" name="favorite" class="fav" value="<%=res.elementAt(i).getGameData().getAppID()%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u20.svg)">
             <%}
             %>
             <div class="detail"><%--改了格式会乱倒起飞--%>
@@ -237,7 +237,7 @@
             else{
             %>
             <div class="download">
-                <div> <input type="submit" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);border-radius: 5px;border: 0px;" name="download"/><%--真正显示下载的地方--%>
+                <div> <input type="submit" value="<%=res.elementAt(i).getGameData().getAppID()%>"  style="color:transparent; left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);border-radius: 5px;border: 0px;" name="download"/><%--真正显示下载的地方--%>
                     <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
                         <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
                     </div>
