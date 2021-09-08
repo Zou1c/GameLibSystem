@@ -20,10 +20,9 @@
 <%
 
 %>
-<form action="checkUserLogin2"method="post">
-  <img id="base" class="">
-    <img onclick="location='register.jsp'" style="position: absolute;width: 105px;height: 20px;top:-20px;right: -100px;"src="images/login/regi.png">
+<form action="checkUserLogin2" method="post">
 <%!String statu="";%>
+
     <!-- Unnamed (文本框) -->
     <div id="u0" class="ax_default text_field">
       <div id="u0_div" class=""></div>
@@ -34,31 +33,31 @@
     </div>
 
     <!-- Unnamed (矩形) -->
-    <div id="u1" class="ax_default _一级标题">
-      <div id="u1_div" class=""></div>
-      <div id="u1_text" class="text ">
+    <div id="u7" class="ax_default _一级标题">
+      <div id="u7_div" class=""></div>
+      <div id="u7_text" class="text ">
         <p><span>登录</span></p>
       </div>
     </div>
 
     <!-- Unnamed (文本框) -->
-    <div id="u2" class="ax_default text_field">
+    <div id="u1" class="ax_default text_field">
+      <div id="u1_div" class=""></div>
+      <input id="u1_input" type="password" value="" name="Password" class="u2_input"/><!--密码-->
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u2" class="ax_default label">
       <div id="u2_div" class=""></div>
-      <input id="u2_input" type="password" value="" name="Password" class="u2_input"/><!--密码-->
+      <div id="u2_text" class="text ">
+        <p><span>账户名称</span></p>
+      </div>
     </div>
 
     <!-- Unnamed (矩形) -->
     <div id="u3" class="ax_default label">
       <div id="u3_div" class=""></div>
       <div id="u3_text" class="text ">
-        <p><span>账户名称</span></p>
-      </div>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u4" class="ax_default label">
-      <div id="u4_div" class=""></div>
-      <div id="u4_text" class="text ">
         <p><span>密码</span></p>
       </div>
     </div>
@@ -70,25 +69,23 @@
       }
     </script>
 
-    <!-- Unnamed (复选框) -->
-    <div id="u5" class="ax_default checkbox">
-      <label id="u5_input_label" for="u5_input" style="position: absolute; left: 0px;">
-        <img id="u5_img" class="img " src="images/login/u5.svg"/>
-        <div id="u5_text" class="text ">
-          <p><span>在这台电脑上记住</span></p>
-        </div>
-      </label>
-      <input id="u5_input" type="checkbox" value="checkbox"/>
-    </div>
+  <!-- Unnamed (复选框) -->
+  <div id="u4" class="ax_default checkbox">
+    <label id="u4_input_label" for="u4_input" style="position: absolute; left: 0px;">
+      <img id="u4_img" class="img " src="images/login/u4.svg"/>
+      <div id="u4_text" class="text ">
+        <p><span>在这台电脑上记住</span></p>
+      </div>
+    </label>
+    <input id="u4_input" type="checkbox" value="checkbox"/>
+  </div>
 
 
     <!-- Unnamed (矩形) -->
-    <div id="u6" class="ax_default primary_button" align="center">
-      <!--<img id="u6_img" class="img " src="images/login/u6.svg"/>-->
-      <input style="background: url(images/login/u6.svg);width:100%;height:100%;border:0;font-family:'华文细黑';color:#FFFFFF"
-             type="submit" name="login"  value="登录" />
-      <div id="u6_text" class="text ">
-      </div>
+    <div id="u5" class="ax_default primary_button" align="center">
+      <img id="u5_img" class="img " src="images/login/u6.svg"/>
+      <input id="u5_text" class="text " style="background: none;font-family: '华文细黑', sans-serif;font-size:18px;font-weight:400;color:#FFFFFF"
+             type="submit" name="login" value="登录" />
     </div>
   </div>
   <div align="center">
@@ -135,16 +132,24 @@
       <%;}%>
     </h1>
   </div>
-
+</form>>
     <!-- Unnamed (SVG) -->
-    <div id="u7" class="ax_default _图片_">
-      <img id="u7_img" class="img " src="images/login/u7.svg"/>
-      <div id="u7_text" class="text " style="display:none; visibility: hidden">
+    <div id="u6" class="ax_default _图片_">
+      <img id="u6_img" class="img " src="images/login/u7.svg"/>
+      <div id="u6_text" class="text " style="display:none; visibility: hidden">
         <p></p>
       </div>
     </div>
+
+  <!-- Unnamed (矩形) -->
+  <div id="u8" class="ax_default primary_button" onclick="location='register.jsp'">
+    <div id="u8_div" class=""></div>
+    <div id="u8_text" class="text ">
+      <p><span>注册</span></p>
+    </div>
+  </div>
+
   </div>
   <script src="resources/scripts/axure/ios.js"></script>
-</form>>
 </body>
 </html>
