@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<%@ page import="java.util.Vector" %>
+<%@ page import="com.database.UserData" %>
+<%@ page import="com.database.DatabaseBean" %>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Payment</title>
@@ -15,10 +18,18 @@
   </script>
 </head>
 <body>
+<%!
+Vector<UserData> ud;
+%>
+<%
+  DatabaseBean dbb=new DatabaseBean();
+  int UserID=(int)session.getAttribute("UserID");
+  ud=dbb.selectUserData("select * from user where UserID="+UserID);
+%>
 <%for (int i=0;i<5;i++){%>
 <h1 style="z-index:10;font-size: 15px;color: #fffff1;top:<%=326+i*120%>px;right: 158px;position: absolute;">购买<h1><%}%>
 <div id="base" class="">
-  <form action="changeList"method="post">
+  <form action="changeBalance"method="post">
     <!-- Unnamed (矩形) -->
     <div id="u75" class="ax_default box_1">
       <div id="u75_div" class=""></div>
@@ -63,7 +74,7 @@
     <div id="u80" class="ax_default label">
       <div id="u80_div" class=""></div>
       <div id="u80_text" class="text ">
-        <p><span><%="钱包余额：￥"+"null"%></span></p><%--输出余额--%>
+        <p><span><%="钱包余额：￥"+ud.elementAt(0).getBalance()%></span></p><%--输出余额--%>
       </div>
     </div>
 
