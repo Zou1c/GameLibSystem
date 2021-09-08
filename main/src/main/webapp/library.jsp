@@ -35,7 +35,7 @@
         <div id="u9" class="ax_default label">
             <div id="u9_div" class=""></div>
             <div id="u9_text" class="text ">
-                <input name="librarySearchKeyWord" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+                <input name="librarySearchKeyWord" value="搜索" type="submit" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
             </div>
         </div>
 
@@ -237,7 +237,7 @@
             else{
             %>
             <div class="download">
-                <div> <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);border-radius: 5px;border: 0px;" name="download"/><%--真正显示下载的地方--%>
+                <div> <input type="submit" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);border-radius: 5px;border: 0px;" name="download"/><%--真正显示下载的地方--%>
                     <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
                         <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
                     </div>
