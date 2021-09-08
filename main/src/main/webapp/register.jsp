@@ -16,18 +16,18 @@
     </script>
   </head>
   <body>
+  <form action="registerServlet" method="post">
     <div id="base" class="">
-
       <!-- Unnamed (文本框) -->
       <div id="u9" class="ax_default text_field">
         <div id="u9_div" class=""></div>
-        <input id="u9_input" type="text" value="" class="u9_input"/>
+        <input id="u9_input" name="regiName" type="" value="" class="u9_input"/>
       </div>
 
       <!-- Unnamed (文本框) -->
       <div id="u10" class="ax_default text_field">
         <div id="u10_div" class=""></div>
-        <input id="u10_input" type="password" value="" class="u10_input"/>
+        <input id="u10_input" name="regiPassword" type="password" value="" class="u10_input"/>
       </div>
 
       <!-- Unnamed (矩形) -->
@@ -76,7 +76,7 @@
       <!-- Unnamed (文本框) -->
       <div id="u16" class="ax_default text_field">
         <div id="u16_div" class=""></div>
-        <input id="u16_input" type="password" value="" class="u16_input"/>
+        <input id="u16_input" name="reCheck" type="password" value="" class="u16_input"/>
       </div>
 
       <!-- Unnamed (矩形) -->
@@ -89,12 +89,37 @@
 
       <!-- Unnamed (矩形) -->
       <div id="u18" class="ax_default primary_button">
-        <img id="u18_img" class="img " src="images/register/regen/u9.svg"/><%--"images/login/regen/u9.svg"--%>
+        <input  name="check" type="submit" value="true" id="u18_img" class="img "style="color: transparent;border: transparent 0px;background-color: transparent;background-image: url(images/register/regen/u9.svg)"/><%--"images/login/regen/u9.svg"--%>
         <div id="u18_text" class="text ">
           <p><span>注册</span></p>
         </div>
       </div>
-
+      <%String statu= (String) session.getAttribute("alret");
+      System.out.println("statu"+statu);
+      if (statu!=null){
+        if (statu.equals("用户名为空")){
+      %>
+      <script type="text/javascript">
+        alert("用户名为空");</script>
+      <%}%>
+      <%
+        if (statu.equals("密码为空")){
+      %>
+      <script type="text/javascript">
+        alert("密码为空");</script>
+      <%}%>
+      <%
+        if (statu.equals("用户名错误")){
+      %>
+      <script type="text/javascript">
+        alert("用户名错误");</script>
+      <%}%>
+      <%
+        if (statu.equals("密码错误")){
+      %>
+      <script type="text/javascript">
+        alert("密码错误");</script>
+      <%}}%>
       <!-- Unnamed (矩形) -->
       <div onclick="location='login.jsp'" id="u19" class="ax_default primary_button">
         <div id="u19_div" class=""></div>
@@ -106,5 +131,6 @@
   </br>
     </br>
     <script src="resources/scripts/axure/ios.js"></script>
+  </form>
   </body>
 </html>
