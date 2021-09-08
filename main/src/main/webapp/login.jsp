@@ -20,7 +20,7 @@
 <%
 
 %>
-<form action="checkUserLogin2" method="post">
+<form action="checkUserLogin" method="post">
 <%!String statu="";%>
 
     <!-- Unnamed (文本框) -->
