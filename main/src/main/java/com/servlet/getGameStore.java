@@ -30,6 +30,12 @@ public class getGameStore extends HttpServlet {
         DatabaseBean dbb=new DatabaseBean();
         res=dbb.getUserStoreData("",UserID, sort.getSortValue("最近热门"),true);
         session.setAttribute("store",res);
+        session.setAttribute("libraryU2","u2");
+        session.setAttribute("id","u2");
+        session.setAttribute("libraryUOption","所有游戏");
+        session.setAttribute("libraryDownloadOption","全部");
+        session.setAttribute("libraryOrderOption","游戏名称");
+        session.setAttribute("storeOrderOption","最近热门");
         request.getRequestDispatcher("/library.jsp").forward(request,response);
 
     }

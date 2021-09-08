@@ -22,4 +22,14 @@ public class sort {
         }
         return res;
     }
+    public static int getDownloadOptionValue(String Info){
+        int res;
+        switch (Info){
+            case "全部":res=0;break;
+            case "已下载":res=1;break;
+            case "未下载":res=2;break;
+            default:res=0;break;
+        }
+        return res;
+    }
 }

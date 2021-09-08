@@ -23,7 +23,7 @@
     </script>
 </head>
 <body>
-<form action="changeList"method="post">
+<form action="changeList" method="post" id="libraryForm">
     <div id="base" class="">
 
         <!-- Unnamed (文本框) -->
@@ -32,15 +32,13 @@
             <input style="color: #6d6d6d" id="u8_input" type="text" value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
         </div>
 
-        <!-- Unnamed (矩形) -->
         <div id="u9" class="ax_default label">
             <div id="u9_div" class=""></div>
             <div id="u9_text" class="text ">
-                <input name="Lsearch" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+                <input name="librarySearchKeyWord" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
             </div>
         </div>
 
-        <!-- Unnamed (矩形) -->
         <div id="u10" class="ax_default label">
             <div id="u10_div" class=""></div>
             <div id="u10_text" class="text ">
@@ -54,9 +52,9 @@
             session.removeAttribute("id");
             System.out.println("click="+click);
             if (click!=null){
-                if (click.equals("u11")){s1=Choose;s2=unChoose;s3= unChoose;}
-                if (click.equals("u12")){s2=Choose;s1=unChoose;s3= unChoose;}
-                if (click.equals("u13")){s3=Choose;s1=unChoose;s2= unChoose;}
+                if (click.equals("u1")){s1=Choose;s2=unChoose;s3= unChoose;}
+                if (click.equals("u2")){s2=Choose;s1=unChoose;s3= unChoose;}
+                if (click.equals("u3")){s3=Choose;s1=unChoose;s2= unChoose;}
                 System.out.println("s1="+s1);
                 System.out.println("s2="+s2);
                 System.out.println("s3="+s3);
@@ -98,16 +96,19 @@
             </div>
         </div>
 
+
         <!-- Unnamed (下拉列表) -->
         <div id="u15" class="ax_default droplist"><!--复选框1-->
             <div id="u15_div" class=""></div>
-            <select id="u15_input" name="text2" class="u15_input">
-                <option class="u15_input_option" value="gameName">游戏名称</option>
-                <option class="u15_input_option" value="gameTime">游戏时间</option>
-                <option class="u15_input_option" value="gameSize">磁盘空间</option>
-                <option class="u15_input_option" value="gameEval">用户评分</option>
+            <select id="u15_input" name="libraryOrder" class="u15_input" onchange="submitForm();">
+                <option class="u15_input_option" value="游戏名称">游戏名称</option>
+                <option class="u15_input_option" value="游戏时间">游戏时间</option>
+                <option class="u15_input_option" value="磁盘空间">磁盘空间</option>
+                <option class="u15_input_option" value="用户评分">用户评分</option>
             </select>
         </div>
+
+
 
         <!-- Unnamed (矩形) -->
         <div id="u28" class="ax_default label">
@@ -120,21 +121,27 @@
         <!-- Unnamed (下拉列表) -->
         <div id="u29" class="ax_default droplist">
             <div id="u29_div" class=""></div>
-            <select id="u29_input" name="text1" class="u29_input"><%--复选框2--%>
+            <select id="u29_input" name="libraryDownload" class="u29_input" onchange="submitForm();">
                 <option class="u29_input_option" value="全部">全部</option>
                 <option class="u29_input_option" value="已下载">已下载</option>
                 <option class="u29_input_option" value="未下载">未下载</option>
             </select>
         </div>
 
-        <!-- Unnamed (SVG) -->
+        <script type="text/javascript">
+            function submitForm() {
+                $("#libraryForm").submit();
+            }
+        </script>
+
+
         <div id="u36" class="ax_default _图片_"> <img id="u36_img" class="img " src="images/login/u7.svg"/>
             <div id="u36_text" class="text " style="display:none; visibility: hidden">
                 <p></p>
             </div>
         </div>
 
-        <!-- Unnamed (矩形) -->
+
         <div id="u37" class="ax_default label">
             <div id="u37_div" class=""></div>
             <div id="u37_text" class="text ">
@@ -142,19 +149,19 @@
             </div>
         </div>
 
-        <!-- Unnamed (形状) -->
+
         <div id="u38" class="ax_default icon"> <img onclick="location='session.jsp'" id="u38_img" class="img " src="images/library/u38.svg"/>
             <div id="u38_text" class="text " style="display:none; visibility: hidden">
                 <p></p>
             </div>
         </div>
 
-        <!-- Unnamed (动态面板) -->
+
         <div id="u39" class="ax_default">
             <div id="u39_state0" class="panel_state" data-label="State1" style="">
                 <div id="u39_state0_content" class="panel_state_content">
 
-                    <!-- Unnamed (矩形) -->
+
                     <div id="u40" class="ax_default box_2">
                         <div id="u40_div" class=""></div>
                         <div id="u40_text" class="text " style="display:none; visibility: hidden">
@@ -162,7 +169,7 @@
                         </div>
                     </div>
 
-                    <!-- Unnamed (形状) -->
+
                     <div id="u41" class="ax_default icon"> <img id="u41_img" class="img " src="images/library/u41.svg"/>
                         <div id="u41_text" class="text " style="display:none; visibility: hidden">
                             <p></p>
@@ -171,7 +178,7 @@
                 </div>
             </div>
         </div>
-        <%--<c:forEach var="i" begin="0" end="5" >--%>
+
         <%!
             int count=0;
             Vector<UserLibData> res=new Vector();
@@ -245,7 +252,7 @@
         </div>
 
         <%}%>
-        <%--</c:forEach>--%>
+
         <!-- Unnamed (矩形) -->
         <div id="u43" class="ax_default label">
             <div id="u43_div" class=""></div>
