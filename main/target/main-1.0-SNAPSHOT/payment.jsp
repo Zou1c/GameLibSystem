@@ -15,6 +15,8 @@
   </script>
 </head>
 <body>
+<%for (int i=0;i<5;i++){%>
+<h1 style="z-index:10;font-size: 15px;color: #fffff1;top:<%=326+i*120%>px;right: 158px;position: absolute;">购买<h1><%}%>
 <div id="base" class="">
   <form action="changeList"method="post">
     <!-- Unnamed (矩形) -->
@@ -28,7 +30,7 @@
     <!-- Unnamed (矩形) -->
     <div id="u76" class="ax_default _一级标题">
       <div id="u76_div" class=""></div>
-      <div id="u76_text" class="text ">
+      <div style="top: -20px;" id="u76_text" class="text ">
         <p><span>为您的钱包充值</span></p>
       </div>
     </div>
@@ -44,7 +46,7 @@
     <!-- Unnamed (矩形) -->
     <div id="u78" class="ax_default label">
       <div id="u78_div" class=""></div>
-      <div id="u78_text" class="text ">
+      <div style="top: -20px;" id="u78_text" class="text ">
         <p onclick="location='session.jsp'"><span>注销</span></p>
       </div>
     </div>
@@ -89,7 +91,7 @@
           <!-- Unnamed (矩形) -->
           <div id="u84" class="ax_default _一级标题">
             <div id="u84_div" class=""></div>
-            <div id="u84_text" class="text ">
+            <div style="top: -11px;" id="u84_text" class="text ">
               <p>充值￥32</p>
 
             </div>
@@ -105,13 +107,15 @@
 
           <!-- Unnamed (矩形) -->
           <div id="u86" class="ax_default button">
-            <input onclick="location='payment.jsp'" type="submit" name="pay" value="32" id="u86_div" class="" style="color: transparent;"></input><%-- 32$按钮--%>
-            <p style="z-index: 10;top: 5px;right: 20px;">充值</p>
+            <input type="submit" name="pay" value="32" id="u86_div" class="" style="color: transparent;"></input><%-- 32$按钮--%>
+            <div style="z-index: 10;top: -14px;right: 20px;">
+            <p></p>
+            </div>
           </div>
           <!-- Unnamed (矩形) -->
           <div id="u87" class="ax_default _一级标题">
             <div id="u87_div" class=""></div>
-            <div id="u87_text" class="text ">
+            <div style="top:-14px;" id="u87_text" class="text ">
               <p><span>￥32</span></p>
             </div>
           </div>
@@ -135,7 +139,7 @@
           <!-- Unnamed (矩形) -->
           <div id="u90" class="ax_default _一级标题">
             <div id="u90_div" class=""></div>
-            <div id="u90_text" class="text ">
+            <div style="top: -11px;" id="u90_text" class="text ">
               <p><span>充值￥64</span></p>
             </div>
           </div>
@@ -151,13 +155,13 @@
           <!-- Unnamed (矩形) -->
           <div id="u92" class="ax_default button">
             <input type="submit" name="pay" value="64"  id="u92_div" class="" style="color: transparent"></input><%-- 64$按钮--%>
-            <p style="z-index: 10">充值</p>
+            <p style="z-index: 10"></p>
           </div>
 
           <!-- Unnamed (矩形) -->
           <div id="u93" class="ax_default _一级标题">
             <div id="u93_div" class=""></div>
-            <div id="u93_text" class="text ">
+            <div style="top: -14px" id="u93_text" class="text ">
               <p><span>￥64</span></p>
             </div>
           </div>
@@ -181,7 +185,7 @@
           <!-- Unnamed (矩形) -->
           <div id="u96" class="ax_default _一级标题">
             <div id="u96_div" class=""></div>
-            <div id="u96_text" class="text ">
+            <div style="top: -11px;" id="u96_text" class="text ">
               <p><span>充值￥128</span></p>
             </div>
           </div>
@@ -197,14 +201,14 @@
           <!-- Unnamed (矩形) -->
           <div id="u98" class="ax_default button">
             <input type="submit" name="pay" value="128" id="u98_div" class=""style="color: transparent" ></input><%-- 128$按钮--%>
-            <p style="z-index: 10;">充值</p>
+            <p style="z-index: 10;"></p>
             </input>
           </div>
 
           <!-- Unnamed (矩形) -->
           <div id="u99" class="ax_default _一级标题">
             <div id="u99_div" class=""></div>
-            <div id="u99_text" class="text ">
+            <div style="top: -14px;" id="u99_text" class="text ">
               <p><span>￥128</span></p>
             </div>
           </div>
@@ -228,7 +232,7 @@
           <!-- Unnamed (矩形) -->
           <div id="u102" class="ax_default _一级标题">
             <div id="u102_div" class=""></div>
-            <div id="u102_text" class="text ">
+            <div style="top: -11px;" id="u102_text" class="text ">
               <p><span>充值￥324</span></p>
             </div>
           </div>
@@ -244,13 +248,13 @@
           <!-- Unnamed (矩形) -->
           <div id="u104" class="ax_default button">
             <input type="submit" name="pay" value="324" id="u104_div" class="" style="color: transparent"></input><%-- 324$按钮--%>
-            <p style="z-index: 10">充值</p>
+            <p style="z-index: 10"></p>
           </div>
 
           <!-- Unnamed (矩形) -->
           <div id="u105" class="ax_default _一级标题">
             <div id="u105_div" class=""></div>
-            <div id="u105_text" class="text ">
+            <div style="top: -14px;" id="u105_text" class="text ">
               <p><span>￥324</span></p>
             </div>
           </div>
@@ -274,7 +278,7 @@
           <!-- Unnamed (矩形) -->
           <div id="u108" class="ax_default _一级标题">
             <div id="u108_div" class=""></div>
-            <div id="u108_text" class="text ">
+            <div style="top: -11px;" id="u108_text" class="text ">
               <p><span>充值￥648</span></p>
             </div>
           </div>
@@ -290,13 +294,13 @@
           <!-- Unnamed (矩形) -->
           <div id="u110" class="ax_default button">
             <input type="submit" name="pay" value="648" id="u110_div" class="" style="color: transparent"></input><%-- 648$按钮--%>
-            <p style="z-index: 10">充值</p>
+            <p style="z-index: 10"></p>
           </div>
 
           <!-- Unnamed (矩形) -->
           <div id="u111" class="ax_default _一级标题">
             <div id="u111_div" class=""></div>
-            <div id="u111_text" class="text ">
+            <div style="top: -14px;" id="u111_text" class="text ">
               <p><span>￥648</span></p>
             </div>
           </div>
@@ -315,7 +319,7 @@
   <!-- Unnamed (矩形) -->
   <div id="u113" class="ax_default label">
     <div id="u113_div" class=""></div>
-    <div onclick="location='store.jsp'" id="u113_text" class="text ">
+    <div style="top: -20px;" onclick="location='store.jsp'" id="u113_text" class="text ">
       <p><span>返回</span></p>
     </div>
   </div>
