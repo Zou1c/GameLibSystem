@@ -72,10 +72,10 @@
       </div>
 
       <!-- Unnamed (矩形) -->
-      <div id="u12" class="ax_default primary_button">
-        <div id="u12_div" class=""></div>
-        <div id="u12_text" class="text ">
-          <p><span>立即加入</span></p>
+      <div onclick="location='login.jsp'" id="u12" class="ax_default primary_button">
+        <div onclick="location='login.jsp'" id="u12_div" class=""></div>
+        <div onclick="location='login.jsp'" id="u12_text" class="text ">
+          <p onclick="location='login.jsp'"><span>立即加入</span></p>
         </div>
       </div>
 
