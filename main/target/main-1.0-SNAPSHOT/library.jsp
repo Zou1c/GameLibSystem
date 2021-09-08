@@ -25,7 +25,27 @@
 <body>
 <form action="changeList" method="post" id="libraryForm">
     <div id="base" class="">
-
+<%!
+Vector<String> orderInfo=new Vector<String>(4);
+Vector<String> downInfo=new Vector<String>(3);
+%>
+        <%
+            String temp= (String) session.getAttribute("libraryOrderOption");
+            if(temp==null)temp="";
+            orderInfo.clear();
+            downInfo.clear();
+            orderInfo.addElement(temp.equals("游戏名称")?" selected":"");
+            orderInfo.addElement(temp.equals("游戏时间")?" selected":"");
+            orderInfo.addElement(temp.equals("磁盘空间")?" selected":"");
+            orderInfo.addElement(temp.equals("用户评分")?" selected":"");
+            temp=(String) session.getAttribute("libraryDownloadOption");
+            if(temp==null)temp="";
+            downInfo.addElement(temp.equals("全部")?" selected":"");
+            downInfo.addElement(temp.equals("已下载")?" selected":"");
+            downInfo.addElement(temp.equals("未下载")?" selected":"");
+            System.out.println("orderInfo "+orderInfo.toString());
+            System.out.println("downInfo "+downInfo.toString());
+        %>
         <!-- Unnamed (文本框) -->
         <div id="u8" class="ax_default text_field">
             <div id="u8_div" class=""></div>
@@ -101,10 +121,10 @@
         <div id="u15" class="ax_default droplist"><!--复选框1-->
             <div id="u15_div" class=""></div>
             <select id="u15_input" name="libraryOrder" class="u15_input" onchange="submitForm();">
-                <option class="u15_input_option" value="游戏名称">游戏名称</option>
-                <option class="u15_input_option" value="游戏时间">游戏时间</option>
-                <option class="u15_input_option" value="磁盘空间">磁盘空间</option>
-                <option class="u15_input_option" value="用户评分">用户评分</option>
+                <option class="u15_input_option" value="游戏名称" <%=orderInfo.elementAt(0)%>>游戏名称</option>
+                <option class="u15_input_option" value="游戏时间" <%=orderInfo.elementAt(1)%>>游戏时间</option>
+                <option class="u15_input_option" value="磁盘空间" <%=orderInfo.elementAt(2)%>>磁盘空间</option>
+                <option class="u15_input_option" value="用户评分" <%=orderInfo.elementAt(3)%>>用户评分</option>
             </select>
         </div>
 
@@ -122,9 +142,9 @@
         <div id="u29" class="ax_default droplist">
             <div id="u29_div" class=""></div>
             <select id="u29_input" name="libraryDownload" class="u29_input" onchange="submitForm();">
-                <option class="u29_input_option" value="全部">全部</option>
-                <option class="u29_input_option" value="已下载">已下载</option>
-                <option class="u29_input_option" value="未下载">未下载</option>
+                <option class="u29_input_option" value="全部"   <%=downInfo.elementAt(0)%>>全部</option>
+                <option class="u29_input_option" value="已下载" <%=downInfo.elementAt(1)%>>已下载</option>
+                <option class="u29_input_option" value="未下载" <%=downInfo.elementAt(2)%>>未下载</option>
             </select>
         </div>
 

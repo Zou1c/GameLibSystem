@@ -57,6 +57,7 @@ public class changeBalance extends HttpServlet {
             Vector<UserLibData> uld;
             uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
             session.setAttribute("store",uld);
+            session.setAttribute("storeOrderOption",storeOrderOption);
         }
         response.sendRedirect("store.jsp");
         this.destroy();

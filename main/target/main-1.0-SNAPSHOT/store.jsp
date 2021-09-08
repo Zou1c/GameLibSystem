@@ -29,8 +29,17 @@
 
   <%!
     Vector<UserData> ud;
+    Vector<String> orderInfo=new Vector<String>(4);
   %>
   <%
+    String temp= (String) session.getAttribute("storeOrderOption");
+    if(temp==null)temp="";
+    orderInfo.clear();
+    orderInfo.addElement(temp.equals("最近热门")?" selected":"");
+    orderInfo.addElement(temp.equals("发行日期")?" selected":"");
+    orderInfo.addElement(temp.equals("最低价格")?" selected":"");
+    orderInfo.addElement(temp.equals("用户评分")?" selected":"");
+
     int UserID=(int)session.getAttribute("UserID");
     DatabaseBean dbb=new DatabaseBean();
     ud=dbb.selectUserData("select * from user where UserID="+UserID);
@@ -72,10 +81,10 @@
   <div id="u52" class="ax_default droplist">
     <div id="u52_div" class=""></div>
     <select id="u52_input" class="u52_input" name="storeOrder" onchange="submitForm();">
-      <option class="u52_input_option" value="最近热门">最近热门</option>
-      <option class="u52_input_option" value="发行日期">发行日期</option>
-      <option class="u52_input_option" value="最低价格">最低价格</option>
-      <option class="u52_input_option" value="用户评分">用户评分</option>
+      <option class="u52_input_option" value="最近热门" <%=orderInfo.elementAt(0)%>>最近热门</option>
+      <option class="u52_input_option" value="发行日期" <%=orderInfo.elementAt(1)%>>发行日期</option>
+      <option class="u52_input_option" value="最低价格" <%=orderInfo.elementAt(2)%>>最低价格</option>
+      <option class="u52_input_option" value="用户评分" <%=orderInfo.elementAt(3)%>>用户评分</option>
     </select>
   </div>
 
