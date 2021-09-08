@@ -67,7 +67,7 @@ public class DatabaseBean{
             rs.previous();
             while (rs.next()) {
                 UserData tempUD = new UserData(rs.getInt("UserID"), rs.getString("UserName"), rs.getString("Password"),rs.getInt("Balance"));
-                tempUD.setUserLib(getUserLibData(rs.getInt("UserID"),2,0,true));
+                tempUD.setUserLib(getUserLibData("",rs.getInt("UserID"),2,0,true));
                 res.add(tempUD);
             }
         }
@@ -139,9 +139,9 @@ public class DatabaseBean{
         }
     }
 
-    public Vector getUserLibData(int UserID,int downloadOption,int orderOption,Boolean isAsc){
+    public Vector getUserLibData(String keyWord,int UserID,int downloadOption,int orderOption,Boolean isAsc){
         Vector UserLib=new Vector();
-        String sql="select game.*,userlib.UserID,userlib.Record,userlib.LastPlayed,userlib.IsLocal,userlib.IsFavorite from game natural join userlib natural join user where user.UserID=userlib.UserID and game.AppID=userlib.AppID and userlib.UserID ="+UserID;
+        String sql="select game.*,userlib.UserID,userlib.Record,userlib.LastPlayed,userlib.IsLocal,userlib.IsFavorite from game natural join userlib natural join user where user.UserID=userlib.UserID and game.AppID=userlib.AppID and userlib.UserID ="+UserID+" and Name like '%"+keyWord+"%'";
         switch (downloadOption){
             case 0:sql+=" where userlib.IsLocal=0";break;
             case 1:sql+=" where userlib.IsLocal=1";break;
@@ -167,8 +167,8 @@ public class DatabaseBean{
         return UserLib;
     }
 
-    public Vector getUserStoreData(int UserID,int orderOption,Boolean isAsc){
-        String sql="select * from game where AppID not in(select AppID from game natural join userlib where game.AppID=userlib.AppID and userlib.UserID ="+UserID+")";
+    public Vector getUserStoreData(String keyWord,int UserID,int orderOption,Boolean isAsc){
+        String sql="select * from game where AppID not in(select AppID from game natural join userlib where game.AppID=userlib.AppID and userlib.UserID ="+UserID+") and Name like '%"+keyWord+"%'" ;
         String order_append;
         switch (orderOption){//排序方式
             case 3:order_append=" order by Rate";break;//用户评分
@@ -180,7 +180,7 @@ public class DatabaseBean{
         if(orderOption!=6)
             sql+=order_append+(isAsc?" asc":" desc");
         else sql+=order_append+" desc";
-
+        System.out.println(sql);
         Vector<GameData> res=selectGameData(sql);
         if(res==null)return null;
         return res;
@@ -270,4 +270,21 @@ public class DatabaseBean{
         else
             return "余额修改失败";
     }
+
+    public String setDownloadState(int UserID,int AppID){
+        String sql="update userlib set IsLocal=not IsLocal where UserID="+UserID+" and AppID="+AppID;
+        if(changeData(sql))
+            return "修改下载状态成功";
+        else
+            return "修改下载状态失败";
+    }
+
+    public String setFavoriteState(int UserID,int AppID){
+        String sql="update userlib set IsFavorite=not IsFavorite where UserID="+UserID+" and AppID="+AppID;
+        if(changeData(sql))
+            return "修改收藏状态成功";
+        else
+            return "修改收藏状态失败";
+    }
+
 }

@@ -1,5 +1,4 @@
 package com.servlet;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,25 +24,37 @@ public class changeList extends HttpServlet {
         String Recent=request.getParameter("u1");
         String AllGame=request.getParameter("u2");
         String CL=request.getParameter("u3");
-        System.out.println(Recent+"=r "+AllGame+"=A "+CL+"=cl");
+        String CheckBoxRinght =request.getParameter("text2");//游戏信息
+        String CheckBoxleft =request.getParameter("text1");//下载状态
+        session.setAttribute("right",CheckBoxRinght);
+        System.out.println(Recent+"=r "+AllGame+"=A "+CL+"=cl"+"\t是否下载："+CheckBoxleft+"\t排序依据："+CheckBoxRinght);
+        String isFav=request.getParameter("fav");
+        System.out.println("is fav?"+isFav);
+        String money=request.getParameter("pay");
+        System.out.println("-"+money+"￥");
+        if (money!=null){
+            request.getRequestDispatcher("payment.jsp").forward(request,response);
+            money=null;//无论如何置于if底端
+        }
         if (Recent!=null){
             if (Recent.equals("最近")){
                 session.setAttribute("id","u11");
+                request.getRequestDispatcher("library.jsp").forward(request,response);
             }
         }
         else if (AllGame!=null){
             if (AllGame.equals("所有游戏")){
                 session.setAttribute("id","u12");
+                request.getRequestDispatcher("library.jsp").forward(request,response);
             }
         }
         else if (CL!=null){
             if (CL.equals("收藏")){
                 session.setAttribute("id","u13");
+                request.getRequestDispatcher("library.jsp").forward(request,response);
             }
         }
-
         this.destroy();
-        request.getRequestDispatcher("library.jsp").forward(request,response);
     }
     public void destroy() {
     }

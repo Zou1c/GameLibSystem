@@ -29,7 +29,7 @@
   <!-- Unnamed (文本框) -->
   <div id="u8" class="ax_default text_field">
     <div id="u8_div" class=""></div>
-    <input style="color: #6d6d6d" id="u8_input" type="text" value="搜索" class="u8_input"/>
+    <input style="color: #6d6d6d" id="u8_input" type="text"  value="请输入游戏名" onfocus="this.value='';" οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
   </div>
   
   <!-- Unnamed (矩形) -->
@@ -204,6 +204,7 @@ System.out.println(res.elementAt(i).getFavorite());
     <img class="fav" src="images/library/u20.svg">
       <%}
       %>
+
     <div class="detail"><%--改了格式会乱倒起飞--%>
       <div > <img style="left:0px;top:0px;width: 131px;height: 37px;" name="particulars" onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"  value="true" src="images/library/particulars.png"/><%--真正显示详情信息的地方--%>
         <div class="text detButton_text"><%--改了格式会乱倒起飞--%>
@@ -244,7 +245,6 @@ System.out.println(res.elementAt(i).getFavorite());
   </div>
 
   <%}%>
-<%--</c:forEach>--%>
 	      <!-- Unnamed (矩形) -->
       <div id="u43" class="ax_default label">
         <div id="u43_div" class=""></div>

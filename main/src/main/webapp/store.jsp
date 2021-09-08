@@ -26,14 +26,14 @@
   <!-- Unnamed (文本框) -->
   <div id="u48" class="ax_default text_field">
     <div id="u48_div" class=""></div>
-    <input id="u48_input" style="color: #6d6d6d"  type="text" value="搜索" class="u48_input"/>
+    <input style="color: #6d6d6d" id="u48_input" type="text"  value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
   </div>
-  
+
   <!-- Unnamed (矩形) -->
   <div id="u49" class="ax_default label">
     <div id="u49_div" class=""></div>
     <div id="u49_text" class="text ">
-      <input style="border: 0px;border-radius: 3px;width: 31px;height: 20px ;background-color: #008dcb;color:#ffffff " type="button" name="Ssearch" value="搜索"></input>
+      <input name="Lsearch" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
     </div>
   </div>
   
@@ -84,21 +84,19 @@
     
     <!-- Unnamed (矩形) -->
     <div class="name">
-      <a onclick="location='detail.jsp?id=<%=res.elementAt(i).getAppID()%>'"><span><%=res.elementAt(i).getName()%></span></a>
+      <a onclick="location='detail_s.jsp?id=<%=res.elementAt(i).getAppID()%>'"><span><%=res.elementAt(i).getName()%></span></a>
     </div>
     
     <!-- 详细信息 (动态面板) -->
-    <div class="detail"> 
-      
+    <div class="detail">
       <!-- 详细信息按钮 (矩形) -->
-      <div class="ax_default primary_button detButton"> <img class="detButton_img" src="images/library/particulars.png"/>
+      <div class="ax_default primary_button detButton"> <img class="detButton_img" onclick="location='detail_s.jsp?id=<%=res.elementAt(i).getAppID()%>'" src="images/library/particulars.png"/>
         <div class="text detButton_text">
-          <p><span>&nbsp;&nbsp; &nbsp;</span></p>
         </div>
       </div>
       
       <!-- 详细信息图标 (形状) -->
-      <div class="detIcon"> <img class="detIcon_img" onclick="location='detail.jsp?id=<%=res.elementAt(i).getAppID()%>'" src="images/library/lu.png"/> </div>
+      <div class="detIcon"> <img class="detIcon_img" onclick="location='detail_s.jsp?id=<%=res.elementAt(i).getAppID()%>'" src="images/library/lu.png"/> </div>
     </div>
     
     <!-- Header (图片 ) -->
