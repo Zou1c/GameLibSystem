@@ -191,13 +191,7 @@
         </div>
       </div>
 
-      <!-- Unnamed (形状) -->
-      <div id="u114" class="ax_default icon">
-        <img id="u114_img" class="img " src="images/detail__2/u114.svg"/>
-        <div id="u114_text" class="text " style="display:none; visibility: hidden">
-          <p></p>
-        </div>
-      </div>
+
 
       <!-- Unnamed (矩形) -->
       <div id="u115" class="ax_default label">
@@ -320,21 +314,7 @@
         <div id="u130_state0" class="panel_state" data-label="State1" style="">
           <div id="u130_state0_content" class="panel_state_content">
 
-            <!-- Unnamed (矩形) -->
-            <div id="u131" class="ax_default primary_button">
-              <div id="u131_div" class=""></div>
-              <div id="u131_text" class="text ">
-                <p><span>&nbsp;&nbsp; &nbsp; 安装</span></p>
-              </div>
-            </div>
 
-            <!-- Unnamed (形状) -->
-            <div id="u132" class="ax_default icon">
-              <img id="u132_img" class="img " src="images/library/u50.svg"/>
-              <div id="u132_text" class="text " style="display:none; visibility: hidden">
-                <p></p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

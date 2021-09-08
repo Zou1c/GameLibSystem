@@ -22,7 +22,7 @@
 %>
 <form action="checkUserLogin2"method="post">
   <img id="base" class="">
-    <img onclick="location='register.jsp'" style="position: absolute;width: 105px;height: 20px;"src="images/login/regi.png">
+    <img onclick="location='register.jsp'" style="position: relative;width: 150px;height: 27px;top: 0px;rigth:-1140px"src="images/login/regi.png">
 <%!String statu="";%>
     <!-- Unnamed (文本框) -->
     <div id="u0" class="ax_default text_field">
