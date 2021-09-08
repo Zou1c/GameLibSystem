@@ -23,7 +23,7 @@
 <body>
 <div id="base" class=""> 
   
-  <!-- Unnamed (文本框) -->
+  <!-- Unnamed (文本 框) -->
   <div id="u48" class="ax_default text_field">
     <div id="u48_div" class=""></div>
     <input style="color: #6d6d6d" id="u48_input" type="text"  value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>

@@ -87,7 +87,7 @@
         </div>
       </div>
 
-      <!-- Unnamed (矩形) -->
+      <!-- Unnamed (矩形)  -->
       <div id="u18" class="ax_default primary_button">
         <div id="u18_img" class="img "><%--"images/login/regen/u9.svg"--%>
         <input name="check" type="submit" value="true" id="u18_text" class="text "style="color: transparent;border: transparent 0px;background-color: transparent;background-image: url(images/register/regen/u9.svg)">
