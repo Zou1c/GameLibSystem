@@ -32,19 +32,19 @@ public class changeList extends HttpServlet {
         String libraryDownloadOption =request.getParameter("libraryDownload");//下载状态
         String downInfo=request.getParameter("download");
         String favoInfo=request.getParameter("favorite");
-        String keyWord=request.getParameter("keyWord");
+        String search=request.getParameter("search");
+        String keyWord="";
+
         int UserID= (int) session.getAttribute("UserID");
 
         DatabaseBean dbb=new DatabaseBean();
         session.setAttribute("right",libraryOrderOption);
-        System.out.println("u1: "+recent+" u2: "+allGame+" u3: "+collection+" 游戏信息: "+libraryOrderOption+" 下载状态: "+libraryDownloadOption);
         Vector<UserLibData> uld;
         if (recent!=null){
             if (recent.equals("最近")){
                 session.setAttribute("id","u1");
                 session.setAttribute("state",recent);
                 session.setAttribute("libraryUOption",1);
-                //request.getRequestDispatcher("library.jsp").forward(request,response);
             }
         }
         else if (allGame!=null){
@@ -52,7 +52,6 @@ public class changeList extends HttpServlet {
                 session.setAttribute("id","u2");
                 session.setAttribute("state",allGame);
                 session.setAttribute("libraryUOption",2);
-                //request.getRequestDispatcher("library.jsp").forward(request,response);
             }
         }
         else if (collection!=null){
@@ -76,16 +75,19 @@ public class changeList extends HttpServlet {
             int favo=Integer.parseInt(favoInfo);
             dbb.setFavoriteState(UserID,favo);
         }
-        if(keyWord==null){
-            keyWord="";
+        if(search!=null){
+            keyWord=request.getParameter("keyWord");
+            if(keyWord.equals("请输入游戏名")) {
+                keyWord="";
+            }
         }
         String stateInfo= (String) session.getAttribute("state");
         if(stateInfo==null)
             stateInfo="所有游戏";
+
         System.out.println(stateInfo+"\n\n\n");
         Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
         uld=dbb.getUserLibData(keyWord,UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
-        //uld=ud.elementAt(0).getUserLibData();
         session.setAttribute("library",uld);
         response.sendRedirect("library.jsp");
         this.destroy();

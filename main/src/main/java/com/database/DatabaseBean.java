@@ -13,7 +13,7 @@ public class DatabaseBean{
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
         String user = "root";
-        String password = "224353Y1560x";//将密码改为自己的密码
+        String password = "239080";//将密码改为自己的密码
         try {
             Class.forName(JDBC_DRIVER);
             con = DriverManager.getConnection(DB_URL, user, password);
@@ -191,9 +191,10 @@ public class DatabaseBean{
             case 6:order_append=" order by Price";break;//最低价格
             default:order_append=" order by InGame";
         }
-        if(orderOption!=6)
-            sql+=order_append+(isAsc?" asc":" desc");
-        else sql+=order_append+" desc";
+        if(orderOption==6)
+            sql+=order_append+" asc";
+        else
+            sql+=order_append+(" desc");
         System.out.println(sql);
         Vector<GameData> res=selectGameData(sql);
         if(res==null)return null;

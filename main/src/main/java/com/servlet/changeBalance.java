@@ -2,6 +2,7 @@ package com.servlet;
 import com.database.DatabaseBean;
 import com.database.UserData;
 import com.database.UserLibData;
+import com.database.sort;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletException;
@@ -26,6 +27,9 @@ public class changeBalance extends HttpServlet {
         HttpSession session=request.getSession(true);
         String payInfo=request.getParameter("pay");
         String buyInfo=request.getParameter("buy");
+        String storeOrderOption=request.getParameter("storeOrder");
+        String search=request.getParameter("search");
+        String keyWord="";
         int UserID=(int)session.getAttribute("UserID");
         DatabaseBean dbb=new DatabaseBean();
         if(payInfo!=null){
@@ -38,6 +42,18 @@ public class changeBalance extends HttpServlet {
             dbb.buyGameByID(UserID,buy);
             response.sendRedirect("store.jsp");
         }
+        if(search!=null){
+            keyWord=request.getParameter("keyWord");
+            if(keyWord.equals("请输入游戏名")) {
+                keyWord="";
+            }
+        }
+        if(storeOrderOption!=null){
+            Vector<UserLibData> uld;
+            uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
+            session.setAttribute("store",uld);
+        }
+        response.sendRedirect("store.jsp");
         this.destroy();
     }
     public void destroy() {

@@ -29,13 +29,13 @@
         <!-- Unnamed (文本框) -->
         <div id="u8" class="ax_default text_field">
             <div id="u8_div" class=""></div>
-            <input style="color: #6d6d6d" id="u8_input" type="text" value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
+            <input style="color: #6d6d6d" id="u8_input" type="text" name="keyWord" value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
         </div>
 
         <div id="u9" class="ax_default label">
             <div id="u9_div" class=""></div>
             <div id="u9_text" class="text ">
-                <input name="librarySearchKeyWord" value="搜索" type="submit" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+                <input name="search" value="搜索" type="submit" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
             </div>
         </div>
 
