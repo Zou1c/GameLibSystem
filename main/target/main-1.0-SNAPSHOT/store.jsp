@@ -141,15 +141,16 @@
           <div class="purButtonContent"> 
             
             <!-- 购买 文字 (矩形) -->
-            <div class="ax_default primary_button purBT">
-              <input type="submit" name="buy" value="<%=res.elementAt(i).getAppID()%>" style="color: transparent;" class="purBT_div"></input>
+            <div>
+              <input type="submit" name="buy" value="<%=res.elementAt(i).getAppID()%>" style="
+              color: transparent;background-image: url(images/store/purchase.png);background-size: cover;width:131px;height:37px;border-radius: 5px;" ></input>
               <div class="text purBT_text">
-                <p><span>&nbsp;&nbsp; &nbsp; 购买</span></p>
+                <p><span>&nbsp;&nbsp; &nbsp; </span></p>
               </div>
             </div>
             
             <!-- 购物车标志 (形状) -->
-            <div class="ax_default icon purBTIcon"> <img class="img purBTIcon_img" src="images/store/u65.svg"/> </div>
+
           </div>
         </div>
       </div>

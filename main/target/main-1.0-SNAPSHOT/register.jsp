@@ -88,10 +88,10 @@
       </div>
 
       <!-- Unnamed (矩形)  -->
-      <div id="u18" class="ax_default primary_button">
-        <div id="u18_img" class="img "><%--"images/login/regen/u9.svg"--%>
-        <input name="check" type="submit" value="true" id="u18_text" class="text "style="color: transparent;border: transparent 0px;background-color: transparent;background-image: url(images/register/regen/u9.svg)">
-          <p style="z-index: 10"><span>注册</span></p>
+      <div id="u18" style="border: transparent 1px;">
+        <div id="u18_img" class="img ">
+        <input name="check" type="submit" value="true" id="u18_text" class="text "style="color: transparent;
+        background:url(images/register/regen/regi.png);border-radius: 5px;background-size: cover;height: 40px">
         </input>
         </div>
       </div>
