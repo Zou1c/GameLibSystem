@@ -28,6 +28,7 @@
 <%!
 Vector<String> orderInfo=new Vector<String>(4);
 Vector<String> downInfo=new Vector<String>(3);
+String libraryKeyWord;
 %>
         <%
             String stateInfo= (String) session.getAttribute("state");
@@ -52,12 +53,15 @@ Vector<String> downInfo=new Vector<String>(3);
             downInfo.addElement(temp.equals("未下载")?" selected":"");
             System.out.println("orderInfo "+orderInfo.toString());
             System.out.println("downInfo "+downInfo.toString());
+            libraryKeyWord=(String)session.getAttribute("libraryKeyWord");
+            if(libraryKeyWord==null)
+                libraryKeyWord="";
         %>
         <!-- Unnamed (文本框) -->
         <div id="u8" class="ax_default text_field">
             <div id="u8_div" class=""></div>
-            <input style="color: #6d6d6d" id="u8_input" type="text" name="keyWord" value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
-        </div>
+            <input style="color: #6d6d6d" id="u8_input" type="text" name="keyWord" value="<%=libraryKeyWord==""?"请输入游戏名":libraryKeyWord%>" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
+        </div><%--value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}"--%>
 
         <div id="u9" class="ax_default label">
             <div id="u9_div" class=""></div>

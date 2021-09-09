@@ -1,5 +1,8 @@
 package com.servlet;
+import com.client.Client;
 import com.database.DatabaseBean;
+import com.database.UserData;
+import com.database.UserLibData;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Vector;
 
 @WebServlet(name = "registerServlet", value = "/registerServlet")
 public class registerServlet extends HttpServlet {
@@ -27,16 +31,16 @@ public class registerServlet extends HttpServlet {
             System.out.println("注册:"+regiName+" "+regiPassword+" "+reCheck);
             String isRename="false";
 
-                if (regiName==""){session.setAttribute("alret","用户名为空");request.getRequestDispatcher("register.jsp").forward(request,response);}
-                else if (regiName==""&&regiPassword==""){session.setAttribute("alret","用户名和密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);}
-                else if (regiName==""&&reCheck==""){session.setAttribute("alret","用户名和确认密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);}
-                else if (regiName==""&&regiPassword==""&&reCheck==""){session.setAttribute ("alret","全为空");request.getRequestDispatcher("register.jsp").forward(request,response);}
-                else if (regiPassword==""&&reCheck==""){session.setAttribute("alret","密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);}
-                else if (regiPassword==""){session.setAttribute("alret","密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);}
-                else if (reCheck==""){session.setAttribute("alret","请确认密码");request.getRequestDispatcher("register.jsp").forward(request,response);}
+                if (regiName==""){session.setAttribute("alret","用户名为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
+                else if (regiName==""&&regiPassword==""){session.setAttribute("alret","用户名和密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
+                else if (regiName==""&&reCheck==""){session.setAttribute("alret","用户名和确认密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
+                else if (regiName==""&&regiPassword==""&&reCheck==""){session.setAttribute ("alret","全为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
+                else if (regiPassword==""&&reCheck==""){session.setAttribute("alret","密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
+                else if (regiPassword==""){session.setAttribute("alret","密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
+                else if (reCheck==""){session.setAttribute("alret","请确认密码");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
             DatabaseBean dbb=new DatabaseBean();
             String info=dbb.register(regiName,regiPassword);
-            System.out.println("info");
+
             if(info.equals("注册失败")){
                 session.setAttribute("alret","注册失败");request.getRequestDispatcher("register.jsp").forward(request,response);
             }
@@ -44,13 +48,18 @@ public class registerServlet extends HttpServlet {
                 session.setAttribute("alret","用户名已存在");request.getRequestDispatcher("register.jsp").forward(request,response);
             }
             else if(info.equals("注册成功")){
-                System.out.println(request);
-                System.out.println("注册成功");
-                request.setAttribute("UserName",regiName);
-                request.setAttribute("Password",regiPassword);
-                System.out.println(request);
-                request.getRequestDispatcher("checkUserLogin").include(request,response);
 
+                System.out.println("注册成功");
+                Vector<UserData> res;
+                res=dbb.selectUserData("select * from user where UserName='"+regiName+"'");
+                session.setAttribute("loginCheck","登录成功");
+                session.setAttribute("name", regiName);
+                System.out.println(res.size());
+                Vector<UserLibData> res2=res.elementAt(0).getUserLibData();
+                session.setAttribute("library",res2);
+
+                session.setAttribute("UserID",res.elementAt(0).getUserID());
+                request.getRequestDispatcher("login.jsp").forward(request,response);
             }
 
         }

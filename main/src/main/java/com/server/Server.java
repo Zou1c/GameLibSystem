@@ -1,5 +1,7 @@
 package com.server;
 
+import com.database.DatabaseBean;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,7 +13,7 @@ public class Server {
 
     private static List<Socket> clients = new ArrayList<>();
 
-    private void start() {
+    public void start() {
         try {
             ServerSocket server = new ServerSocket(5555);
             System.out.println("服务开启，等待客户端连接中...");
@@ -207,6 +209,6 @@ public class Server {
     }
     //-----
     public static void main(String[] args) {
-        new SSS().start();
+        new Server().start();
     }
 }

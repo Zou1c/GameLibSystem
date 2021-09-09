@@ -30,6 +30,7 @@
   <%!
     Vector<UserData> ud;
     Vector<String> orderInfo=new Vector<String>(4);
+    String storeKeyWord;
   %>
   <%
     String temp= (String) session.getAttribute("storeOrderOption");
@@ -43,6 +44,9 @@
     int UserID=(int)session.getAttribute("UserID");
     DatabaseBean dbb=new DatabaseBean();
     ud=dbb.selectUserData("select * from user where UserID="+UserID);
+    storeKeyWord=(String)session.getAttribute("storeKeyWord");
+    if(storeKeyWord==null)
+      storeKeyWord="";
 
   %>
 
@@ -50,14 +54,14 @@
   <!-- Unnamed (文本 框) -->
   <div id="u48" class="ax_default text_field">
     <div id="u48_div" class=""></div>
-    <input style="color: #6d6d6d" id="u48_input" type="text" name="keyWord" value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
+    <input style="color: #6d6d6d" id="u48_input" type="text" name="keyWord" value="<%=storeKeyWord==""?"请输入游戏名":storeKeyWord%>" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
   </div>
 
   <!-- Unnamed (矩形) -->
   <div id="u49" class="ax_default label">
     <div id="u49_div" class=""></div>
     <div id="u49_text" class="text ">
-      <input name="search" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+      <input name="search" value="搜索" type="submit" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
     </div>
   </div>
   
@@ -103,6 +107,7 @@
     res=(Vector<GameData>)session.getAttribute("store");
     if(res!=null)
       count=res.size();
+    else count=0;
     System.out.println("有"+count+"个游戏");
     for (int i=0;i<count;i++){
       int ti=i*105+328;//到顶部的距离

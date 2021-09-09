@@ -23,6 +23,7 @@ public class changeBalance extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
         HttpSession session=request.getSession(true);
         String payInfo=request.getParameter("pay");
@@ -53,12 +54,12 @@ public class changeBalance extends HttpServlet {
             session.setAttribute("library",uld);
             return;
         }
-        if(search!=null){
-            keyWord=request.getParameter("keyWord");
-            if(keyWord.equals("请输入游戏名")) {
-                keyWord="";
-            }
+        keyWord=request.getParameter("keyWord");
+        if(keyWord.equals("请输入游戏名")) {
+            keyWord="";
         }
+        session.setAttribute("storeKeyWord",keyWord);
+        System.out.println("storeKeyWord is "+keyWord);
         if(storeOrderOption!=null){
             Vector<UserLibData> uld;
             uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);

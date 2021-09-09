@@ -3,15 +3,11 @@ package com.database;
 import java.sql.*;
 import java.util.Vector;
 
-import javax.servlet.annotation.WebServlet;
-import javax.xml.registry.infomodel.User;
-
-@WebServlet("/DatabaseBean")
 public class DatabaseBean{
     private Connection con;
     private void getDBCon() {
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-        String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+        String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8";
         String user = "root";
         String password = "224353Y1560x";//将密码改为自己的密码
         try {
@@ -91,7 +87,6 @@ public class DatabaseBean{
         try {
             getDBCon();//与数据库建立连接
             Statement sta = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            System.out.println(sql);
             ResultSet rs = sta.executeQuery(sql);
             if(!rs.next()){
                 return null;}
@@ -170,10 +165,14 @@ public class DatabaseBean{
         if(stateOption==1||orderOption==1||orderOption==2||orderOption==3)sql+=" desc";
         else sql+=" asc";
 
-        System.out.println("sql in UserData is: "+sql);
 
         Vector res=selectUserLibData(sql);
         if(res==null)return null;
+
+        if(orderOption==3){
+
+        }
+
         for(Object i:res){
             UserLibData uld=(UserLibData) i;
             UserLib.addElement(uld);
@@ -195,9 +194,11 @@ public class DatabaseBean{
             sql+=order_append+" asc";
         else
             sql+=order_append+(" desc");
-        System.out.println(sql);
         Vector<GameData> res=selectGameData(sql);
-        if(res==null)return null;
+        System.out.println(sql);
+        if(res==null){
+            return null;
+        }
         return res;
     }
 
@@ -246,25 +247,20 @@ public class DatabaseBean{
 
     public String buyGameByID(int UserID,int AppID){
         String sql="select game.*,userlib.UserID,userlib.Record,userlib.LastPlayed,userlib.IsLocal,userlib.IsFavorite from game natural join userlib natural join user  where UserID="+ UserID+" and AppID="+AppID;
-        System.out.println("sql:\n"+sql);
         Vector<UserLibData> res0=selectUserLibData(sql);
         if(res0!=null) {
-            System.out.println("已拥有此游戏");
             return "已拥有此游戏";
         }
         sql="select * from game where AppID="+AppID;
-        System.out.println(sql);
         Vector<GameData> res=selectGameData(sql);
         if(res==null)
             return "游戏不存在";
-        System.out.println("报错前一行");
         int price=res.elementAt(0).getPrice();//获取游戏价格
         String changeInfo=changeBalanceByID(UserID,-price);
         if(changeInfo.equals("余额不足"))
             return "余额不足，请充值";
         Date time= new java.sql.Date(new java.util.Date().getTime());
         sql="insert into userlib (UserID,AppID,LastPlayed) values ( "+UserID+" , "+AppID+" , '"+time+"' )";
-        System.out.println("buyGame sql: "+sql);
         if(changeData(sql))return "购买成功";
         else
             return "购买失败";

@@ -2,6 +2,7 @@
 
 package com.servlet;
 
+import com.client.Client;
 import com.database.DatabaseBean;
 import com.database.UserData;
 import com.database.UserLibData;
@@ -23,8 +24,9 @@ public class checkUserLogin extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("\nInto checkUserLogin2.java");
-        System.out.println(request);
+
+
+
         String url="login.jsp";
         request.setCharacterEncoding("UTF-8");
         Vector<UserData> res;
@@ -49,7 +51,8 @@ public class checkUserLogin extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request,response);
             return;
         }
-        System.out.println("name: "+UserName+" password: "+Password);
+
+
         DatabaseBean dbb=new DatabaseBean();//替换为客户端的请求
         String login=dbb.login(UserName,Password);
         if(login.equals("用户名错误")){
@@ -58,13 +61,13 @@ public class checkUserLogin extends HttpServlet {
             return;
         }
         else if(login.equals("登录成功")){
+
             res=dbb.selectUserData("select * from user where Username='"+UserName+"'");
+
             session.setAttribute("loginCheck","登录成功");
-            //session.setAttribute("name", UserName);
             session.setAttribute("name", UserName);
             Vector<UserLibData> res2=res.elementAt(0).getUserLibData();
             session.setAttribute("library",res2);
-            System.out.println(res.elementAt(0).UserLibInformation());
             session.setAttribute("UserID",res.elementAt(0).getUserID());
             request.getRequestDispatcher("login.jsp").forward(request,response);
         }

@@ -9,7 +9,7 @@ public class UserData implements Serializable {
     String UserName;
     String Password;
     int Balance;
-    Vector UserLib;
+    Vector UserLib=null;
 
     public UserData(int userID, String userName, String password,int balance) {
         UserID = userID;

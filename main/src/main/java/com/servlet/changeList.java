@@ -75,17 +75,17 @@ public class changeList extends HttpServlet {
             int favo=Integer.parseInt(favoInfo);
             dbb.setFavoriteState(UserID,favo);
         }
-        if(search!=null){
-            keyWord=request.getParameter("keyWord");
-            if(keyWord.equals("请输入游戏名")) {
-                keyWord="";
-            }
+
+        keyWord=request.getParameter("keyWord");
+        if(keyWord.equals("请输入游戏名")) {
+            keyWord="";
         }
+        session.setAttribute("libraryKeyWord",keyWord);
         String stateInfo= (String) session.getAttribute("state");
         if(stateInfo==null)
             stateInfo="所有游戏";
 
-        System.out.println(stateInfo+"\n\n\n");
+
         Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
         uld=dbb.getUserLibData(keyWord,UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
         session.setAttribute("library",uld);

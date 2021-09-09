@@ -43,11 +43,11 @@ public class getGameData extends HttpServlet {
             hasWhere=true;
         }
         DatabaseBean dbb=new DatabaseBean();
-        System.out.println(sql);
+
         res=dbb.selectGameData(sql);
         for(Object i :res){
             GameData gd=(GameData) i;
-            System.out.println(gd.toString());
+
         }
         session.setAttribute("res",res);
         request.getRequestDispatcher("/sqlResult.jsp").forward(request,response);

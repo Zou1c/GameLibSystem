@@ -23,6 +23,8 @@
 <form action="checkUserLogin" method="post">
   <%!String statu="";%>
 
+  <%
+  %>
   <!-- Unnamed (文本框)  -->
   <div id="u0" class="ax_default text_field">
     <div id="u0_div" class=""></div>
@@ -62,13 +64,6 @@
     </div>
   </div>
 
-  <script>
-    function loginWarm(){
-      <%System.out.println("loginWarm:"+(String) session.getAttribute("loginCheck"));%>
-      alert("<%=(String) session.getAttribute("loginCheck")%>");
-    }
-  </script>
-
   <!-- Unnamed (复选框) -->
   <div id="u4" class="ax_default checkbox">
     <label id="u4_input_label" for="u4_input" style="position: absolute; left: 0px;">
@@ -82,11 +77,13 @@
 
 
   <!-- Unnamed (矩形) -->
-  <div id="u5" class="ax_default primary_button" align="center">
-    <img id="u5_img" class="img " src="images/login/u6.svg"/>
-    <input id="u5_text" class="text " style="background: none;font-family: '华文细黑', sans-serif;font-size:18px;font-weight:400;color:#FFFFFF"
+
+    <input style="
+    background-size:cover;background-image: url(images/login/login.png);
+    font-family: '华文细黑', sans-serif;font-size:18px;font-weight:400;color:transparent;
+    left: 390px;top:573px;position: absolute;width: 134px;height: 40px;border-radius: 5px;"
            type="submit" name="login" value="登录" />
-  </div>
+
   </div>
   <div align="center">
     <h1>
@@ -142,13 +139,15 @@
 </div>
 
 
-<div id="u8" class="ax_default primary_button" onclick="location='register.jsp'">
+<div id="u8" class="ax_default primary_button">
   <div id="u8_div" class=""></div>
   <div id="u8_text" class="text ">
-    <p><span>注册</span></p>
+    <p><span></span></p>
   </div>
 </div>
-
+<input type="button"  style="border-radius: 5px;background-size: cover;
+background-image: url(images/login/regiLogin.png);
+left: 555px;top:573px;position: absolute;width: 134px;height: 40px;" onclick="location='register.jsp'">
 </div>
 <script src="resources/scripts/axure/ios.js"></script>
 </body>
