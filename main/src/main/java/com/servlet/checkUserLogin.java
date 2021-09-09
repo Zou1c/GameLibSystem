@@ -33,7 +33,7 @@ public class checkUserLogin extends HttpServlet {
         HttpSession session=request.getSession(true);
         String UserName=request.getParameter("UserName");
         String Password=request.getParameter("Password");
-        if (UserName=="wpy"&&Password=="nene"){request.getRequestDispatcher("index.jsp").forward(request,response);}//root aka su;
+        if (UserName=="wpy"&&Password=="nene"){request.getRequestDispatcher("index.jsp").forward(request,response);}//root aka su 阿卡;
         if(UserName==""&&Password==""){
             System.out.println("用户名和密码为空");
             session.setAttribute("loginCheck","用户名和密码为空");

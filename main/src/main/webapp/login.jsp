@@ -31,7 +31,7 @@
     <input id="u0_input" type="text" name="UserName" class="u0_input"
            value=<%=(String)session.getAttribute("name")==null?"":(String)session.getAttribute("name")%>>
     </input>
-    ><!--账户-->
+    ><!-- 账户-->
   </div>
 
 

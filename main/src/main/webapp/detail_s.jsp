@@ -103,7 +103,7 @@
               </div>
             </div>
 
-            <!-- emoji -->
+            <!-- e m o j i -->
             <%
               String emojiAdd_s="images/detail__2/";
               int rate= (int) (gd.getRate()*100);
