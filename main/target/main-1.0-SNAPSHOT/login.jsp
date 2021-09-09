@@ -9,7 +9,7 @@
   <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
   <link href="data/styles.css" type="text/css" rel="stylesheet"/>
   <link href="files/login/styles.css" type="text/css" rel="stylesheet"/>
-  <script src="data/document.js"></script>a
+  <script src="data/document.js"></script>
   <script src="files/login/data.js"></script>
   <script type="text/javascript">
     $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
@@ -34,7 +34,7 @@
     ><!--账户-->
   </div>
 
-  <!-- Unnamed (矩形) -->
+
   <div id="u7" class="ax_default _一级标题">
     <div id="u7_div" class=""></div>
     <div id="u7_text" class="text ">
@@ -42,13 +42,13 @@
     </div>
   </div>
 
-  <!-- Unnamed (文本框) -->
+
   <div id="u1" class="ax_default text_field">
     <div id="u1_div" class=""></div>
     <input id="u1_input" type="password" value="" name="Password" class="u2_input"/><!--密码-->
   </div>
 
-  <!-- Unnamed (矩形) -->
+
   <div id="u2" class="ax_default label">
     <div id="u2_div" class=""></div>
     <div id="u2_text" class="text ">
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <!-- Unnamed (矩形) -->
+
   <div id="u3" class="ax_default label">
     <div id="u3_div" class=""></div>
     <div id="u3_text" class="text ">
@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <!-- Unnamed (复选框) -->
+
   <div id="u4" class="ax_default checkbox">
     <label id="u4_input_label" for="u4_input" style="position: absolute; left: 0px;">
       <img id="u4_img" class="img " src="images/login/u4.svg"/>
@@ -76,7 +76,7 @@
   </div>
 
 
-  <!-- Unnamed (矩形) -->
+
 
     <input style="
     background-size:cover;background-image: url(images/login/login.png);
@@ -129,7 +129,7 @@
       <%;}%>
     </h1>
   </div>
-</form>>
+</form>
 
 <div id="u6" class="ax_default _图片_">
   <img id="u6_img" class="img " src="images/login/u7.svg"/>

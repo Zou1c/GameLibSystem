@@ -121,7 +121,7 @@
                 emojiAdd_s+="EOSR6.png";
             %>
             <div id="u99" class="ax_default icon">
-              <img id="u99_img" class="img " src="<%=emojiAdd_s%>>"/>
+              <img id="u99_img" class="img " src="<%=emojiAdd_s%>"/>
               <div id="u99_text" class="text " style="display:none; visibility: hidden">
                 <p></p>
               </div>

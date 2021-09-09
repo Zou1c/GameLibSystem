@@ -58,6 +58,18 @@
         <p><span>密码</span></p>
       </div>
     </div>
+    <div id="u16" class="ax_default text_field">
+      <div id="u16_div" class=""></div>
+      <input id="u16_input" name="reCheck" type="password" value="" class="u16_input"/>
+    </div>
+
+    <!-- Unnamed (矩形) -->
+    <div id="u17" class="ax_default label">
+      <div id="u17_div" class=""></div>
+      <div id="u17_text" class="text ">
+        <p><span>确认密码</span></p>
+      </div>
+    </div>
 
     <!-- Unnamed (复选框) -->
     <div id="u13" class="ax_default checkbox">
@@ -87,18 +99,6 @@
     </div>
 
     <!-- Unnamed (文本框) -->
-    <div id="u16" class="ax_default text_field">
-      <div id="u16_div" class=""></div>
-      <input id="u16_input" name="reCheck" type="password" value="" class="u16_input"/>
-    </div>
-
-    <!-- Unnamed (矩形) -->
-    <div id="u17" class="ax_default label">
-      <div id="u17_div" class=""></div>
-      <div id="u17_text" class="text ">
-        <p><span>确认密码</span></p>
-      </div>
-    </div>
     <!-- Unnamed (矩形)  -->
     <div id="u18" style="border: transparent 1px;">
       <div>
