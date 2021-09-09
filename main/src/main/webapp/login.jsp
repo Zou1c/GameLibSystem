@@ -18,20 +18,16 @@
   </script>
 </head>
 <body>
-<%
-%>
+
 <form action="checkUserLogin" method="post">
   <%!String statu="";%>
 
-  <%
-  %>
-  <!-- Unnamed (文本框)  -->
+
   <div id="u0" class="ax_default text_field">
     <div id="u0_div" class=""></div>
     <input id="u0_input" type="text" name="UserName" class="u0_input"
            value=<%=(String)session.getAttribute("name")==null?"":(String)session.getAttribute("name")%>>
-    </input>
-    ><!-- 账户-->
+
   </div>
 
 
@@ -64,20 +60,6 @@
     </div>
   </div>
 
-
-  <div id="u4" class="ax_default checkbox">
-    <label id="u4_input_label" for="u4_input" style="position: absolute; left: 0px;">
-      <img id="u4_img" class="img " src="images/login/u4.svg"/>
-      <div id="u4_text" class="text ">
-        <p><span>在这台电脑上记住</span></p>
-      </div>
-    </label>
-    <input id="u4_input" type="checkbox" value="checkbox"/>
-  </div>
-
-
-
-
     <input style="
     background-size:cover;background-image: url(images/login/login.png);
     font-family: '华文细黑', sans-serif;font-size:18px;font-weight:400;color:transparent;
@@ -89,14 +71,11 @@
     <h1>
       <%
         String statu= (String) session.getAttribute("loginCheck");
-        System.out.println("status="+statu);
-        //System.out.println("UserName in index.jsp is "+(String)session.getAttribute("name"));
         if(statu==null);
         else if(statu.equals("登录成功"))request.getRequestDispatcher("getGameStore").forward(request,response);
         else{
           if (statu.equals("用户名和密码为空")){
       %>
-      <!--Because of unexpected bug-->
       <script type="text/javascript">
         alert("用户名和密码为空");
       </script>
@@ -125,7 +104,6 @@
       <script type="text/javascript">
         alert("密码错误");</script>
       <%}%>
-
       <%;}%>
     </h1>
   </div>

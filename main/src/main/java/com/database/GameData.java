@@ -99,6 +99,9 @@ public class GameData implements Serializable {
                 ", About='" + About + '\'';
     }
 
+    public GameData() {
+    }
+
     public void setName(String name) {
         Name = name;
     }

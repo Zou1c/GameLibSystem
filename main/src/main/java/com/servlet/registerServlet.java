@@ -28,8 +28,6 @@ public class registerServlet extends HttpServlet {
             String regiName=request.getParameter("regiName");
             String regiPassword=request.getParameter("regiPassword");
             String reCheck=request.getParameter("reCheck");
-            System.out.println("注册:"+regiName+" "+regiPassword+" "+reCheck);
-            String isRename="false";
 
                 if (regiName==""){session.setAttribute("alret","用户名为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
                 else if (regiName==""&&regiPassword==""){session.setAttribute("alret","用户名和密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
@@ -48,13 +46,10 @@ public class registerServlet extends HttpServlet {
                 session.setAttribute("alret","用户名已存在");request.getRequestDispatcher("register.jsp").forward(request,response);
             }
             else if(info.equals("注册成功")){
-
-                System.out.println("注册成功");
                 Vector<UserData> res;
                 res=dbb.selectUserData("select * from user where UserName='"+regiName+"'");
                 session.setAttribute("loginCheck","登录成功");
                 session.setAttribute("name", regiName);
-                System.out.println(res.size());
                 Vector<UserLibData> res2=res.elementAt(0).getUserLibData();
                 session.setAttribute("library",res2);
 

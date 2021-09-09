@@ -10,7 +10,10 @@ public class UserLibData implements Serializable {
     Boolean isFavorite;
     GameData gameData;
 
-    public UserLibData(int appID, double record, String lastPlayed, int isLocal, int isFavorite,GameData gd) {
+    public UserLibData() {
+    }
+
+    public UserLibData(int appID, double record, String lastPlayed, int isLocal, int isFavorite, GameData gd) {
         AppID = appID;
         Record = record;
         LastPlayed = lastPlayed;

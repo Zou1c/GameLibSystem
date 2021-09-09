@@ -6,7 +6,6 @@
 <body>
 <%
     session.invalidate();
-    System.out.println("账号已注销");
 %>
 <jsp:forward page="login.jsp"></jsp:forward>
 </body>

@@ -31,19 +31,19 @@
   <%}%>
   <%session.removeAttribute("alret");%>
   <div id="base" class="">
-    <!-- Unnamed (文本框) -->
+
     <div id="u9" class="ax_default text_field">
       <div id="u9_div" class=""></div>
       <input id="u9_input" name="regiName" type="" value="" class="u9_input"/>
     </div>
 
-    <!-- Unnamed (文本框) -->
+
     <div id="u10" class="ax_default text_field">
       <div id="u10_div" class=""></div>
       <input id="u10_input" name="regiPassword" type="password" value="" class="u10_input"/>
     </div>
 
-    <!-- Unnamed (矩形) -->
+
     <div id="u11" class="ax_default label">
       <div id="u11_div" class=""></div>
       <div id="u11_text" class="text ">
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <!-- Unnamed (矩形) -->
+
     <div id="u12" class="ax_default label">
       <div id="u12_div" class=""></div>
       <div id="u12_text" class="text ">
@@ -63,7 +63,7 @@
       <input id="u16_input" name="reCheck" type="password" value="" class="u16_input"/>
     </div>
 
-    <!-- Unnamed (矩形) -->
+
     <div id="u17" class="ax_default label">
       <div id="u17_div" class=""></div>
       <div id="u17_text" class="text ">
@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <!-- Unnamed (复选框) -->
+
     <div id="u13" class="ax_default checkbox">
       <label id="u13_input_label" for="u13_input" style="position: absolute; left: 0px;">
         <img id="u13_img" class="img " src="images/register/u13.svg"/>
@@ -82,15 +82,15 @@
       <input id="u13_input" type="checkbox" value="checkbox"/>
     </div>
 
-    <!-- Unnamed (SVG) -->
+
     <div id="u14" class="ax_default _图片_">
-      <img id="u14_img" class="img " src="images/register/regen/u5.svg"/><%--"images/login/regen/u5.svg"--%>
+      <img id="u14_img" class="img " src="images/register/regen/u5.svg"/>
       <div id="u14_text" class="text " style="display:none; visibility: hidden">
         <p></p>
       </div>
     </div>
 
-    <!-- Unnamed (矩形) -->
+
     <div id="u15" class="ax_default _一级标题">
       <div id="u15_div" class=""></div>
       <div id="u15_text" class="text ">
@@ -98,21 +98,20 @@
       </div>
     </div>
 
-    <!-- Unnamed (文本框) -->
-    <!-- Unnamed (矩形)  -->
+
     <div id="u18" style="border: transparent 1px;">
       <div>
 
       </div>
     </div>
-    <!-- Unnamed (矩形) -->
+
 
     </input>
   </div>
   <input name="check" type="submit" value="true" id="u18_text" class="text "style="color: transparent;
         background:url(images/register/regen/register.png);border-radius: 5px;background-size: cover;width:134px; height:40px;
         position:absolute;left:396px;top:690px;width:134px;">
-  <input type="button" onclick="location='login.jsp'" id="u19"
+  <input type="button" onclick="location='session.jsp'" id="u19"
          style="border-radius: 5px;background-size: cover;background-image: url(images/register/regen/backLogin.png);position:absolute;left:556px;top:690px;width:134px;
   height:40px;">
   </br>

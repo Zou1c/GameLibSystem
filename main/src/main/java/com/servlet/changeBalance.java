@@ -76,7 +76,6 @@ public class changeBalance extends HttpServlet {
         }
         if(uninstall!=null){
             int un=Integer.parseInt(uninstall);
-            System.out.println("un"+un);
             dbb.setDownloadState(UserID,un);
             Vector<UserLibData> uld;
             String stateInfo=(String)session.getAttribute("state");
@@ -93,7 +92,6 @@ public class changeBalance extends HttpServlet {
             keyWord="";
         }
         session.setAttribute("storeKeyWord",keyWord);
-        System.out.println("storeKeyWord is "+keyWord);
         if(storeOrderOption!=null){
             Vector<UserLibData> uld;
             uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);

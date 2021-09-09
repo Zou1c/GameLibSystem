@@ -11,7 +11,11 @@ public class UserData implements Serializable {
     int Balance;
     Vector UserLib=null;
 
-    public UserData(int userID, String userName, String password,int balance) {
+
+    public UserData() {
+    }
+
+    public UserData(int userID, String userName, String password, int balance) {
         UserID = userID;
         UserName = userName;
         Password = password;

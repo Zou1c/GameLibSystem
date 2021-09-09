@@ -35,13 +35,11 @@ public class checkUserLogin extends HttpServlet {
         String Password=request.getParameter("Password");
         if (UserName=="wpy"&&Password=="nene"){request.getRequestDispatcher("index.jsp").forward(request,response);}//root aka su 阿卡;
         if(UserName==""&&Password==""){
-            System.out.println("用户名和密码为空");
             session.setAttribute("loginCheck","用户名和密码为空");
             request.getRequestDispatcher("login.jsp").forward(request,response);
             return;
         }
         else if(UserName==""){
-            System.out.println("用户名为空");
             session.setAttribute("loginCheck","用户名为空");
             request.getRequestDispatcher("login.jsp").forward(request,response);
             return;
@@ -54,7 +52,7 @@ public class checkUserLogin extends HttpServlet {
         }
 
 
-        DatabaseBean dbb=new DatabaseBean();//替换为客户端的请求
+        DatabaseBean dbb=new DatabaseBean();
         String login=dbb.login(UserName,Password);
         if(login.equals("用户名错误")){
             session.setAttribute("loginCheck","用户名错误");

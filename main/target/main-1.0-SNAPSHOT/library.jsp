@@ -3,7 +3,7 @@
 <%@ page import="com.database.UserData" %>
 <%@ page import="com.database.UserLibData" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%--@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,8 +51,6 @@ String libraryKeyWord;
             downInfo.addElement(temp.equals("全部")?" selected":"");
             downInfo.addElement(temp.equals("已下载")?" selected":"");
             downInfo.addElement(temp.equals("未下载")?" selected":"");
-            System.out.println("orderInfo "+orderInfo.toString());
-            System.out.println("downInfo "+downInfo.toString());
             libraryKeyWord=(String)session.getAttribute("libraryKeyWord");
             if(libraryKeyWord==null)
                 libraryKeyWord="";
@@ -61,7 +59,7 @@ String libraryKeyWord;
         <div id="u8" class="ax_default text_field">
             <div id="u8_div" class=""></div>
             <input style="color: #6d6d6d" id="u8_input" type="text" name="keyWord" value="<%=libraryKeyWord==""?"请输入游戏名":libraryKeyWord%>" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
-        </div><%--value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}"--%>
+        </div>
 
         <div id="u9" class="ax_default label">
             <div id="u9_div" class=""></div>
@@ -77,28 +75,20 @@ String libraryKeyWord;
             </div>
         </div>
         <%String Choose="background-color: rgba(65, 123, 156, 1);";String unChoose ="background-color: rgba(15, 15, 25, 1);";
-            String s1;String s2;String s3;String click;
-            s1=unChoose ;s3= unChoose;s2=Choose;
+            String s1=null;String s2=null;String s3=null;String click;
             click=(String)session.getAttribute("id");
-            session.removeAttribute("id");
-            System.out.println("click="+click);
+            if(click==null){
+                s1=unChoose ;s3= unChoose;s2=Choose;
+            }
             if (click!=null){
                 if (click.equals("u1")){s1=Choose;s2=unChoose;s3= unChoose;}
                 if (click.equals("u2")){s2=Choose;s1=unChoose;s3= unChoose;}
                 if (click.equals("u3")){s3=Choose;s1=unChoose;s2= unChoose;}
-                System.out.println("s1="+s1);
-                System.out.println("s2="+s2);
-                System.out.println("s3="+s3);
             }
             else {
                 s1=unChoose;s2=Choose;s3=unChoose;
             }
         %>
-        <script type="javascript">
-            function getId(obj) {
-                sessionStorage.setItem("id",this.id);
-            }
-        </script>
         <div id="u11" class="ax_default button">
             <div id="u11_div" class="" style="<%=s1%>"></div>
             <div id="u11_text" class="text ">
@@ -119,7 +109,7 @@ String libraryKeyWord;
                 <input type="submit" name="u3" value="收藏"style="border:transparent;background: transparent;color:#ffffff;font-family: '华文细黑', sans-serif;"><span></span></input>
             </div>
         </div>
-        <!-- Unnamed (矩形) -->
+
         <div id="u14" class="ax_default box_1">
             <div id="u14_div" class=""></div>
             <div id="u14_text" class="text " style="display:none; visibility: hidden">
@@ -128,8 +118,8 @@ String libraryKeyWord;
         </div>
 
 
-        <!-- Unnamed (下拉列表) -->
-        <div id="u15" class="ax_default droplist"><!--复选框1-->
+
+        <div id="u15" class="ax_default droplist">
             <div id="u15_div" class=""></div>
             <select id="u15_input" name="libraryOrder" class="u15_input" onchange="submitForm();">
                 <option class="u15_input_option" value="游戏名称" <%=orderInfo.elementAt(0)%>>游戏名称</option>
@@ -141,7 +131,7 @@ String libraryKeyWord;
 
 
 
-        <!-- Unnamed (矩形) -->
+
         <div id="u28" class="ax_default label">
             <div id="u28_div" class=""></div>
             <div id="u28_text" class="text ">
@@ -149,7 +139,7 @@ String libraryKeyWord;
             </div>
         </div>
 
-        <!-- Unnamed (下拉列表) -->
+
         <div id="u29" class="ax_default droplist">
             <div id="u29_div" class=""></div>
             <select id="u29_input" name="libraryDownload" class="u29_input" onchange="submitForm();">
@@ -180,21 +170,15 @@ String libraryKeyWord;
             </div>
         </div>
 
-
         <div id="u38" class="ax_default icon"> <img onclick="location='session.jsp'" id="u38_img" class="img " src="images/library/u38.svg"/>
             <div id="u38_text" class="text " style="display:none; visibility: hidden">
                 <p></p>
             </div>
         </div>
 
-
         <div id="u39" class="ax_default">
             <div id="u39_state0" class="panel_state" data-label="State1" style="">
                 <div id="u39_state0_content" class="panel_state_content">
-
-                    
-
-
                 </div>
             </div>
         </div>
@@ -209,9 +193,8 @@ String libraryKeyWord;
             if(res!=null)
                 count=res.size();
             else count=0;
-            System.out.println("有"+count+"个游戏");
             for (int i=0;i<count;i++){
-                int ti=i*105+328;//到顶部的距离
+                int ti=i*105+328;
         %>
         <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
             <!-- 游戏名 -->
@@ -221,10 +204,10 @@ String libraryKeyWord;
 
             <!-- 简短信息 -->
             <div class="des">
-                <p><span><%=res.elementAt(i).getRecord()%> 小时 / <%=res.elementAt(i).getGameData().getSize()%> / <%=(res.elementAt(i).getGameData().getRate2())%></span></p>
+                <p><span><%=res.elementAt(i).getRecord()%> 小时 / <%=res.elementAt(i).getGameData().getSize()%> / <%=(res.elementAt(i).getGameData().getRate2())+"好评率"%></span></p>
             </div>
             <% if(res.elementAt(i).getFavorite()){
-                System.out.println(res.elementAt(i).getFavorite());
+
             %>
             <input type="submit" name="favorite" class="fav" value="<%=res.elementAt(i).getGameData().getAppID()%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u21.svg)"><%--喜欢与否的星号 u20未选中 u21选中 --%>
             <%}
@@ -232,29 +215,27 @@ String libraryKeyWord;
             <input type="submit" name="favorite" class="fav" value="<%=res.elementAt(i).getGameData().getAppID()%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u20.svg)">
             <%}
             %>
-            <div class="detail"><%--改了格式会乱倒起飞--%>
+            <div class="detail">
                 <div > <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/particulars.png);background-size: cover;
                 color: transparent;border-radius: 5px;" name="particulars"
-                              onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"  value="true"/><%--真正显示详情信息的地方--%>
-                    <div class="text detButton_text"><%--改了格式会乱倒起飞--%>
-                        <p><span>&nbsp;&nbsp; &nbsp;</span></p><%--改了格式会乱倒起飞--%>
+                              onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"  value="true"/>
+                    <div class="text detButton_text">
+                        <p><span>&nbsp;&nbsp; &nbsp;</span></p>
                     </div>
                 </div>
 
-                <!-- 详细信息图标 (形状) -->
-                <div class="ax_default icon detIcon"> <img class="detIcon_img" src="images/library/lu.png"/> </div><%--麻了搞个透明图层--%>
             </div>
 
             <!-- 下载 (动态面板) -->
             <%if(res.elementAt(i).getLocal()){%>
             <div class="download">
                 <div> <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/startGame.png);
-                border-radius: 5px;background-size: cover" name="startGame"/><%--真正显示下载的地方--%>
-                    <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
-                        <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
+                border-radius: 5px;background-size: cover" name="startGame"/><%--真正显示开始游戏的地方--%>
+                    <div class="text .dlButton_text">
+                        <p><span>&nbsp;&nbsp;</span></p>
                     </div>
                 </div>
-                <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div><%--改了格式会乱倒起飞--%>
+                <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div>
             </div>
             <%}
             else{
@@ -263,22 +244,22 @@ String libraryKeyWord;
                 <div> <input type="submit" value="<%=res.elementAt(i).getGameData().getAppID()%>"  style="
                 color:transparent; left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);
                 border-radius: 5px;background-size: cover;" name="download"/><%--真正显示下载的地方--%>
-                    <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
-                        <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
+                    <div class="text .dlButton_text">
+                        <p><span>&nbsp;&nbsp;</span></p>
                     </div>
                 </div>
-                <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div><%--改了格式会乱倒起飞--%>
+                <div class="ax_default icon dlIcon"> <img url="images/library/u50.svg"/> </div>
             </div>
             <%
                 }
             %>
-            <!-- Header (图片 ) -->
+
             <div class="ax_default _图片_ header"> <img class="img header_img" src="<%=res.elementAt(i).getGameData().getHeader()%>"/> </div>
         </div>
 
         <%}%>
 
-        <!-- Unnamed (矩形) -->
+
         <div id="u43" class="ax_default label">
             <div id="u43_div" class=""></div>
             <div onclick="location='store.jsp'" id="u43_text" class="text ">
@@ -286,7 +267,7 @@ String libraryKeyWord;
             </div>
         </div>
 
-        <!-- Unnamed (形状) -->
+
         <div id="u46" class="ax_default icon">
             <img onclick="location='store.jsp'" id="u46_img" class="img " src="images/library/u46.svg"/>
             <div id="u46_text" class="text " style="display:none; visibility: hidden">
@@ -294,7 +275,7 @@ String libraryKeyWord;
             </div>
         </div>
 
-        <!-- Unnamed (矩形) -->
+
         <div id="u47" class="ax_default _一级标题">
             <div id="u47_div" class=""></div>
             <div id="u47_text" class="text ">
