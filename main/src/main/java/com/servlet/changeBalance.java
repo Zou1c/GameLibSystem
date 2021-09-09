@@ -43,7 +43,11 @@ public class changeBalance extends HttpServlet {
         }
         if(buyInfo!=null){
             int buy=Integer.parseInt(buyInfo);
-            dbb.buyGameByID(UserID,buy);
+            String info=dbb.buyGameByID(UserID,buy);
+            if(info.equals("余额不足，请充值")){
+                response.sendRedirect("payment.jsp");
+                return;
+            }
             Vector<UserLibData> uld;
             uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
             session.setAttribute("store",uld);
