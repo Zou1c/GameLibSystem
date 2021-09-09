@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 public class sort {
-    public static int getSortValue(String sortInfo){
+    public static int getOrderValue(String sortInfo){
         int res;
         switch (sortInfo){
             case "游戏名称":res=0;break;
@@ -25,10 +25,20 @@ public class sort {
     public static int getDownloadOptionValue(String Info){
         int res;
         switch (Info){
-            case "全部":res=0;break;
+            case "未下载":res=0;break;
             case "已下载":res=1;break;
-            case "未下载":res=2;break;
-            default:res=0;break;
+            case "全部":res=2;break;
+            default:res=2;break;
+        }
+        return res;
+    }
+    public static int getStateOptionValue(String Info){
+        int res;
+        switch (Info){
+            case "最近":res=1;break;
+            case "所有游戏":res=2;break;
+            case "收藏":res=3;break;
+            default:res=2;break;
         }
         return res;
     }

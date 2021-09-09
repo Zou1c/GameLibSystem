@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+<%@ page import="com.database.DatabaseBean" %>
+<%@ page import="com.database.sort" %>
+<%@ page import="com.database.UserData" %>
 <%@ page import="com.database.UserLibData" %>
 <%@ page import="java.util.Vector" %>
 <%@ page import="com.database.GameData" %>
@@ -21,19 +24,40 @@
     </script>
 </head>
 <body>
-<div id="base" class=""> 
-  
-  <!-- Unnamed (文本框) -->
+<form action="changeBalance" method="post" id="storeForm">
+<div id="base" class="">
+
+  <%!
+    Vector<UserData> ud;
+    Vector<String> orderInfo=new Vector<String>(4);
+  %>
+  <%
+    String temp= (String) session.getAttribute("storeOrderOption");
+    if(temp==null)temp="";
+    orderInfo.clear();
+    orderInfo.addElement(temp.equals("最近热门")?" selected":"");
+    orderInfo.addElement(temp.equals("发行日期")?" selected":"");
+    orderInfo.addElement(temp.equals("最低价格")?" selected":"");
+    orderInfo.addElement(temp.equals("用户评分")?" selected":"");
+
+    int UserID=(int)session.getAttribute("UserID");
+    DatabaseBean dbb=new DatabaseBean();
+    ud=dbb.selectUserData("select * from user where UserID="+UserID);
+
+  %>
+
+
+  <!-- Unnamed (文本 框) -->
   <div id="u48" class="ax_default text_field">
     <div id="u48_div" class=""></div>
-    <input style="color: #6d6d6d" id="u48_input" type="text"  value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
+    <input style="color: #6d6d6d" id="u48_input" type="text" name="keyWord" value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
   </div>
 
   <!-- Unnamed (矩形) -->
   <div id="u49" class="ax_default label">
     <div id="u49_div" class=""></div>
     <div id="u49_text" class="text ">
-      <input name="Lsearch" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+      <input name="search" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
     </div>
   </div>
   
@@ -56,13 +80,19 @@
   <!-- Unnamed (下拉列表) -->
   <div id="u52" class="ax_default droplist">
     <div id="u52_div" class=""></div>
-    <select id="u52_input" class="u52_input">
-      <option class="u52_input_option" value="最近热门">最近热门</option>
-      <option class="u52_input_option" value="发行日期">发行日期</option>
-      <option class="u52_input_option" value="最低价格">最低价格</option>
-      <option class="u52_input_option" value="用户评分">用户评分</option>
+    <select id="u52_input" class="u52_input" name="storeOrder" onchange="submitForm();">
+      <option class="u52_input_option" value="最近热门" <%=orderInfo.elementAt(0)%>>最近热门</option>
+      <option class="u52_input_option" value="发行日期" <%=orderInfo.elementAt(1)%>>发行日期</option>
+      <option class="u52_input_option" value="最低价格" <%=orderInfo.elementAt(2)%>>最低价格</option>
+      <option class="u52_input_option" value="用户评分" <%=orderInfo.elementAt(3)%>>用户评分</option>
     </select>
   </div>
+
+  <script type="text/javascript">
+    function submitForm() {
+      $("#storeForm").submit();
+    }
+  </script>
 
   <%!
     int count=0;
@@ -77,7 +107,7 @@
     for (int i=0;i<count;i++){
       int ti=i*105+328;//到顶部的距离
   %>
-  <!-- Apex Legends (动态面板) -->
+
   <div style="top:<%=ti%>px;border-width: 0px;position: absolute;left: 118px;width: 845px;  height: 99px;  background-color: rgba(22, 32, 45, 1);">
     <!-- 背景 (矩形) -->
     <div class="background"></div>
@@ -120,15 +150,16 @@
           <div class="purButtonContent"> 
             
             <!-- 购买 文字 (矩形) -->
-            <div class="ax_default primary_button purBT">
-              <div class="purBT_div"></div>
+            <div>
+              <input type="submit" name="buy" value="<%=res.elementAt(i).getAppID()%>" style="
+              color: transparent;background-image: url(images/store/purchase.png);background-size: cover;width:131px;height:37px;border-radius: 5px;" ></input>
               <div class="text purBT_text">
-                <p><span>&nbsp;&nbsp; &nbsp; 购买</span></p>
+                <p><span>&nbsp;&nbsp; &nbsp; </span></p>
               </div>
             </div>
             
             <!-- 购物车标志 (形状) -->
-            <div class="ax_default icon purBTIcon"> <img class="img purBTIcon_img" src="images/store/u65.svg"/> </div>
+
           </div>
         </div>
       </div>
@@ -192,7 +223,7 @@
       <div id="u73" class="ax_default label">
         <div id="u73_div" class=""></div>
         <div id="u73_text" class="text ">
-          <p><span>钱包余额：￥10</span></p>
+          <p><span><%="钱包余额：￥"+ud.elementAt(0).getBalance()%></span></p>
         </div>
       </div>
 	
@@ -205,5 +236,6 @@
       </div>
 </div>
 <script src="resources/scripts/axure/ios.js"></script>
+</form>
 </body>
 </html>

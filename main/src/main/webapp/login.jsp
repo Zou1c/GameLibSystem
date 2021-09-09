@@ -23,7 +23,9 @@
 <form action="checkUserLogin" method="post">
   <%!String statu="";%>
 
-  <!-- Unnamed (文本框) -->
+  <%
+  %>
+  <!-- Unnamed (文本框)  -->
   <div id="u0" class="ax_default text_field">
     <div id="u0_div" class=""></div>
     <input id="u0_input" type="text" name="UserName" class="u0_input"

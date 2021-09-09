@@ -25,17 +25,44 @@
 <body>
 <form action="changeList" method="post" id="libraryForm">
     <div id="base" class="">
+<%!
+Vector<String> orderInfo=new Vector<String>(4);
+Vector<String> downInfo=new Vector<String>(3);
+%>
+        <%
+            String stateInfo= (String) session.getAttribute("state");
+            String libraryDownloadOption=(String) session.getAttribute("libraryDownloadOption");
+            String libraryOrderOption=(String) session.getAttribute("libraryOrderOption");
+            if(stateInfo==null)session.setAttribute("state","所有游戏");
+            if(libraryDownloadOption==null)session.setAttribute("libraryDownloadOption","全部");
+            if(libraryOrderOption==null)session.setAttribute("libraryOrderOption","游戏名称");
 
+            String temp= (String) session.getAttribute("libraryOrderOption");
+            if(temp==null)temp="";
+            orderInfo.clear();
+            downInfo.clear();
+            orderInfo.addElement(temp.equals("游戏名称")?" selected":"");
+            orderInfo.addElement(temp.equals("游戏时间")?" selected":"");
+            orderInfo.addElement(temp.equals("磁盘空间")?" selected":"");
+            orderInfo.addElement(temp.equals("用户评分")?" selected":"");
+            temp=(String) session.getAttribute("libraryDownloadOption");
+            if(temp==null)temp="";
+            downInfo.addElement(temp.equals("全部")?" selected":"");
+            downInfo.addElement(temp.equals("已下载")?" selected":"");
+            downInfo.addElement(temp.equals("未下载")?" selected":"");
+            System.out.println("orderInfo "+orderInfo.toString());
+            System.out.println("downInfo "+downInfo.toString());
+        %>
         <!-- Unnamed (文本框) -->
         <div id="u8" class="ax_default text_field">
             <div id="u8_div" class=""></div>
-            <input style="color: #6d6d6d" id="u8_input" type="text" value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
+            <input style="color: #6d6d6d" id="u8_input" type="text" name="keyWord" value="请输入游戏名" onfocus="this.value='';"   οnblur="if (this.value == '') {this.value = '请输入游戏名';}" class="u8_input"/>
         </div>
 
         <div id="u9" class="ax_default label">
             <div id="u9_div" class=""></div>
             <div id="u9_text" class="text ">
-                <input name="librarySearchKeyWord" value="搜索" type="button" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+                <input name="search" value="搜索" type="submit" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
             </div>
         </div>
 
@@ -101,10 +128,10 @@
         <div id="u15" class="ax_default droplist"><!--复选框1-->
             <div id="u15_div" class=""></div>
             <select id="u15_input" name="libraryOrder" class="u15_input" onchange="submitForm();">
-                <option class="u15_input_option" value="游戏名称">游戏名称</option>
-                <option class="u15_input_option" value="游戏时间">游戏时间</option>
-                <option class="u15_input_option" value="磁盘空间">磁盘空间</option>
-                <option class="u15_input_option" value="用户评分">用户评分</option>
+                <option class="u15_input_option" value="游戏名称" <%=orderInfo.elementAt(0)%>>游戏名称</option>
+                <option class="u15_input_option" value="游戏时间" <%=orderInfo.elementAt(1)%>>游戏时间</option>
+                <option class="u15_input_option" value="磁盘空间" <%=orderInfo.elementAt(2)%>>磁盘空间</option>
+                <option class="u15_input_option" value="用户评分" <%=orderInfo.elementAt(3)%>>用户评分</option>
             </select>
         </div>
 
@@ -122,9 +149,9 @@
         <div id="u29" class="ax_default droplist">
             <div id="u29_div" class=""></div>
             <select id="u29_input" name="libraryDownload" class="u29_input" onchange="submitForm();">
-                <option class="u29_input_option" value="全部">全部</option>
-                <option class="u29_input_option" value="已下载">已下载</option>
-                <option class="u29_input_option" value="未下载">未下载</option>
+                <option class="u29_input_option" value="全部"   <%=downInfo.elementAt(0)%>>全部</option>
+                <option class="u29_input_option" value="已下载" <%=downInfo.elementAt(1)%>>已下载</option>
+                <option class="u29_input_option" value="未下载" <%=downInfo.elementAt(2)%>>未下载</option>
             </select>
         </div>
 
@@ -206,10 +233,10 @@
             <% if(res.elementAt(i).getFavorite()){
                 System.out.println(res.elementAt(i).getFavorite());
             %>
-            <input type="submit" name="fav" class="fav" value="true<%=i%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u21.svg)"><%--喜欢与否的星号 u20未选中 u21选中 --%>
+            <input type="submit" name="favorite" class="fav" value="<%=res.elementAt(i).getGameData().getAppID()%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u21.svg)"><%--喜欢与否的星号 u20未选中 u21选中 --%>
             <%}
             else{%>
-            <input type="submit" name="fav" class="fav" value="fals<%=i%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u20.svg)">
+            <input type="submit" name="favorite" class="fav" value="<%=res.elementAt(i).getGameData().getAppID()%>" style="color: transparent;border: transparent;background-color: transparent;background-image: url(images/library/u20.svg)">
             <%}
             %>
             <div class="detail"><%--改了格式会乱倒起飞--%>
@@ -237,7 +264,7 @@
             else{
             %>
             <div class="download">
-                <div> <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);border-radius: 5px;border: 0px;" name="download"/><%--真正显示下载的地方--%>
+                <div> <input type="submit" value="<%=res.elementAt(i).getGameData().getAppID()%>"  style="color:transparent; left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);border-radius: 5px;border: 0px;" name="download"/><%--真正显示下载的地方--%>
                     <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
                         <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
                     </div>

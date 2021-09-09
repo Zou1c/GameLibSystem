@@ -28,7 +28,7 @@ public class getGameStore extends HttpServlet {
         int UserID= (int) session.getAttribute("UserID");
         String sortOption= (String) session.getAttribute("sortOption2");
         DatabaseBean dbb=new DatabaseBean();
-        res=dbb.getUserStoreData("",UserID, sort.getSortValue("最近热门"),true);
+        res=dbb.getUserStoreData("",UserID, sort.getOrderValue("最近热门"),true);
         session.setAttribute("store",res);
         session.setAttribute("libraryU2","u2");
         session.setAttribute("id","u2");

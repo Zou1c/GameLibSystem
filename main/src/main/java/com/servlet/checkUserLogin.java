@@ -24,6 +24,7 @@ public class checkUserLogin extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("\nInto checkUserLogin2.java");
+        System.out.println(request);
         String url="login.jsp";
         request.setCharacterEncoding("UTF-8");
         Vector<UserData> res;
@@ -48,7 +49,7 @@ public class checkUserLogin extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request,response);
             return;
         }
-
+        System.out.println("name: "+UserName+" password: "+Password);
         DatabaseBean dbb=new DatabaseBean();//替换为客户端的请求
         String login=dbb.login(UserName,Password);
         if(login.equals("用户名错误")){
