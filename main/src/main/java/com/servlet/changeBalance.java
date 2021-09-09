@@ -45,6 +45,12 @@ public class changeBalance extends HttpServlet {
             uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
             session.setAttribute("store",uld);
             response.sendRedirect("store.jsp");
+            String stateInfo= (String) session.getAttribute("state");
+            String libraryDownloadOption=(String) session.getAttribute("libraryDownloadOption");
+            String libraryOrderOption=(String) session.getAttribute("libraryOrderOption");
+            Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
+            uld=dbb.getUserLibData("",UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
+            session.setAttribute("library",uld);
             return;
         }
         if(search!=null){

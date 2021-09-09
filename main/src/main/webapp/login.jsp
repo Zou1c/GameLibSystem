@@ -23,6 +23,8 @@
 <form action="checkUserLogin" method="post">
   <%!String statu="";%>
 
+  <%
+  %>
   <!-- Unnamed (文本框)  -->
   <div id="u0" class="ax_default text_field">
     <div id="u0_div" class=""></div>

@@ -30,6 +30,13 @@ Vector<String> orderInfo=new Vector<String>(4);
 Vector<String> downInfo=new Vector<String>(3);
 %>
         <%
+            String stateInfo= (String) session.getAttribute("state");
+            String libraryDownloadOption=(String) session.getAttribute("libraryDownloadOption");
+            String libraryOrderOption=(String) session.getAttribute("libraryOrderOption");
+            if(stateInfo==null)session.setAttribute("state","所有游戏");
+            if(libraryDownloadOption==null)session.setAttribute("libraryDownloadOption","全部");
+            if(libraryOrderOption==null)session.setAttribute("libraryOrderOption","游戏名称");
+
             String temp= (String) session.getAttribute("libraryOrderOption");
             if(temp==null)temp="";
             orderInfo.clear();
