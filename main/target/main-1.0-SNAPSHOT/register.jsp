@@ -101,20 +101,20 @@
     </div>
     <!-- Unnamed (矩形)  -->
     <div id="u18" style="border: transparent 1px;">
-      <div id="u18_img" class="img ">
-        <input name="check" type="submit" value="true" id="u18_text" class="text "style="color: transparent;
-        background:url(images/register/regen/regi.png);border-radius: 5px;background-size: cover;height: 40px;">
-        </input>
+      <div>
+
       </div>
     </div>
     <!-- Unnamed (矩形) -->
-    <div onclick="location='login.jsp'" id="u19" class="ax_default primary_button">
-      <div id="u19_div" class=""></div>
-      <div id="u19_text" class="text ">
-        <p><span >返回登录</span></p>
-      </div>
-    </div>
+
+    </input>
   </div>
+  <input name="check" type="submit" value="true" id="u18_text" class="text "style="color: transparent;
+        background:url(images/register/regen/register.png);border-radius: 5px;background-size: cover;width:134px; height:40px;
+        position:absolute;left:396px;top:690px;width:134px;">
+  <input type="button" onclick="location='login.jsp'" id="u19"
+         style="border-radius: 5px;background-size: cover;background-image: url(images/register/regen/backLogin.png);position:absolute;left:556px;top:690px;width:134px;
+  height:40px;">
   </br>
   </br>
   <script src="resources/scripts/axure/ios.js"></script>

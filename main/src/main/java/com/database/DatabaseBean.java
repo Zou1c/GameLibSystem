@@ -9,7 +9,7 @@ public class DatabaseBean{
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8";
         String user = "root";
-        String password = "224353Y1560x";//将密码改为自己的密码
+        String password = "239080";//将密码改为自己的密码
         try {
             Class.forName(JDBC_DRIVER);
             con = DriverManager.getConnection(DB_URL, user, password);
@@ -265,6 +265,19 @@ public class DatabaseBean{
         else
             return "购买失败";
     }
+
+    public String giveMoneyBack(int UserID,int AppID){
+        String sql="select * from game where AppID="+AppID;
+        Vector<GameData> res=selectGameData(sql);
+        if(res==null)
+            return "游戏不存在";
+        int price=res.elementAt(0).getPrice();//获取游戏价格
+        changeBalanceByID(UserID,price);
+        sql="delete from userlib where UserID="+UserID+" and AppID="+AppID;
+        changeData(sql);
+        return "成功退款";
+    }
+
 
     public String changeBalanceByID(int UserID,int Money){
         if(Money<0) {//Money<0说明行为是购买，需要判断用户余额是否足够

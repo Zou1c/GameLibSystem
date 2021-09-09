@@ -66,7 +66,7 @@ String libraryKeyWord;
         <div id="u9" class="ax_default label">
             <div id="u9_div" class=""></div>
             <div id="u9_text" class="text ">
-                <input name="search" value="搜索" type="submit" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+                <input name="search" value="搜索" type="submit" style="border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
             </div>
         </div>
 
@@ -192,20 +192,9 @@ String libraryKeyWord;
             <div id="u39_state0" class="panel_state" data-label="State1" style="">
                 <div id="u39_state0_content" class="panel_state_content">
 
-
-                    <div id="u40" class="ax_default box_2">
-                        <div id="u40_div" class=""></div>
-                        <div id="u40_text" class="text " style="display:none; visibility: hidden">
-                            <p></p>
-                        </div>
-                    </div>
+                    
 
 
-                    <div id="u41" class="ax_default icon"> <img id="u41_img" class="img " src="images/library/u41.svg"/>
-                        <div id="u41_text" class="text " style="display:none; visibility: hidden">
-                            <p></p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -244,7 +233,9 @@ String libraryKeyWord;
             <%}
             %>
             <div class="detail"><%--改了格式会乱倒起飞--%>
-                <div > <img style="left:0px;top:0px;width: 131px;height: 37px;" name="particulars" onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"  value="true" src="images/library/particulars.png"/><%--真正显示详情信息的地方--%>
+                <div > <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/particulars.png);background-size: cover;
+                color: transparent;border-radius: 5px;" name="particulars"
+                              onclick="location='detail.jsp?id=<%=res.elementAt(i).getGameData().getAppID()%>'"  value="true"/><%--真正显示详情信息的地方--%>
                     <div class="text detButton_text"><%--改了格式会乱倒起飞--%>
                         <p><span>&nbsp;&nbsp; &nbsp;</span></p><%--改了格式会乱倒起飞--%>
                     </div>
@@ -257,7 +248,8 @@ String libraryKeyWord;
             <!-- 下载 (动态面板) -->
             <%if(res.elementAt(i).getLocal()){%>
             <div class="download">
-                <div> <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/startGame.png);border:0px;border-radius: 5px;" name="startGame"/><%--真正显示下载的地方--%>
+                <div> <input type="button" style="left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/startGame.png);
+                border-radius: 5px;background-size: cover" name="startGame"/><%--真正显示下载的地方--%>
                     <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
                         <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
                     </div>
@@ -268,7 +260,9 @@ String libraryKeyWord;
             else{
             %>
             <div class="download">
-                <div> <input type="submit" value="<%=res.elementAt(i).getGameData().getAppID()%>"  style="color:transparent; left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);border-radius: 5px;border: 0px;" name="download"/><%--真正显示下载的地方--%>
+                <div> <input type="submit" value="<%=res.elementAt(i).getGameData().getAppID()%>"  style="
+                color:transparent; left:0px;top:0px;width: 131px;height: 37px;background-image: url(images/library/downLoad.png);
+                border-radius: 5px;background-size: cover;" name="download"/><%--真正显示下载的地方--%>
                     <div class="text .dlButton_text"><%--改了格式会乱倒起飞--%>
                         <p><span>&nbsp;&nbsp;</span></p><%--改了格式会乱倒起飞--%>
                     </div>

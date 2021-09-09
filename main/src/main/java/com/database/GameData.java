@@ -186,7 +186,8 @@ public class GameData implements Serializable {
 
 
     public String getRate2(){
-        BigDecimal bd = new BigDecimal(Rate*100);
+        double r=(double)getPositiveReviews()/(getPositiveReviews()+getNegativeReviews());
+        BigDecimal bd = new BigDecimal(r*100);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         double res = bd.doubleValue();
         return ""+res+"%";

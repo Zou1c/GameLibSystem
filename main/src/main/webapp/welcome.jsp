@@ -72,12 +72,9 @@
       </div>
 
       <!-- Unnamed (矩形) -->
-      <div onclick="location='login.jsp'" id="u12" class="ax_default primary_button">
-        <div onclick="location='login.jsp'" id="u12_div" class=""></div>
-        <div onclick="location='login.jsp'" id="u12_text" class="text ">
-          <p onclick="location='login.jsp'"><span>立即加入</span></p>
-        </div>
-      </div>
+      <input type="button" onclick="location='login.jsp'" style="position:absolute;left:370px;top:489px;width:340px;
+      height:80px;background-image: url(images/index/welcome.png);background-size: cover;border-radius: 5px;">
+      </input>
 
       <!-- Unnamed (动态面板) -->
       <div id="u13" class="ax_default">
@@ -224,7 +221,7 @@
             <div id="u31" class="ax_default _二级标题">
               <div id="u31_div" class=""></div>
               <div id="u31_text" class="text ">
-                <p><span>我们现已正式推出微信支付功能，仅需扫描我的收款码，就能快速充值您的钱包</span></p>
+                <p><span>我们现已正式推出线上支付功能，仅需扫描收款码，就能快速充值您的钱包</span></p>
               </div>
             </div>
 

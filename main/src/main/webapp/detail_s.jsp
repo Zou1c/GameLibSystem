@@ -6,6 +6,7 @@
 <html>
   <head>
     <title>Detail #2</title>
+    <meta name="referrer" content="never">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
@@ -103,8 +104,24 @@
             </div>
 
             <!-- emoji -->
+            <%
+              String emojiAdd_s="images/detail__2/";
+              int rate= (int) (gd.getRate()*100);
+              if(rate>95)
+                emojiAdd_s+="a1.png";
+              else if(rate>80)
+                emojiAdd_s+="A7S2.png";
+              else if (rate>70)
+                emojiAdd_s+="A7S3.png";
+              else if (rate>60)
+                emojiAdd_s+="A7M4.png";
+              else if (rate>40)
+                emojiAdd_s+="EOSR5.png";
+              else
+                emojiAdd_s+="EOSR6.png";
+            %>
             <div id="u99" class="ax_default icon">
-              <img id="u99_img" class="img " src="images/detail__2/u99.svg"/>
+              <img id="u99_img" class="img " src="<%=emojiAdd_s%>>"/>
               <div id="u99_text" class="text " style="display:none; visibility: hidden">
                 <p></p>
               </div>

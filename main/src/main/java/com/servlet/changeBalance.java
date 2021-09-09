@@ -31,6 +31,8 @@ public class changeBalance extends HttpServlet {
         String storeOrderOption=request.getParameter("storeOrder");
         String search=request.getParameter("search");
         String keyWord="";
+        String uninstall=request.getParameter("uninstall");
+        String moneyBack=request.getParameter("moneyBack");
         int UserID=(int)session.getAttribute("UserID");
         DatabaseBean dbb=new DatabaseBean();
         if(payInfo!=null){
@@ -52,6 +54,38 @@ public class changeBalance extends HttpServlet {
             Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
             uld=dbb.getUserLibData("",UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
             session.setAttribute("library",uld);
+            return;
+        }
+        if(moneyBack!=null){
+            int money=Integer.parseInt(moneyBack);
+            String info=dbb.giveMoneyBack(UserID,money);
+            Vector<UserLibData> uld;
+            String soo="最近热门";
+            if(storeOrderOption==null)
+                soo= (String) session.getAttribute("storeOrderOption");
+            uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(soo),true);
+            session.setAttribute("store",uld);
+            response.sendRedirect("library.jsp");
+            String stateInfo= (String) session.getAttribute("state");
+            String libraryDownloadOption=(String) session.getAttribute("libraryDownloadOption");
+            String libraryOrderOption=(String) session.getAttribute("libraryOrderOption");
+            Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
+            uld=dbb.getUserLibData("",UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
+            session.setAttribute("library",uld);
+            return;
+        }
+        if(uninstall!=null){
+            int un=Integer.parseInt(uninstall);
+            System.out.println("un"+un);
+            dbb.setDownloadState(UserID,un);
+            Vector<UserLibData> uld;
+            String stateInfo=(String)session.getAttribute("state");
+            String libraryDownloadOption=(String) session.getAttribute("libraryDownloadOption");
+            String libraryOrderOption=(String) session.getAttribute("libraryOrderOption");
+            Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
+            uld=dbb.getUserLibData("",UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
+            session.setAttribute("library",uld);
+            response.sendRedirect("detail.jsp?id="+un);
             return;
         }
         keyWord=request.getParameter("keyWord");

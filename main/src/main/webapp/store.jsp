@@ -61,7 +61,7 @@
   <div id="u49" class="ax_default label">
     <div id="u49_div" class=""></div>
     <div id="u49_text" class="text ">
-      <input name="search" value="搜索" type="submit" style="border: 0px;border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
+      <input name="search" value="搜索" type="submit" style="border-radius: 3px;width: 40px;height: 25px ;background-color: #008dcb;color:#ffffff "></input>
     </div>
   </div>
   
@@ -125,7 +125,9 @@
     <!-- 详细信息 (动态面板) -->
     <div class="detail">
       <!-- 详细信息按钮 (矩形) -->
-      <div class="ax_default primary_button detButton"> <img class="detButton_img" onclick="location='detail_s.jsp?id=<%=res.elementAt(i).getAppID()%>'" src="images/library/particulars.png"/>
+      <div class="ax_default primary_button detButton"> <input
+              type="button" class="detButton_img" onclick="location='detail_s.jsp?id=<%=res.elementAt(i).getAppID()%>'"style="background-size: cover;
+              background-image: url(images/library/particulars.png);border-radius: 5px;"/>
         <div class="text detButton_text">
         </div>
       </div>

@@ -117,8 +117,13 @@ Vector<UserData> ud;
           </div>
 
           <!-- Unnamed (矩形) -->
-          <div id="u86" class="ax_default button">
-            <input type="submit" name="pay" value="32" id="u86_div" class="" style="color: transparent;"></input><%-- 32$按钮--%>
+          <div>
+            <input type="submit" name="pay" value="32"style="color: transparent;
+            background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
+  left:326px;
+  top:35px;
+  width:81px;
+  height:31px;"></input><%-- 32$按钮--%>
             <div style="z-index: 10;top: -14px;right: 20px;">
             <p></p>
             </div>
@@ -164,8 +169,13 @@ Vector<UserData> ud;
           </div>
 
           <!-- Unnamed (矩形) -->
-          <div id="u92" class="ax_default button">
-            <input type="submit" name="pay" value="64"  id="u92_div" class="" style="color: transparent"></input><%-- 64$按钮--%>
+          <div>
+            <input type="submit" name="pay" value="64"style="color: transparent;color: transparent;
+            background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
+  left:326px;
+  top:35px;
+  width:81px;
+  height:31px;"></input><%-- 64$按钮--%>
             <p style="z-index: 10"></p>
           </div>
 
@@ -210,8 +220,13 @@ Vector<UserData> ud;
           </div>
 
           <!-- Unnamed (矩形) -->
-          <div id="u98" class="ax_default button">
-            <input type="submit" name="pay" value="128" id="u98_div" class=""style="color: transparent" ></input><%-- 128$按钮--%>
+          <div>
+            <input type="submit" name="pay" value="128"style="color: transparent;color: transparent;
+            background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
+  left:326px;
+  top:35px;
+  width:81px;
+  height:31px;" ></input><%-- 128$按钮--%>
             <p style="z-index: 10;"></p>
             </input>
           </div>
@@ -257,8 +272,13 @@ Vector<UserData> ud;
           </div>
 
           <!-- Unnamed (矩形) -->
-          <div id="u104" class="ax_default button">
-            <input type="submit" name="pay" value="324" id="u104_div" class="" style="color: transparent"></input><%-- 324$按钮--%>
+          <div>
+            <input type="submit" name="pay" value="324"  style="color: transparent;color: transparent;
+            background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
+  left:326px;
+  top:35px;
+  width:81px;
+  height:31px;"></input><%-- 324$按钮--%>
             <p style="z-index: 10"></p>
           </div>
 
@@ -303,8 +323,13 @@ Vector<UserData> ud;
           </div>
 
           <!-- Unnamed (矩形) -->
-          <div id="u110" class="ax_default button">
-            <input type="submit" name="pay" value="648" id="u110_div" class="" style="color: transparent"></input><%-- 648$按钮--%>
+          <div>
+            <input type="submit" name="pay" value="648" id="u110_div" class="" style="color: transparent;color: transparent;
+            background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
+  left:326px;
+  top:35px;
+  width:81px;
+  height:31px;"></input><%-- 648$按钮--%>
             <p style="z-index: 10"></p>
           </div>
 
