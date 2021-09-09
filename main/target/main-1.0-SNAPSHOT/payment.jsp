@@ -18,8 +18,6 @@
   </script>
 </head>
 <body>
-<%for (int i=0;i<5;i++){%>
-<h1 style="z-index:10;font-size: 15px;color: #fffff1;top:<%=326+i*120%>px;right: 158px;position: absolute;">购买<h1><%}%>
 <div id="base" class="">
   <form action="changeBalance" method="post">
 
@@ -112,7 +110,7 @@ Vector<UserData> ud;
           <div>
             <input type="submit" name="pay" value="32"style="color: transparent;
             background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
-  left:326px;
+  left:326px;color: transparent;
   top:35px;
   width:81px;
   height:31px;"></input>
@@ -164,7 +162,7 @@ Vector<UserData> ud;
           <div>
             <input type="submit" name="pay" value="64"style="color: transparent;color: transparent;
             background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
-  left:326px;
+  left:326px;color: transparent;
   top:35px;
   width:81px;
   height:31px;"></input>
@@ -210,7 +208,7 @@ Vector<UserData> ud;
           <div>
             <input type="submit" name="pay" value="128"style="color: transparent;color: transparent;
             background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
-  left:326px;
+  left:326px;color: transparent;
   top:35px;
   width:81px;
   height:31px;" ></input>
@@ -261,7 +259,7 @@ Vector<UserData> ud;
           <div>
             <input type="submit" name="pay" value="324"  style="color: transparent;color: transparent;
             background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
-  left:326px;
+  left:326px;color: transparent;
   top:35px;
   width:81px;
   height:31px;"></input>
@@ -309,7 +307,7 @@ Vector<UserData> ud;
           <div>
             <input type="submit" name="pay" value="648" id="u110_div" class="" style="color: transparent;color: transparent;
             background-image: url(images/payment/purchase.png);background-size: cover;border-radius: 5px;position:absolute;
-  left:326px;
+  left:326px;color: transparent;
   top:35px;
   width:81px;
   height:31px;"></input>
