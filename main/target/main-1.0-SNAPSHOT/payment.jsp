@@ -1,6 +1,7 @@
 ﻿<%@ page import="java.util.Vector" %>
 <%@ page import="com.database.UserData" %>
 <%@ page import="com.database.DatabaseBean" %>
+<%@ page import="com.database.Client" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,11 +30,12 @@
     </div>
 <%!
 Vector<UserData> ud;
+Client client=new Client();
 %>
     <%
+      client.start();
       int UserID=(int)session.getAttribute("UserID");
-      DatabaseBean dbb=new DatabaseBean();
-      ud=dbb.selectUserData("select * from user where UserID="+UserID);
+      ud=client.sendBasicReqForUserData("select * from user where UserID="+UserID);
     %>
 
     <div id="u76" class="ax_default _一级标题">

@@ -2,11 +2,7 @@
 
 package com.servlet;
 
-import com.client.Client;
-import com.database.DatabaseBean;
-import com.database.GameData;
-import com.database.UserData;
-import com.database.UserLibData;
+import com.database.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,10 +21,11 @@ public class checkUserLogin3 extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        new Client().start();
+        Client client = new Client();
+        client.start();
         String url="login.jsp";
         request.setCharacterEncoding("UTF-8");
-        Vector res=null;
+        Vector<UserData> res=null;
         HttpSession session=request.getSession(true);
         String UserName=request.getParameter("UserName");
         String Password=request.getParameter("Password");
@@ -52,14 +49,21 @@ public class checkUserLogin3 extends HttpServlet {
         }
         System.out.println("name: "+UserName+" password: "+Password);
 
-        String login=Client.sendForLogin(UserName,Password);
+        String login=client.sendForLogin(UserName,Password);
         if(login.equals("用户名错误")){
             session.setAttribute("loginCheck","用户名错误");
             request.getRequestDispatcher("login.jsp").forward(request,response);
             return;
         }
         else if(login.equals("登录成功")){
-            res=Client.sendForUserStoreData("",7,0,true);
+            res= client.sendBasicReqForUserData("select * from user where Username='"+UserName+"'");
+
+            session.setAttribute("loginCheck","登录成功");
+            session.setAttribute("name", UserName);
+            Vector<UserLibData> res2=res.elementAt(0).getUserLibData();
+            session.setAttribute("library",res2);
+            session.setAttribute("UserID",res.elementAt(0).getUserID());
+            request.getRequestDispatcher("login.jsp").forward(request,response);
 
         }
         else if(login.equals("密码错误")){

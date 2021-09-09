@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<form action="checkUserLogin" method="post">
+<form action="checkUserLogin3" method="post">
   <%!String statu="";%>
 
 

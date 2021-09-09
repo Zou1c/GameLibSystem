@@ -1,8 +1,5 @@
 package com.servlet;
-import com.database.DatabaseBean;
-import com.database.UserData;
-import com.database.UserLibData;
-import com.database.sort;
+import com.database.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +18,8 @@ public class changeList extends HttpServlet {
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         //library状态切换
+        Client client=new Client();
+        client.start();
         request.setCharacterEncoding("UTF-8");
 
         HttpSession session=request.getSession(true);
@@ -37,7 +36,6 @@ public class changeList extends HttpServlet {
 
         int UserID= (int) session.getAttribute("UserID");
 
-        DatabaseBean dbb=new DatabaseBean();
         session.setAttribute("right",libraryOrderOption);
         Vector<UserLibData> uld;
         if (recent!=null){
@@ -68,12 +66,13 @@ public class changeList extends HttpServlet {
             session.setAttribute("libraryDownloadOption",libraryDownloadOption);
         }
         if(downInfo!=null){
+
             int down=Integer.parseInt(downInfo);
-            dbb.setDownloadState(UserID,down);
+            client.sendForDownload(UserID,down);
         }
         if(favoInfo!=null){
             int favo=Integer.parseInt(favoInfo);
-            dbb.setFavoriteState(UserID,favo);
+            client.sendForFavorite(UserID,favo);
         }
 
         keyWord=request.getParameter("keyWord");
@@ -85,9 +84,7 @@ public class changeList extends HttpServlet {
         if(stateInfo==null)
             stateInfo="所有游戏";
 
-
-        Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
-        uld=dbb.getUserLibData(keyWord,UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
+        uld=client.sendForUserLibData(keyWord,UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
         session.setAttribute("library",uld);
         response.sendRedirect("library.jsp");
         this.destroy();

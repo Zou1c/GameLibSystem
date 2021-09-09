@@ -3,6 +3,7 @@
 <%@ page import="com.database.UserData" %>
 <%@ page import="java.util.Vector" %>
 <%@ page import="com.database.GameData" %>
+<%@ page import="com.database.Client" %>
 <html>
 <head>
 <title>Store</title>
@@ -29,8 +30,10 @@
     Vector<UserData> ud;
     Vector<String> orderInfo=new Vector<String>(4);
     String storeKeyWord;
+    Client client=new Client();
   %>
   <%
+    client.start();
     String temp= (String) session.getAttribute("storeOrderOption");
     if(temp==null)temp="";
     orderInfo.clear();
@@ -40,8 +43,7 @@
     orderInfo.addElement(temp.equals("用户评分")?" selected":"");
 
     int UserID=(int)session.getAttribute("UserID");
-    DatabaseBean dbb=new DatabaseBean();
-    ud=dbb.selectUserData("select * from user where UserID="+UserID);
+    ud=client.sendBasicReqForUserData("select * from user where UserID="+UserID);
     storeKeyWord=(String)session.getAttribute("storeKeyWord");
     if(storeKeyWord==null)
       storeKeyWord="";

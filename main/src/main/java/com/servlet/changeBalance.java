@@ -1,8 +1,5 @@
 package com.servlet;
-import com.database.DatabaseBean;
-import com.database.UserData;
-import com.database.UserLibData;
-import com.database.sort;
+import com.database.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletException;
@@ -21,7 +18,8 @@ public class changeBalance extends HttpServlet {
         doPost(request,response);
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+        Client client=new Client();
+        client.start();
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
@@ -34,34 +32,34 @@ public class changeBalance extends HttpServlet {
         String uninstall=request.getParameter("uninstall");
         String moneyBack=request.getParameter("moneyBack");
         int UserID=(int)session.getAttribute("UserID");
-        DatabaseBean dbb=new DatabaseBean();
         if(payInfo!=null){
             int pay= Integer.parseInt(payInfo);
-            dbb.changeBalanceByID(UserID,pay);
+            client.sendForChangeBalance(UserID,pay);
             response.sendRedirect("payment.jsp");
             return;
         }
         if(buyInfo!=null){
             int buy=Integer.parseInt(buyInfo);
-            String info=dbb.buyGameByID(UserID,buy);
+            String info=client.sendForBuyGame(UserID,buy);
             if(info.equals("余额不足，请充值")){
                 response.sendRedirect("payment.jsp");
                 return;
             }
             Vector<UserLibData> uld;//
-            uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
+            uld=client.sendForUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
             session.setAttribute("store",uld);
             response.sendRedirect("store.jsp");
             String stateInfo= (String) session.getAttribute("state");
             String libraryDownloadOption=(String) session.getAttribute("libraryDownloadOption");
             String libraryOrderOption=(String) session.getAttribute("libraryOrderOption");
-            Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
-            uld=dbb.getUserLibData("",UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
+            Vector<UserData> ud= client.sendBasicReqForUserData("select * from user where UserID='"+UserID+"'");
+            uld=client.sendForUserLibData("",UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
             session.setAttribute("library",uld);
             return;
         }
         if(moneyBack!=null){
             int money=Integer.parseInt(moneyBack);
+            DatabaseBean dbb=new DatabaseBean();
             String info=dbb.giveMoneyBack(UserID,money);
             Vector<UserLibData> uld;
             String soo="最近热门";
@@ -80,13 +78,13 @@ public class changeBalance extends HttpServlet {
         }
         if(uninstall!=null){
             int un=Integer.parseInt(uninstall);
-            dbb.setDownloadState(UserID,un);
+            client.sendForDownload(UserID,un);
             Vector<UserLibData> uld;
             String stateInfo=(String)session.getAttribute("state");
             String libraryDownloadOption=(String) session.getAttribute("libraryDownloadOption");
             String libraryOrderOption=(String) session.getAttribute("libraryOrderOption");
-            Vector<UserData> ud=dbb.selectUserData("select * from user where UserID='"+UserID+"'");
-            uld=dbb.getUserLibData("",UserID,sort.getStateOptionValue(stateInfo),sort.getDownloadOptionValue(libraryDownloadOption),sort.getOrderValue(libraryOrderOption),false);
+            Vector<UserData> ud=client.sendBasicReqForUserData("select * from user where UserID='"+UserID+"'");
+            uld= client.sendForUserLibData("", UserID, sort.getStateOptionValue(stateInfo), sort.getDownloadOptionValue(libraryDownloadOption), sort.getOrderValue(libraryOrderOption), false);
             session.setAttribute("library",uld);
             response.sendRedirect("detail.jsp?id="+un);
             return;
@@ -98,7 +96,7 @@ public class changeBalance extends HttpServlet {
         session.setAttribute("storeKeyWord",keyWord);
         if(storeOrderOption!=null){
             Vector<UserLibData> uld;
-            uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
+            uld=client.sendForUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
             session.setAttribute("store",uld);
             session.setAttribute("storeOrderOption",storeOrderOption);
         }
