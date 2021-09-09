@@ -48,7 +48,7 @@ public class changeBalance extends HttpServlet {
                 response.sendRedirect("payment.jsp");
                 return;
             }
-            Vector<UserLibData> uld;
+            Vector<UserLibData> uld;//
             uld=dbb.getUserStoreData(keyWord,UserID, sort.getOrderValue(storeOrderOption),true);
             session.setAttribute("store",uld);
             response.sendRedirect("store.jsp");
