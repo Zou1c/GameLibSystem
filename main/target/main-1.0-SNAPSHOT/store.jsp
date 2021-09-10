@@ -104,7 +104,6 @@
     if(res!=null)
       count=res.size();
     else count=0;
-    System.out.println("有"+count+"个游戏");
     for (int i=0;i<count;i++){
       int ti=i*105+328;
   %>

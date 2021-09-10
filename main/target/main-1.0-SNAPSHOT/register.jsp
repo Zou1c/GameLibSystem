@@ -26,7 +26,7 @@
   <h1 style="color:#c3463a;font-size: 16px;position: relative;top: 369px;right: -710px"><%=alret%></h1><%}%>
   <%if (alret.equals("密码为空和确认密码为空")||alret.equals("密码为空")){%>
   <h1 style="color:#c3463a;font-size: 16px;position: relative;top: 484px;right: -710px"><%=alret%></h1><%}%>
-  <%if (alret.equals("请确认密码")){%>
+  <%if (alret.equals("请确认密码")||alret.equals("密码不一致")){%>
   <h1 style="color:#c3463a;font-size: 16px;position: relative;top: 600px;right: -710px"><%=alret%></h1><%}%>
   <%}%>
   <%session.removeAttribute("alret");%>

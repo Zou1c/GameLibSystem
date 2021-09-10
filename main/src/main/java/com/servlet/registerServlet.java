@@ -37,7 +37,8 @@ public class registerServlet extends HttpServlet {
                 else if (regiPassword==""&&reCheck==""){session.setAttribute("alret","密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
                 else if (regiPassword==""){session.setAttribute("alret","密码为空");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
                 else if (reCheck==""){session.setAttribute("alret","请确认密码");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
-            String info=client.sendForRegister(regiName,regiPassword);
+                else if(!regiPassword.equals(reCheck)){session.setAttribute("alret","密码不一致");request.getRequestDispatcher("register.jsp").forward(request,response);return;}
+                String info=client.sendForRegister(regiName,regiPassword);
 
             if(info.equals("注册失败")){
                 session.setAttribute("alret","注册失败");request.getRequestDispatcher("register.jsp").forward(request,response);

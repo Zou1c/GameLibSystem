@@ -37,6 +37,19 @@ public class Client {
 
 
     //-----向服务端发出请求----
+
+    public String sendForMoneyBack(int Userid, int Appid) throws IOException {
+        os = server.getOutputStream();
+        oos = new ObjectOutputStream(os);
+        Vector temp = new Vector();
+        temp.addElement(new Integer(12));
+        temp.addElement(new Integer(Userid));
+        temp.addElement(new Integer(Appid));
+        oos.writeObject(temp);
+        System.out.println("sended request '12'");
+        return ReceiveStatus();
+    }
+
     public Vector sendBasicReqForGameData(String sql) throws IOException {
         os = server.getOutputStream();
         oos = new ObjectOutputStream(os);

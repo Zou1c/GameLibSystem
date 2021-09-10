@@ -9,7 +9,7 @@ public class DatabaseBean{
         String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
         String DB_URL = "jdbc:mysql://localhost:3306/gamelib?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8";
         String user = "root";
-        String password = "239080";//将密码改为自己的密码
+        String password = "224353Y1560x";//将密码改为自己的密码
         try {
             Class.forName(JDBC_DRIVER);
             con = DriverManager.getConnection(DB_URL, user, password);
@@ -309,4 +309,24 @@ public class DatabaseBean{
             return "修改收藏状态失败";
     }
 
+    public void doSQL(String sql) {
+        try {
+            getDBCon();//与数据库建立连接
+            Statement sta = con.createStatement();
+            return;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        } finally {
+            //关闭资源
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
